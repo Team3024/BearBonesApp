@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BearBones
 {
-	public partial class ClockPage
+	public partial class NewTeamPage
 	{
-		public ClockPage()
+		public NewTeamPage()
 		{
 			InitializeComponent();
 		}

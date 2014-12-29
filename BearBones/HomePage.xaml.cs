@@ -40,7 +40,7 @@ namespace BearBones
 		void newFRCTeam()
 		{
 			ObservableCollection<HomePageViewModel> mods = (ObservableCollection<HomePageViewModel>)listView.ItemsSource;//as List<HomePageViewModel>;
-			HomePageViewModel m = new HomePageViewModel(typeof(ClockPage), NavigateTo, BrowseSource);
+			HomePageViewModel m = new HomePageViewModel(typeof(NewTeamPage), NavigateTo, BrowseSource);
 			mods.Add (m);
 			listView.ItemsSource = mods;
 

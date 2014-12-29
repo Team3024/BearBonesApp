@@ -4,13 +4,13 @@ using Xamarin.Forms;
 
 namespace BearBones
 {
-	class ClockViewModel : INotifyPropertyChanged
+	class NewTeamViewModel : INotifyPropertyChanged
 	{
 		DateTime dateTime;
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		public ClockViewModel()
+		public NewTeamViewModel()
 		{
 			this.DateTime = DateTime.Now;
 
