@@ -4,9 +4,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BearBones.HomePage"
-             Title="Bear Bones Samples">
+             Title="Bear Bones Strategy">
 
-  <ListView x:Name="listView">
+  <ListView x:Name="listView" RowHeight="100">
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
@@ -16,13 +16,17 @@
                    HorizontalOptions="StartAndExpand"
                    VerticalOptions="Center" />
 
-            <Button Text="View"
-                    Command="{Binding GoToCommand}"
-                    CommandParameter="{Binding PageType}" />
+            <Button Text="Info"
+                    Command="{Binding InfoCommand}"
+                    CommandParameter="{Binding teamNumber}" />
 
-            <Button Text="Source"
-                    Command="{Binding BrowseCommand}"
-                    CommandParameter="{Binding PageName}" />
+            <Button Text="New Scout Report"
+                    Command="{Binding ScoutReportCommand}"
+                    CommandParameter="{Binding teamNumber}" />
+            
+            <Button Text="New Match Report"
+                    Command="{Binding MatchReportCommand}"
+                    CommandParameter="{Binding teamNumber}" />
 
           </StackLayout>
         </ViewCell>

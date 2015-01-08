@@ -7,55 +7,53 @@ using Xamarin.Forms;
 
 namespace BearBones
 {
-	public partial class HomePage
+	public partial class HomePage : ContentPage
 	{
+		public List<NewTeamPage> teams = new List<NewTeamPage> (); 
+		ObservableCollection<HomePageViewModel> models;
+
 		public HomePage()
 		{
+			// do the base class init();
 			InitializeComponent();
+			// create a new observable data list for scrolling
+			models = new ObservableCollection<HomePageViewModel>();
 
-			ObservableCollection<HomePageViewModel> models = new ObservableCollection<HomePageViewModel>
-			{
-				//new HomePageViewModel(typeof(ClockPage), NavigateTo, BrowseSource)
-				/*
-				new HomePageViewModel(typeof(HelloXamlPage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(XamlPlusCodePage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(GridDemoPage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(AbsoluteDemoPage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(SharedResourcesPage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(StaticConstantsPage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(RelativeLayoutPage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(SliderBindingsPage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(SliderTransformsPage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(ListViewDemoPage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(OneShotDateTimePage), NavigateTo, BrowseSource),
+			//TODO: if connected, fetch the team/reports data to populate the istView
 
-				new HomePageViewModel(typeof(HslColorScrollPage), NavigateTo, BrowseSource),
-				new HomePageViewModel(typeof(KeypadPage), NavigateTo, BrowseSource)
-*/
-			};
-
+			// set the ListView data source to empty list
 			listView.ItemsSource = models;
+
 		}
 
-		void newFRCTeam()
+		public void newFRCTeam(string number, string name)
 		{
-			ObservableCollection<HomePageViewModel> mods = (ObservableCollection<HomePageViewModel>)listView.ItemsSource;//as List<HomePageViewModel>;
-			HomePageViewModel m = new HomePageViewModel(typeof(NewTeamPage), NavigateTo, BrowseSource);
-			mods.Add (m);
-			listView.ItemsSource = mods;
+			// get the current data source
+			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
+
+			// make a new team object
+			HomePageViewModel m = new HomePageViewModel(typeof(NewTeamPage), Info, NewScoutReport, NewMatchReport);
+
+			// set the name and team number
+			m.teamName = name;
+			m.teamNumber = number;
+			m.PageName = name + " : " + number;
+
+			// add this to our Home Page ListView
+			home.Add (m);
+			// reset the data source--this will trigger an update
+			listView.ItemsSource = models;
 
 		}
 
-		async void OnClick(object sender, EventArgs e)
+		async public void OnClick(object sender, EventArgs e)
 		{
 
 			//ToolbarItem tbi = (ToolbarItem) sender;
 			//this.DisplayAlert("Selected!", tbi.Name,"OK");
-			//await this.Navigation.PushAsync(Type "newTeam");
-			//var page = new newFRCTeam(this);
-			//await Navigation.PushModalAsync(page);
-			//await Navigation.PopAsync ();
-			newFRCTeam ();
+
+			NewTeamPage page = new NewTeamPage (this);
+			await Navigation.PushModalAsync (page);
 		}
 
 		async void NavigateTo(Type pageType)
@@ -76,20 +74,23 @@ namespace BearBones
 				}
 			}
 		}
-
-		async void BrowseSource(string pageName)
+			
+		async void Info(string pageName)
 		{
-			string xamlPage = "XamlSamples." + pageName + ".xaml";
-			Assembly assembly = this.GetType().GetTypeInfo().Assembly;
+			InfoPage page = new InfoPage (pageName);
+			await Navigation.PushModalAsync (page);
+		}
 
-			using (Stream stream = assembly.GetManifestResourceStream(xamlPage))
-			{
-				using (StreamReader reader = new StreamReader(stream))
-				{
-					string xaml = reader.ReadToEnd();
-					//await this.Navigation.PushAsync(new XamlBrowserPage(xaml));
-				}
-			}
+		async void NewMatchReport(string pageName)
+		{
+			MatchReportPage page = new MatchReportPage (pageName);
+			await Navigation.PushModalAsync (page);
+		}
+			
+		async void NewScoutReport(string pageName)
+		{
+			ScoutReportPage page = new ScoutReportPage (pageName);
+			await Navigation.PushModalAsync (page);
 		}
 
 		// Also go to the page when the ListView item is selected.
@@ -99,9 +100,10 @@ namespace BearBones
 
 			if (viewModel != null)
 			{
-				viewModel.GoToCommand.Execute(viewModel.PageType);
+				viewModel.InfoCommand.Execute(viewModel.PageType);
 			}
 		}
 	}
+
 }
 

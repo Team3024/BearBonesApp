@@ -40,6 +40,22 @@
       <DependentUpon>NewTeamPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="NewTeamViewModel.cs" />
+    <Compile Include="ScoutingReport.cs" />
+    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="XamlBrowserPage.xaml.cs">
+      <DependentUpon>XamlBrowserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MatchReportPage.xaml.cs">
+      <DependentUpon>MatchReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScoutReportPage.xaml.cs">
+      <DependentUpon>ScoutReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScoutReportViewModel.cs" />
+    <Compile Include="MatchReportViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.3.0.6292\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.0.6292\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
@@ -48,6 +64,18 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="NewTeamPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XamlBrowserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatchReportPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScoutReportPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

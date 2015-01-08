@@ -1,17 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:BearBones;assembly=BearBones"
-             x:Class="BearBones.NewTeamPage"
-             Title="Clock Page">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="BearBones.NewTeamPage"
+    Title="NewTeam">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand" Padding="30">
 
-  <Label Text="{Binding DateTime,
-                        StringFormat='{0:T}'}"
-         Font="Large"
-         HorizontalOptions="Center"
-         VerticalOptions="Center">
-    <Label.BindingContext>
-      <local:NewTeamViewModel />
-    </Label.BindingContext>
-  </Label>
+	        <Label Text="Team Number" />
+	        <Entry Text="{Binding Path=teamNumber}" x:Name="teamNumberEntry" />
+
+			<Label Text="Team Name" />
+	        <Entry Text="{Binding Path=teamName}" x:Name="teamNameEntry" />
+
+	        <Label Text="Scout Name" />
+	        <Entry Text="{Binding Path=scoutName}" x:Name="scoutNameEntry" />
+
+	        <Button Text="Done" Clicked="OnDoneClicked" />
+			
+			<Button Text="Cancel" Clicked="OnCancelClicked" />
+
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

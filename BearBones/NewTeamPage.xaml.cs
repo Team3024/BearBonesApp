@@ -1,17 +1,62 @@
 ﻿using System;
+using Xamarin.Forms;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BearBones
 {
-	public partial class NewTeamPage
+	public partial class NewTeamPage : ContentPage
 	{
-		public NewTeamPage()
+		internal string teamNumber {  set; get; }
+		internal string teamName {  set; get; }
+		internal NewTeamViewModel viewModel { get; set; }
+		internal HomePage parent { get; set; }
+		internal List<ScoutingReport> reports;
+
+		public NewTeamPage (HomePage parent)
 		{
-			InitializeComponent();
+			try
+			{
+				// do whatever is basic to this objects
+				InitializeComponent ();
+
+				// buttons and things are bound to this model
+				viewModel = new NewTeamViewModel ();
+				BindingContext = viewModel;
+
+				// this is the Home Page and holds the UI state machine
+				this.parent = parent;
+
+				// create an empty list of reports
+				reports = new List<ScoutingReport>();
+			}
+			catch(Exception ex)
+			{
+				Exception e = ex;
+			}
 		}
+
+		void OnDoneClicked (object sender, EventArgs e)
+		{
+			// get the input values
+			teamNumber = viewModel.teamNumber;
+			teamName = viewModel.teamName;
+
+			// callback to main thread to add a team and update UI
+			parent.newFRCTeam (teamNumber, teamName);
+
+			// leave this page
+			Navigation.PopModalAsync ();
+		}
+
+		void OnCancelClicked (object sender, EventArgs e)
+		{
+			//just leave
+			Navigation.PopModalAsync ();
+		}
+
+
 	}
 }
+
 

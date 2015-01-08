@@ -4,43 +4,47 @@ using Xamarin.Forms;
 
 namespace BearBones
 {
-	class NewTeamViewModel : INotifyPropertyChanged
+	public class NewTeamViewModel : ViewModelBase
 	{
-		DateTime dateTime;
+		public string teamNumber { get; set; }
+		public string teamName { get; set; }
+		public string scoutName { get; set; }
+		internal string ValidationErrors { get; private set; }
 
-		public event PropertyChangedEventHandler PropertyChanged;
+		//		IDirectoryService service;
 
-		public NewTeamViewModel()
+		static readonly TimeSpan ForceLoginTimespan = TimeSpan.FromMinutes (5);
+
+		public NewTeamViewModel ()
 		{
-			this.DateTime = DateTime.Now;
+			this.teamNumber = "";
+			this.teamName = "";
+			this.scoutName = "";
+		}
+		/*
+		public IDirectoryService Service { get; set;}
 
-			Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-				{
-					this.DateTime = DateTime.Now;
-					return true;
-				}); 
+		public NewTeamViewModel (IDirectoryService service)
+		{
+			Service = service;
+
+			Username = "";
+			Password = "";
+		}
+		*/
+		public bool CanLogin () {
+			ValidationErrors = "";
+			if (string.IsNullOrEmpty(teamNumber))
+			{
+				ValidationErrors = "Please enter a Team Number.";
+			}
+			if (string.IsNullOrEmpty(teamName))
+			{
+				ValidationErrors += "Please enter a Team Name.";
+			}
+			return (ValidationErrors == "");
 		}
 
-		public DateTime DateTime
-		{
-			set
-			{
-				if (dateTime != value)
-				{
-					dateTime = value;
-
-					if (PropertyChanged != null)
-					{
-						PropertyChanged(this, 
-							new PropertyChangedEventArgs("DateTime"));
-					}
-				}
-			}
-			get
-			{
-				return dateTime;
-			}
-		}
 	}
 }
 
