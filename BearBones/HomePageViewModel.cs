@@ -23,6 +23,9 @@ namespace BearBones
 
 		public string PageName { set; get; }
 
+
+		//public double Height {  set; get; }
+
 		public ICommand InfoCommand { private set; get; }
 
 		public ICommand ScoutReportCommand { private set; get; }
@@ -34,6 +37,9 @@ namespace BearBones
 		public string teamNumber {  set; get; }
 
 		public string scoutName {  set; get; }
+
+		public int index {  set; get; }
+
 	}
 }
 

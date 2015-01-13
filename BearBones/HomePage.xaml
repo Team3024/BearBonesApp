@@ -4,32 +4,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BearBones.HomePage"
-             Title="Bear Bones Strategy">
+             Title="Bear Bones Strategy"
+             xmlns:local="clr-namespace:BearBones;assembly=BearBones">
 
-  <ListView x:Name="listView" RowHeight="100">
+  <ListView x:Name="listView" HasUnevenRows="true">
     <ListView.ItemTemplate>
       <DataTemplate>
-        <ViewCell>
-          <StackLayout Orientation="Horizontal"
-                       Padding="5, 0">
-            <Label Text="{Binding PageName}"
-                   HorizontalOptions="StartAndExpand"
-                   VerticalOptions="Center" />
-
-            <Button Text="Info"
-                    Command="{Binding InfoCommand}"
-                    CommandParameter="{Binding teamNumber}" />
-
-            <Button Text="New Scout Report"
-                    Command="{Binding ScoutReportCommand}"
-                    CommandParameter="{Binding teamNumber}" />
-            
-            <Button Text="New Match Report"
-                    Command="{Binding MatchReportCommand}"
-                    CommandParameter="{Binding teamNumber}" />
-
-          </StackLayout>
-        </ViewCell>
+      	<local:TeamCell></local:TeamCell>
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>

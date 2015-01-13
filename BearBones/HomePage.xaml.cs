@@ -38,6 +38,7 @@ namespace BearBones
 			m.teamName = name;
 			m.teamNumber = number;
 			m.PageName = name + " : " + number;
+			m.index = models.Count + 1;
 
 			// add this to our Home Page ListView
 			home.Add (m);
@@ -100,8 +101,17 @@ namespace BearBones
 
 			if (viewModel != null)
 			{
-				viewModel.InfoCommand.Execute(viewModel.PageType);
+ 				viewModel.InfoCommand.Execute(viewModel.PageType);
 			}
+		}
+
+		internal void OnBindingContextChanged (object sender, EventArgs e)
+		{
+			var cell = (ViewCell)sender;
+			//var template = Selector (cell.BindingContext);
+
+			cell.Height = 300;
+			//cell.View = ((ViewCell)template.CreateContent ()).View;
 		}
 	}
 
