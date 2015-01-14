@@ -17,8 +17,12 @@ using Newtonsoft.Json;
 
 /// <summary>
 ///  Calling the REST interface...
+/// 
+///  using System.Threading.Tasks;
 ///  Rest rest = new Rest ();
 ///  Task <List<string>> list = rest.SendAndReceiveJsonRequest ("http://71.92.131.203/db/data/cypher/","MATCH (a:Event) RETURN a LIMIT 25",lv);
+///  ...in this case lv is a list view you want populated with 'Event' info
+/// 
 /// </summary>
 
 
