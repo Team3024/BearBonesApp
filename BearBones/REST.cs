@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 
 
 /// <summary>
-///  Calling the REST interface
+///  Calling the REST interface...
 ///  Rest rest = new Rest ();
 ///  Task <List<string>> list = rest.SendAndReceiveJsonRequest ("http://71.92.131.203/db/data/cypher/","MATCH (a:Event) RETURN a LIMIT 25",lv);
 /// </summary>
@@ -60,6 +60,7 @@ namespace BearBones
 					System.Diagnostics.Debug.WriteLine("Error communicating with the server: " + e.Message);
 				}
 			}
+
 			Dictionary<string,int[]> D = new Dictionary<string,int[]>();
 			var results = new List<string>();
 			try
