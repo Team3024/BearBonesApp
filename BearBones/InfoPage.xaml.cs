@@ -6,7 +6,7 @@ namespace BearBones
 {	
 	public partial class InfoPage : ContentPage
 	{	
-		public InfoPage (string name)
+		public InfoPage (string teamNumber)
 		{
 			InitializeComponent ();
 		}

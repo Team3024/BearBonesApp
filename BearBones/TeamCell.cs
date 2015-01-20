@@ -91,11 +91,9 @@ namespace BearBones
 				Text="Info",
 				//Command="InfoCommand",
 				CommandParameter="teamNumber"
-
 			};
-
-			//infoBtn.SetBinding (Button.Command, new Binding("InfoCommand"));
-			//infoBtn.SetBinding (Button.CommandParameter,new Binding("teamNumber"));
+			infoBtn.SetBinding<HomePageViewModel> (Button.CommandProperty,f => f.InfoCommand);
+			infoBtn.SetBinding<HomePageViewModel> (Button.CommandParameterProperty,f => f.teamNumber);
 
 			Button scoutBtn = new Button
 			{
@@ -104,8 +102,8 @@ namespace BearBones
 				CommandParameter="teamNumber"
 			};
 
-			//scoutBtn.SetBinding (Button.Command, "ScoutReportCommand");
-			//scoutBtn.SetBinding (Button.CommandParameter, "teamNumber");
+			scoutBtn.SetBinding<HomePageViewModel> (Button.CommandProperty,f => f.ScoutReportCommand);
+			infoBtn.SetBinding<HomePageViewModel> (Button.CommandParameterProperty,f => f.teamNumber);
 
 			Button matchBtn = new Button
 			{
@@ -113,8 +111,8 @@ namespace BearBones
 				//Command="ScoutReportCommand",
 				CommandParameter="teamNumber"
 			};
-			//matchBtn.SetBinding (Button.Command, "MatchReportCommand");
-			//matchBtn.SetBinding (Button.CommandParameter, "teamNumber");
+			matchBtn.SetBinding<HomePageViewModel> (Button.CommandProperty,f => f.MatchReportCommand);
+			infoBtn.SetBinding<HomePageViewModel> (Button.CommandParameterProperty,f => f.teamNumber);
 
 			var s = new StackLayout
 			{
