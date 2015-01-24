@@ -1,17 +1,60 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" Title="Info" BackgroundImage="grizzly.png" BackgroundColor="Olive">
-	<ContentPage.Content>
+<!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" Title="Info" BackgroundImage="grizzly.png" BackgroundColor="Olive">-->
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Opacity=".5">
+	<ContentPage BackgroundColor="Transparent" BackgroundImage="grizzly.png">
 		<StackLayout Spacing="10">
-		<!--<Button x:Name="button0" Text="Done" Clicked="OnDoneClicked"></Button>-->
-		<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0">
-			<Label x:Name="field1" Text="Score: " HeightRequest="200"></Label>
-			<Label x:Name="field1Entry" Text="a million points" HeightRequest="200"></Label>
+			<Label Text=""></Label>
+			<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
+				<Label x:Name="field1" Text="Score: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+				<Label x:Name="field1Entry" Text="a million points" TextColor="Black" FontSize="20"></Label>
+			</StackLayout>
+
+			<Button
+				Text="+"
+				x:Name="changeButton"
+				Clicked="ChangeValue"
+				BorderColor="#66b3ff"
+				TextColor="#333"
+				BorderWidth="3"
+				BorderRadius="25"
+				FontAttributes="Bold"
+				FontSize="20"
+				HeightRequest="50"
+				BackgroundColor="#faf7ff"
+				HorizontalOptions="Center"
+				VerticalOptions="CenterAndExpand"
+				WidthRequest="50"
+			/>
+
+    		<Button Text="Done" x:Name="Test" Clicked="OnDoneClicked" />
+
 		</StackLayout>
-		<Button Text="entry 1" x:Name="changeButton" Clicked="ChangeValue" />
+
+	</ContentPage>
+<ContentPage>
+		<StackLayout Spacing="10">
+			<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="White" Padding="5" >
+				<Label x:Name="field2" Text="Score: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+				<Label x:Name="field2Entry" Text="a million points" TextColor="Black" FontSize="20"></Label>
+			</StackLayout>
+			<Button Text="entry 1" x:Name="changeButton2" Clicked="ChangeValue" HorizontalOptions="Center" />
 
 
-        <Button Text="Done" x:Name="Test" Clicked="OnDoneClicked" />
+    		<Button Text="Done" x:Name="Test2" Clicked="OnDoneClicked" HorizontalOptions="Center" />
 		</StackLayout>
 
-	</ContentPage.Content>
-</ContentPage>
+	</ContentPage>
+<ContentPage>
+		<StackLayout Spacing="10">
+			<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="White" Padding="5" >
+				<Label x:Name="field3" Text="Score: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+				<Label x:Name="field3Entry" Text="a million points" TextColor="Black" FontSize="20"></Label>
+			</StackLayout>
+			<Button Text="entry 1" x:Name="changeButton3" Clicked="ChangeValue" HorizontalOptions="Center" />
+
+
+    		<Button Text="Done" x:Name="Test3" Clicked="OnDoneClicked" HorizontalOptions="Center" />
+		</StackLayout>
+	</ContentPage>
+</CarouselPage>
+<!--</ContentPage>-->

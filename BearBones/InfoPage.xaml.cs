@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace BearBones
 {	
-	public partial class InfoPage : ContentPage
+	public partial class InfoPage : CarouselPage
 	{	
 	
 
@@ -13,6 +13,7 @@ namespace BearBones
 		{
 
 			InitializeComponent ();
+
 
 		}
 
@@ -30,4 +31,3 @@ namespace BearBones
 		}
 	}
 }
-
