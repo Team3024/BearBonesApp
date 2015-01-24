@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" Title="Info" BackgroundImage="grizzly.png" BackgroundColor="Olive">
 	<ContentPage.Content>
- 		<Button Text="Done" Clicked="OnDoneClicked" />
+		<StackLayout Spacing="10">
+		<!--<Button x:Name="button0" Text="Done" Clicked="OnDoneClicked"></Button>-->
+		<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0">
+			<Label x:Name="field1" Text="Score: " HeightRequest="200"></Label>
+			<Label x:Name="field1Entry" Text="a million points" HeightRequest="200"></Label>
+		</StackLayout>
+		<Button Text="entry 1" x:Name="changeButton" Clicked="ChangeValue" />
+
+
+        <Button Text="Done" x:Name="Test" Clicked="OnDoneClicked" />
+		</StackLayout>
+
 	</ContentPage.Content>
 </ContentPage>
