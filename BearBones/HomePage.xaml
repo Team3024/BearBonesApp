@@ -5,7 +5,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BearBones.HomePage"
              Title="Bear Bones Strategy"
-             xmlns:local="clr-namespace:BearBones;assembly=BearBones">
+             xmlns:local="clr-namespace:BearBones;assembly=BearBones"
+             BackgroundImage="grizzly.png"
+             BackgroundColor="Transparent"
+             Opacity="1">
 
   <ListView x:Name="listView" HasUnevenRows="true">
     <ListView.ItemTemplate>
