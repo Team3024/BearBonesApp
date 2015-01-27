@@ -73,7 +73,7 @@ namespace BearBones
 				//Dictionary<string, dynamic> values = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(responseStr);
 				neo4jData val=Newtonsoft.Json.JsonConvert.DeserializeObject<neo4jData>(responseStr);
 
-				InfoPageViewModel infoPage = new InfoPageViewModel();
+				InfoData infoPage = new InfoData();
 
 				foreach(var kvp in val.data)// process column 'a'
 				{
@@ -88,12 +88,19 @@ namespace BearBones
 
 
 								string values = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
-								var v = Newtonsoft.Json.JsonConvert.DeserializeObject<InfoData>(values);
+
+								string ds = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
+								JToken token = JObject.Parse(ds);
+								InfoPageViewModel data = new InfoPageViewModel();
+								data.name = (string)token.SelectToken("name");
+								data.number = (int)token.SelectToken("number");
+								results.Add(data);
+								//var v = Newtonsoft.Json.JsonConvert.DeserializeObject<InfoData>(values);
 								//Dictionary<dynamic,dynamic> p = new Dictionary<dynamic, dynamic>{ { k.Key, k.Value } };
 
 								//var pp = JObject.Parse(values);
 
-								foreach(var i in v.dict){
+								//foreach(var i in v.dict){
 								
 									/*string c = i.Key;
 
@@ -136,7 +143,7 @@ namespace BearBones
 
 
 								//string x="Event: " + e.ident + "~" + e.type + "~" + e.description;
-								results.Add(infoPage);
+								//results.Add(infoPage);
 								//System.Diagnostics.Debug.WriteLine(x.ToString());
 								//}
 							}
@@ -153,7 +160,7 @@ namespace BearBones
 						ListAdapter = new ArrayAdapter<string> (this, Resource.Layout.TweetItemView,results);
 					});
 				*/
-			}
+			//}
 			catch(Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine (ex.Message);
