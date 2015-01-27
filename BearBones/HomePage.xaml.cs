@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Connectivity.Plugin;
 using Connectivity.Plugin.Abstractions;
@@ -12,6 +13,7 @@ namespace BearBones
 {
 	public partial class HomePage : ContentPage
 	{
+		bool bConnected=false;	//
 		public List<NewTeamPage> teams = new List<NewTeamPage> (); 
 		ObservableCollection<HomePageViewModel> models;
 
@@ -22,7 +24,31 @@ namespace BearBones
 			// create a new observable data list for scrolling
 			models = new ObservableCollection<HomePageViewModel>();
 
-			//TODO: if connected, fetch the team/reports data to populate the istView
+			// get initial online status
+			if (CrossConnectivity.Current.IsConnected)
+				bConnected = true;
+
+			// if connected, fetch the team/reports data to populate the istView
+			//CrossConnectivity.Current.ConnectivityChanged += OnClick ();
+			// Lambda expression watches for connection status change
+			CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
+			{
+				Debug.WriteLine("Connectivity Changed \nIsConnected: " + args.IsConnected.ToString());
+				if(args.IsConnected == false)
+				{
+					// TODO: save any pending transactions, with timestamp
+					bConnected=false;	// Set a flag to alert any transfers that may have ben in progress
+				}
+				else   // When state changes from false to true, fetch a fresh Mood set (TODO:and process unsaved changes...)
+				{
+					if(bConnected==false)
+					{
+						//TODO: process any saved transactions in chrono order by timestamp
+						GetTeams();
+					}
+					bConnected=true;
+				}
+			};
 
 			// set the ListView data source to empty list
 			listView.ItemsSource = models;
@@ -39,7 +65,7 @@ namespace BearBones
 					{
 						// Get existing teams from database
 						Rest rest = new Rest ();
-						Task <ObservableCollection<InfoPageViewModel>> list = rest.SendAndReceiveJsonRequest ("http://71.92.131.203/db/data/cypher/", "MATCH (a:Team) RETURN a LIMIT 25");
+						Task <ObservableCollection<InfoPageViewModel>> list = rest.SendAndReceiveJsonRequest ("http://71.92.131.203/db/data/cypher/", "MATCH (a:Team) RETURN a");
 						// populate the list with the results
 						//listView.ItemsSource = list.Result;
 						break;
