@@ -73,8 +73,6 @@ namespace BearBones
 				//Dictionary<string, dynamic> values = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(responseStr);
 				neo4jData val=Newtonsoft.Json.JsonConvert.DeserializeObject<neo4jData>(responseStr);
 
-				InfoData infoPage = new InfoData();
-
 				foreach(var kvp in val.data)// process column 'a'
 				{
 					foreach(var kv in kvp)
