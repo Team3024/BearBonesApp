@@ -115,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="grizzly.png" />
+    <BundleResource Include="Icon.png" />
+    <BundleResource Include="plus.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />

@@ -74,14 +74,14 @@ namespace BearBones
 		protected override void OnBindingContextChanged ()
 		{
 			//make this cell a particular height, based on its index
-			//this.Height = temp.index*30;
+			this.Height = 90;
 
 			base.OnBindingContextChanged ();
 			var temp = BindingContext as HomePageViewModel;
 			Label title = new Label
 			{
 				HorizontalOptions = LayoutOptions.StartAndExpand,
-				VerticalOptions = LayoutOptions.Center
+				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 			title.SetBinding (Label.TextProperty, new Binding("PageName"));
 
@@ -89,6 +89,8 @@ namespace BearBones
 			Button infoBtn = new Button
 			{
 				Text="Info",
+				HorizontalOptions = LayoutOptions.StartAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
 				//Command="InfoCommand",
 				CommandParameter="teamNumber"
 			};
@@ -97,7 +99,9 @@ namespace BearBones
 
 			Button scoutBtn = new Button
 			{
-				Text="New Scout Report",
+				Text="+ScoutReport",
+				HorizontalOptions = LayoutOptions.StartAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
 				//Command="ScoutReportCommand",
 				CommandParameter="teamNumber"
 			};
@@ -107,7 +111,7 @@ namespace BearBones
 
 			Button matchBtn = new Button
 			{
-				Text="New Match Report",
+				Text="+MatchReport",
 				//Command="ScoutReportCommand",
 				CommandParameter="teamNumber"
 			};
