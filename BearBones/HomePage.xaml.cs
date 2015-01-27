@@ -4,6 +4,9 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using Xamarin.Forms;
+using Connectivity.Plugin;
+using Connectivity.Plugin.Abstractions;
+using System.Threading.Tasks;
 
 namespace BearBones
 {
@@ -24,6 +27,30 @@ namespace BearBones
 			// set the ListView data source to empty list
 			listView.ItemsSource = models;
 
+		}
+
+		void GetTeams()
+		{
+			if (CrossConnectivity.Current.IsConnected)
+			{
+				foreach (ConnectionType ct in CrossConnectivity.Current.ConnectionTypes)
+				{// CrossConnectivity.Current.IsRemoteReachable ("71.92.131.203", 80, 5000).Result==true)
+					if (ct == ConnectionType.WiFi || ct==ConnectionType.Cellular || ct==ConnectionType.Desktop)
+					{
+						// Get existing teams from database
+						Rest rest = new Rest ();
+						Task <ObservableCollection<InfoPageViewModel>> list = rest.SendAndReceiveJsonRequest ("http://71.92.131.203/db/data/cypher/", "MATCH (a:Team) RETURN a LIMIT 25");
+						// populate the list with the results
+						//listView.ItemsSource = list.Result;
+						break;
+					} else
+					{
+						// write it out for later processing
+						models = models;
+					}
+
+				}
+			}
 		}
 
 		public void newFRCTeam(string number, string name)

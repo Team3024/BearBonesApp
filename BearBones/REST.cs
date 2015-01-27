@@ -35,7 +35,7 @@ namespace BearBones
 		{
 		}
 
-		public async Task<ObservableCollection<InfoPageViewModel>> SendAndReceiveJsonRequest(string uri, string query,ObservableCollection<InfoPageViewModel> list)
+		public async Task<ObservableCollection<InfoPageViewModel>> SendAndReceiveJsonRequest(string uri, string query)
 		{
 			string responseStr = null;
 			//string uri = "http://71.92.131.203/db/data/cypher/";
