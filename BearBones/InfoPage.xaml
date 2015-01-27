@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" Title="Info" BackgroundImage="grizzly.png" BackgroundColor="Olive">-->
-<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Opacity=".5">
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Opacity=".5" Title="Info">
 	<ContentPage BackgroundColor="Transparent" BackgroundImage="grizzly.png">
+
 		<StackLayout Spacing="10">
+
+			<!--Spacer for top-->
 			<Label Text=""></Label>
+		
+			<!--First row-->
 			<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
 				<Label x:Name="field1" Text="Score: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
-				<Label x:Name="field1Entry" Text="a million points" TextColor="Black" FontSize="20"></Label>
+				<Label x:Name="field1Entry" Text="49" TextColor="Black" FontSize="20"></Label>
 			</StackLayout>
 
 			<Button

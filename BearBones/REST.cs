@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 
@@ -34,7 +35,7 @@ namespace BearBones
 		{
 		}
 
-		public async Task<List<string>> SendAndReceiveJsonRequest(string uri, string query,ListView list)
+		public async Task<ObservableCollection<InfoPageViewModel>> SendAndReceiveJsonRequest(string uri, string query,ObservableCollection<InfoPageViewModel> list)
 		{
 			string responseStr = null;
 			//string uri = "http://71.92.131.203/db/data/cypher/";
@@ -66,11 +67,13 @@ namespace BearBones
 			}
 
 			Dictionary<string,int[]> D = new Dictionary<string,int[]>();
-			var results = new List<string>();
+			var results = new ObservableCollection<InfoPageViewModel>();
 			try
 			{
 				//Dictionary<string, dynamic> values = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(responseStr);
 				neo4jData val=Newtonsoft.Json.JsonConvert.DeserializeObject<neo4jData>(responseStr);
+
+				InfoPageViewModel infoPage = new InfoPageViewModel();
 
 				foreach(var kvp in val.data)// process column 'a'
 				{
@@ -78,23 +81,63 @@ namespace BearBones
 					{
 						foreach(var k in kv)
 						{
+
+
 							if(k.Key == "data")// these are the events
 							{
 
-								string ds = Newtonsoft.Json.JsonConvert.SerializeObject(k);
-								string s = ds.Substring(22);
-								s=s.Substring(0,s.Length-1);
+
+								string values = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
+								var v = Newtonsoft.Json.JsonConvert.DeserializeObject<InfoData>(values);
+								//Dictionary<dynamic,dynamic> p = new Dictionary<dynamic, dynamic>{ { k.Key, k.Value } };
+
+								//var pp = JObject.Parse(values);
+
+								foreach(var i in v.dict){
+								
+									/*string c = i.Key;
+
+									switch(c){
+									case "name":
+										infoPage.name = i.Value;
+										break;
+									
+									case "number":
+										infoPage.number = i.Value;
+										break;
+									
+									default:
+										break;
+
+									}
+									*/
+
+									/*if(i.Key = "name"){
+										infoPage.name = i.Value;
+									}else if(i.Key = "number"){
+										infoPage.number = i.Value;
+									}*/
+
+								}
+								//string ds = Newtonsoft.Json.JsonConvert.SerializeObject(k);
+								//string s = ds.Substring(22);
+								//s=s.Substring(0,s.Length-1);
 								//string s = Newtonsoft.Json.JsonConvert.DSerializeObject(k);
 								//string s = Convert.ToString(k.Value);
 
-								SampleEvent  e = Newtonsoft.Json.JsonConvert.DeserializeObject<SampleEvent>(s);//<Dictionary<string,dynamic>>(s);
+
+
+								//InfoPageViewModel e = Newtonsoft.Json.JsonConvert.DeserializeObject<InfoPageViewModel>(s);//<Dictionary<string,dynamic>>(s);
 
 
 								//for(int i=0;i<o.Count;++i)//each(var d in o)
 								//{
-								string x="Event: " + e.ident + "~" + e.type + "~" + e.description;
-								results.Add(x);
-								System.Diagnostics.Debug.WriteLine(x.ToString());
+
+
+
+								//string x="Event: " + e.ident + "~" + e.type + "~" + e.description;
+								results.Add(infoPage);
+								//System.Diagnostics.Debug.WriteLine(x.ToString());
 								//}
 							}
 
@@ -115,7 +158,7 @@ namespace BearBones
 			{
 				System.Diagnostics.Debug.WriteLine (ex.Message);
 			}
-			list.ItemsSource = results;
+			//.ItemsSource = results;
 			return results;
 		}
 	}
