@@ -26,7 +26,10 @@ namespace BearBones
 
 			// get initial online status
 			if (CrossConnectivity.Current.IsConnected)
+			{
 				bConnected = true;
+				GetTeams ();
+			}
 
 			// if connected, fetch the team/reports data to populate the istView
 			//CrossConnectivity.Current.ConnectivityChanged += OnClick ();
@@ -55,7 +58,7 @@ namespace BearBones
 
 		}
 
-		void GetTeams()
+		async void GetTeams()
 		{
 			if (CrossConnectivity.Current.IsConnected)
 			{
@@ -66,6 +69,12 @@ namespace BearBones
 						// Get existing teams from database
 						Rest rest = new Rest ();
 						Task <ObservableCollection<InfoPageViewModel>> list = rest.SendAndReceiveJsonRequest ("http://71.92.131.203/db/data/cypher/", "MATCH (a:Team) RETURN a");
+						var tList = await list;
+						ObservableCollection<HomePageViewModel>mod = new ObservableCollection<HomePageViewModel>();
+						foreach (InfoPageViewModel vm in tList) 
+						{
+							newFRCTeam (vm.number.ToString(),vm.name);
+						}
 						// populate the list with the results
 						//listView.ItemsSource = list.Result;
 						break;
