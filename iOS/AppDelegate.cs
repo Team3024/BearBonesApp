@@ -14,6 +14,11 @@ namespace BearBones.iOS
 	{
 		UIWindow window;
 
+		public static Page GetMainPage ()
+		{   
+			return new NavigationPage(new HomePage ());
+		}
+
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
 			Forms.Init ();

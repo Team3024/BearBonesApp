@@ -83,8 +83,9 @@ namespace BearBones
 				HorizontalOptions = LayoutOptions.StartAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
-			title.SetBinding (Label.TextProperty, new Binding("PageName"));
 
+			title.SetBinding (Label.TextProperty, new Binding("PageName"));
+			/*
 
 			Button infoBtn = new Button
 			{
@@ -117,16 +118,16 @@ namespace BearBones
 			};
 			matchBtn.SetBinding<HomePageViewModel> (Button.CommandProperty,f => f.MatchReportCommand);
 			infoBtn.SetBinding<HomePageViewModel> (Button.CommandParameterProperty,f => f.teamNumber);
-
+*/
 			var s = new StackLayout
 			{
 				Orientation=StackOrientation.Horizontal,
 				Padding = new Thickness(5,0,5,0)
 			};
 			s.Children.Add (title);
-			s.Children.Add (infoBtn);
-			s.Children.Add (scoutBtn);
-			s.Children.Add (matchBtn);
+			//s.Children.Add (infoBtn);
+			//s.Children.Add (scoutBtn);
+			//s.Children.Add (matchBtn);
 			this.View = s;
 
 

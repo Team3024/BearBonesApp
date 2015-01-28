@@ -15,7 +15,7 @@ namespace BearBones
 	{
 		bool bConnected=false;	//
 		public List<NewTeamPage> teams = new List<NewTeamPage> (); 
-		ObservableCollection<HomePageViewModel> models;
+		ObservableCollection<HomePageViewModel> models;//= new ObservableCollection<HomePageViewModel>();
 
 		public HomePage()
 		{
@@ -53,6 +53,17 @@ namespace BearBones
 				}
 			};
 
+			listView.ItemSelected += (sender, e) =>
+			{
+				if (e.SelectedItem == null) return; // don't do anything if we just de-selected the row
+				// do something with e.SelectedItem
+				//((ListView)sender).SelectedItem..IsEnabled=false;
+				//((ListView)sender).match.IsEnabled=false;
+				((ListView)sender).SelectedItem = null; // de-select the row
+				HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
+				InfoPage page = new InfoPage (hpvm.PageName);// sent it the hpvm object
+				Navigation.PushModalAsync (page);
+			};
 			// set the ListView data source to empty list
 			listView.ItemsSource = models;
 
@@ -70,7 +81,7 @@ namespace BearBones
 						Rest rest = new Rest ();
 						Task <ObservableCollection<InfoPageViewModel>> list = rest.SendAndReceiveJsonRequest ("http://71.92.131.203/db/data/cypher/", "MATCH (a:Team) RETURN a");
 						var tList = await list;
-						ObservableCollection<HomePageViewModel>mod = new ObservableCollection<HomePageViewModel>();
+
 						foreach (InfoPageViewModel vm in tList) 
 						{
 							newFRCTeam (vm.number.ToString(),vm.name);
@@ -81,7 +92,7 @@ namespace BearBones
 					} else
 					{
 						// write it out for later processing
-						models = models;
+						//models = models;
 					}
 
 				}
@@ -140,6 +151,7 @@ namespace BearBones
 			
 		async void Info(string pageName)
 		{
+			HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
 			InfoPage page = new InfoPage (pageName);
 			await Navigation.PushModalAsync (page);
 		}
