@@ -4,8 +4,9 @@ namespace BearBones
 {
 	public class InfoPageViewModel
 	{
-		public int number;
-		public string name;
+		public int score;
+		public string scout;
+		public string drive;
 
 		public InfoPageViewModel ()
 		{

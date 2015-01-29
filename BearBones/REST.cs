@@ -35,7 +35,99 @@ namespace BearBones
 		{
 		}
 
-		public async Task<ObservableCollection<InfoPageViewModel>> SendAndReceiveJsonRequest(string uri, string query)
+		public async Task<ObservableCollection<HomePageViewModel>> getAllTeams()
+		{
+			string uri = "http://71.92.131.203/db/data/cypher/";
+			string query = "MATCH (a:Team) RETURN a";
+			string responseStr = await SendAndReceiveJsonRequest(uri,query);
+
+			var results = new ObservableCollection<HomePageViewModel>();
+
+			try
+			{
+				neo4jData val=Newtonsoft.Json.JsonConvert.DeserializeObject<neo4jData>(responseStr);
+
+				foreach(var kvp in val.data)// process column 'a'
+				{
+					foreach(var kv in kvp)
+					{
+						foreach(var k in kv)
+						{
+							if(k.Key == "data")// these are the events
+							{
+
+
+								string values = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
+
+								string ds = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
+								JToken token = JObject.Parse(ds);
+								HomePageViewModel data = new HomePageViewModel(typeof(HomePage));
+								data.teamName = (string)token.SelectToken("name");
+
+								if (token.SelectToken("number")!=null)
+									data.teamNumber=(int)token.SelectToken("number");
+								else
+									data.teamNumber=-1;
+
+								results.Add(data);
+							}
+						}
+					}
+				}
+			}
+			catch(Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine (ex.Message);
+			}
+
+			return results;
+		}
+
+		public async Task<ObservableCollection<InfoPageViewModel>>getReports(int teamNum)
+		{
+			string uri="http://71.92.131.203/db/data/cypher/";
+			string query="MATCH (a:Team)-[HAS_REPORT]->(b:Report) where a.number="+teamNum.ToString()+" RETURN b";
+			string responseStr = await SendAndReceiveJsonRequest(uri,query);
+		
+			var results = new ObservableCollection<InfoPageViewModel>();
+
+			try
+			{
+				neo4jData val=Newtonsoft.Json.JsonConvert.DeserializeObject<neo4jData>(responseStr);
+
+				foreach(var kvp in val.data)// process column 'a'
+				{
+					foreach(var kv in kvp)
+					{
+						foreach(var k in kv)
+						{
+							if(k.Key == "data")// these are the events
+							{
+								string values = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
+								string ds = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
+								JToken token = JObject.Parse(ds);
+								InfoPageViewModel data = new InfoPageViewModel();
+								data.scout = (string)token.SelectToken("scout");
+								data.drive = (string)token.SelectToken("drive");
+								if (token.SelectToken("score")!=null)
+									data.score =(int)token.SelectToken("score");
+								else
+									data.score=-1;
+								results.Add(data);
+							}
+						}
+					}
+				}
+			}
+			catch(Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine (ex.Message);
+			}
+
+			return results;
+		}
+
+		public async Task<string> SendAndReceiveJsonRequest(string uri, string query)
 		{
 			string responseStr = null;
 			//string uri = "http://71.92.131.203/db/data/cypher/";
@@ -65,106 +157,7 @@ namespace BearBones
 					System.Diagnostics.Debug.WriteLine("Error communicating with the server: " + e.Message);
 				}
 			}
-
-			Dictionary<string,int[]> D = new Dictionary<string,int[]>();
-			var results = new ObservableCollection<InfoPageViewModel>();
-			try
-			{
-				//Dictionary<string, dynamic> values = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(responseStr);
-				neo4jData val=Newtonsoft.Json.JsonConvert.DeserializeObject<neo4jData>(responseStr);
-
-				foreach(var kvp in val.data)// process column 'a'
-				{
-					foreach(var kv in kvp)
-					{
-						foreach(var k in kv)
-						{
-
-
-							if(k.Key == "data")// these are the events
-							{
-
-
-								string values = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
-
-								string ds = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
-								JToken token = JObject.Parse(ds);
-								InfoPageViewModel data = new InfoPageViewModel();
-								data.name = (string)token.SelectToken("name");
-								data.number = (int)token.SelectToken("number");
-								results.Add(data);
-								//var v = Newtonsoft.Json.JsonConvert.DeserializeObject<InfoData>(values);
-								//Dictionary<dynamic,dynamic> p = new Dictionary<dynamic, dynamic>{ { k.Key, k.Value } };
-
-								//var pp = JObject.Parse(values);
-
-								//foreach(var i in v.dict){
-								
-									/*string c = i.Key;
-
-									switch(c){
-									case "name":
-										infoPage.name = i.Value;
-										break;
-									
-									case "number":
-										infoPage.number = i.Value;
-										break;
-									
-									default:
-										break;
-
-									}
-									*/
-
-									/*if(i.Key = "name"){
-										infoPage.name = i.Value;
-									}else if(i.Key = "number"){
-										infoPage.number = i.Value;
-									}*/
-
-								}
-								//string ds = Newtonsoft.Json.JsonConvert.SerializeObject(k);
-								//string s = ds.Substring(22);
-								//s=s.Substring(0,s.Length-1);
-								//string s = Newtonsoft.Json.JsonConvert.DSerializeObject(k);
-								//string s = Convert.ToString(k.Value);
-
-
-
-								//InfoPageViewModel e = Newtonsoft.Json.JsonConvert.DeserializeObject<InfoPageViewModel>(s);//<Dictionary<string,dynamic>>(s);
-
-
-								//for(int i=0;i<o.Count;++i)//each(var d in o)
-								//{
-
-
-
-								//string x="Event: " + e.ident + "~" + e.type + "~" + e.description;
-								//results.Add(infoPage);
-								//System.Diagnostics.Debug.WriteLine(x.ToString());
-								//}
-							}
-
-							//Neo4jEvent v=Newtonsoft.Json.JsonConvert.DeserializeObject<Neo4jEvent>(kvp);
-							//System.Diagnostics.Debug.WriteLine( k.ToString());
-						}
-					}
-				}
-
-				/*
-				RunOnUiThread (() =>
-					{
-						ListAdapter = new ArrayAdapter<string> (this, Resource.Layout.TweetItemView,results);
-					});
-				*/
-			//}
-			catch(Exception ex)
-			{
-				System.Diagnostics.Debug.WriteLine (ex.Message);
-			}
-			//.ItemsSource = results;
-			return results;
+			return responseStr;
 		}
 	}
 }

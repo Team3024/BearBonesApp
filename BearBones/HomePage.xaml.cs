@@ -61,7 +61,7 @@ namespace BearBones
 				//((ListView)sender).match.IsEnabled=false;
 				((ListView)sender).SelectedItem = null; // de-select the row
 				HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
-				InfoPage page = new InfoPage (hpvm.PageName);// sent it the hpvm object
+				InfoPage page = new InfoPage (hpvm);// sent it the hpvm object
 				Navigation.PushModalAsync (page);
 			};
 			// set the ListView data source to empty list
@@ -79,12 +79,13 @@ namespace BearBones
 					{
 						// Get existing teams from database
 						Rest rest = new Rest ();
-						Task <ObservableCollection<InfoPageViewModel>> list = rest.SendAndReceiveJsonRequest ("http://71.92.131.203/db/data/cypher/", "MATCH (a:Team) RETURN a");
+
+						Task <ObservableCollection<HomePageViewModel>> list = rest.getAllTeams ();//SendAndReceiveJsonRequest ();
 						var tList = await list;
 
-						foreach (InfoPageViewModel vm in tList) 
+						foreach (HomePageViewModel vm in tList) 
 						{
-							newFRCTeam (vm.number.ToString(),vm.name);
+							newFRCTeam (vm.teamNumber.ToString(),vm.teamName);
 						}
 						// populate the list with the results
 						//listView.ItemsSource = list.Result;
@@ -105,11 +106,13 @@ namespace BearBones
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
 
 			// make a new team object
-			HomePageViewModel m = new HomePageViewModel(typeof(NewTeamPage), Info, NewScoutReport, NewMatchReport);
+			HomePageViewModel m = new HomePageViewModel(typeof(NewTeamPage));
 
 			// set the name and team number
 			m.teamName = name;
-			m.teamNumber = number;
+			int n;
+			int.TryParse(number,out n);
+			m.teamNumber=n;
 			m.PageName = name + " : " + number;
 			m.index = models.Count + 1;
 
@@ -152,7 +155,7 @@ namespace BearBones
 		async void Info(string pageName)
 		{
 			HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
-			InfoPage page = new InfoPage (pageName);
+			InfoPage page = new InfoPage (hpvm);
 			await Navigation.PushModalAsync (page);
 		}
 
@@ -175,7 +178,9 @@ namespace BearBones
 
 			if (viewModel != null)
 			{
- 				viewModel.InfoCommand.Execute(viewModel.PageType);
+				HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
+				InfoPage page = new InfoPage (hpvm);
+				//await Navigation.PushModalAsync (page);viewModel.InfoCommand.Execute(viewModel.PageType);
 			}
 		}
 
