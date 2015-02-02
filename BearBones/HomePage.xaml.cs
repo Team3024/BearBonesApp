@@ -85,7 +85,7 @@ namespace BearBones
 
 						foreach (HomePageViewModel vm in tList) 
 						{
-							newFRCTeam (vm.teamNumber.ToString(),vm.teamName);
+							newFRCTeam (vm.teamNumber,vm.teamName);
 						}
 						// populate the list with the results
 						//listView.ItemsSource = list.Result;
@@ -123,7 +123,7 @@ namespace BearBones
 		}
 
 
-		public void newFRCTeam(string number, string name)
+		public void newFRCTeam(int number, string name)
 		{
 			// get the current data source
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
@@ -133,10 +133,8 @@ namespace BearBones
 
 			// set the name and team number
 			m.teamName = name;
-			int n;
-			int.TryParse(number,out n);
-			m.teamNumber=n;
-			m.PageName = name + " : " + number;
+			m.teamNumber=number;
+			m.PageName = name + " : " + number.ToString();
 			m.index = models.Count + 1;
 
 			// add this to our Home Page ListView

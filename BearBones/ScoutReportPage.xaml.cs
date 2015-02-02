@@ -6,12 +6,12 @@ namespace BearBones
 {	
 	public partial class ScoutReportPage : ContentPage
 	{	
-		ScoutReportViewModel model;
+		ReportViewModel model;
 
 		public ScoutReportPage (string number)
 		{
 			InitializeComponent ();
-			model = new ScoutReportViewModel (number);
+			model = new ReportViewModel (number);
 
 		}
 		void OnDoneClicked (object sender, EventArgs e)

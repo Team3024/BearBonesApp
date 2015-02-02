@@ -135,6 +135,14 @@ namespace BearBones
 			return responseStr;
 		}
 
+		public async Task<string> createNewReport(ReportViewModel vm)
+		{
+			string uri="http://71.92.131.203/db/data/cypher/";
+			string query="MERGE (a:Report { number:"+vm.teamNumber+" }) ON CREATE SET a.name=\""+vm.teamName+"\", a.scout=\""+vm.scoutName+"\" with a CREATE (t:Team{number:\""+vm.teamNumber+"\"})-[HAS_REPORT {type:\""+vm.reportType+"\"}]->(a) RETURN a";
+			string responseStr = await SendAndReceiveJsonRequest(uri,query);
+			return responseStr;
+		}
+
 		public async Task<string> SendAndReceiveJsonRequest(string uri, string query)
 		{
 			string responseStr = null;

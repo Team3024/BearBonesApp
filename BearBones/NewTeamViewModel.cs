@@ -6,7 +6,7 @@ namespace BearBones
 {
 	public class NewTeamViewModel : ViewModelBase
 	{
-		public string teamNumber { get; set; }
+		public int teamNumber { get; set; }
 		public string teamName { get; set; }
 		public string scoutName { get; set; }
 		internal string ValidationErrors { get; private set; }
@@ -17,7 +17,7 @@ namespace BearBones
 
 		public NewTeamViewModel ()
 		{
-			this.teamNumber = "";
+			this.teamNumber = -1;
 			this.teamName = "";
 			this.scoutName = "";
 		}
@@ -34,10 +34,10 @@ namespace BearBones
 		*/
 		public bool CanLogin () {
 			ValidationErrors = "";
-			if (string.IsNullOrEmpty(teamNumber))
-			{
-				ValidationErrors = "Please enter a Team Number.";
-			}
+			//if (string.IsNullOrEmpty(teamNumber))
+			//{
+			//	ValidationErrors = "Please enter a Team Number.";
+			//}
 			if (string.IsNullOrEmpty(teamName))
 			{
 				ValidationErrors += "Please enter a Team Name.";
