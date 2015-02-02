@@ -1,20 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" Title="Info" BackgroundImage="grizzly.png" BackgroundColor="Olive">-->
-<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Opacity=".5" Title="Info">
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:BearBones;assembly=BearBones" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Opacity=".5" Title="Info">
 	<ContentPage BackgroundColor="Transparent" BackgroundImage="grizzly.png">
+
 
 		<StackLayout Spacing="10">
 
 			<!--Spacer for top-->
 			<Label Text=""></Label>
+			<Label x:Name="title1" FontSize="20" FontAttributes="Bold"></Label>
 		
 			<!--First row-->
-			<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
-				<Label x:Name="field1" Text="Score: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
-				<Label x:Name="field1Entry" Text="49" TextColor="Black" FontSize="20"></Label>
+				<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
+					<Label x:Name="scoreLabel" Text="Score: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+					<Label x:Name="scoreEntry" TextColor="Black" FontSize="20"></Label>
+				</StackLayout>
+
+				<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
+					<Label x:Name="driveLabel" Text="Drive: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+					<Label x:Name="driveEntry" TextColor="Black" FontSize="20"></Label>
+				</StackLayout>
+
+				<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
+					<Label x:Name="scoutLabel" Text="Scout: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+					<Label x:Name="scoutEntry" TextColor="Black" FontSize="20"></Label>
+				</StackLayout>
+					
+
+			<!--<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
+				<Label x:Name="field2" Text="Drive: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+				<Label x:Name="field2Entry" Text="49" TextColor="Black" FontSize="20"></Label>
 			</StackLayout>
 
-			<Button
+			<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
+				<Label x:Name="field3" Text="Scout: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
+				<Label x:Name="field3Entry" Text="49" TextColor="Black" FontSize="20"></Label>
+			</StackLayout>-->
+
+			<!--<Button
 				Text="+"
 				x:Name="changeButton"
 				Clicked="ChangeValue"
@@ -29,11 +52,12 @@
 				HorizontalOptions="Center"
 				VerticalOptions="CenterAndExpand"
 				WidthRequest="50"
-			/>
-
-    		<Button Text="Done" x:Name="Test" Clicked="OnDoneClicked" />
+			/>-->
+    		
+    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" />
 
 		</StackLayout>
+
 
 	</ContentPage>
 <ContentPage>
