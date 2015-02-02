@@ -100,6 +100,29 @@ namespace BearBones
 			}
 		}
 
+		public async void PostTeam(int number, string name,string scout)
+		{
+			if (CrossConnectivity.Current.IsConnected)
+			{
+				foreach (ConnectionType ct in CrossConnectivity.Current.ConnectionTypes)
+				{// CrossConnectivity.Current.IsRemoteReachable ("71.92.131.203", 80, 5000).Result==true)
+					if (ct == ConnectionType.WiFi || ct==ConnectionType.Cellular || ct==ConnectionType.Desktop)
+					{
+						// Get existing teams from database
+						Rest rest = new Rest ();
+						var str = await rest.createNewTeam (number,name,scout);
+						break;
+					} else
+					{
+						// write it out for later processing
+						//models = models;
+					}
+
+				}
+			}
+		}
+
+
 		public void newFRCTeam(string number, string name)
 		{
 			// get the current data source
@@ -120,7 +143,6 @@ namespace BearBones
 			home.Add (m);
 			// reset the data source--this will trigger an update
 			listView.ItemsSource = models;
-
 		}
 
 		async public void OnClick(object sender, EventArgs e)
@@ -131,6 +153,7 @@ namespace BearBones
 
 			NewTeamPage page = new NewTeamPage (this);
 			await Navigation.PushModalAsync (page);
+
 		}
 
 		async void NavigateTo(Type pageType)

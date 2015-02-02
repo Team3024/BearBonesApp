@@ -44,7 +44,9 @@ namespace BearBones
 
 			// callback to main thread to add a team and update UI
 			parent.newFRCTeam (teamNumber, teamName);
-
+			int n;
+			int.TryParse(teamNumber,out n);
+			parent.PostTeam(n, teamName,viewModel.scoutName);
 			// leave this page
 			Navigation.PopModalAsync ();
 		}

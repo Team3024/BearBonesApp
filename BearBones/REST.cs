@@ -127,6 +127,14 @@ namespace BearBones
 			return results;
 		}
 
+		public async Task<string> createNewTeam(int teamNum,string teamName,string scout)
+		{
+			string uri="http://71.92.131.203/db/data/cypher/";
+			string query="MERGE (a:Team { number:"+teamNum.ToString()+" }) ON CREATE SET a.name=\""+teamName+"\" , a.scout=\""+scout+"\" RETURN a";
+			string responseStr = await SendAndReceiveJsonRequest(uri,query);
+			return responseStr;
+		}
+
 		public async Task<string> SendAndReceiveJsonRequest(string uri, string query)
 		{
 			string responseStr = null;
