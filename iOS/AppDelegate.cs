@@ -26,6 +26,8 @@ namespace BearBones.iOS
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			window.MakeKeyAndVisible ();			
 			window.RootViewController = App.GetMainPage ().CreateViewController ();
+			HomePage.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
+			HomePage.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
 			return true;
 		}
 	}

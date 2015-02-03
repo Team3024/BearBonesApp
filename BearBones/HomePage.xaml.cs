@@ -16,6 +16,8 @@ namespace BearBones
 		bool bConnected=false;	//
 		public List<NewTeamPage> teams = new List<NewTeamPage> (); 
 		ObservableCollection<HomePageViewModel> models;//= new ObservableCollection<HomePageViewModel>();
+		public static int ScreenWidth;
+		public static int ScreenHeight;
 
 		public HomePage()
 		{

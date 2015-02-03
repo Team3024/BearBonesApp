@@ -6,6 +6,7 @@ namespace BearBones
 {
 	public class HomePageViewModel
 	{
+
 		public HomePageViewModel(Type pageType)
 		{
 			this.PageType = pageType;
