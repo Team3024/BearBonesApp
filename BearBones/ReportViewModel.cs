@@ -25,6 +25,10 @@ namespace BearBones
 		internal string scoutName {  set; get; }
 
 		internal int matchNumber {  set; get; }
+
+		internal string driveType {  set; get; }
+
+		internal int score {  set; get; }
 	}
 }
 
