@@ -6,29 +6,31 @@ namespace BearBones
 {
 	public class ReportViewModel
 	{
-		public ReportViewModel(string tNumber)
+		public ReportViewModel()
 		{
+			/*
 			if (tNumber != null)
 			{
 				int n;
 				int.TryParse(tNumber,out n);
 				this.teamNumber = n;
 			}
+			*/
 		}
 
-		internal string reportType {  set; get; }
+		public string reportType {  set; get; }
 
-		internal string teamName { set; get; }
+		public string teamName { set; get; }
 
-		internal int teamNumber {  set; get; }
+		public int teamNumber {  set; get; }
 
-		internal string scoutName {  set; get; }
+		public string scoutName {  set; get; }
 
-		internal int matchNumber {  set; get; }
+		public int matchNumber {  set; get; }
 
-		internal string driveType {  set; get; }
+		public string driveType {  set; get; }
 
-		internal int score {  set; get; }
+		public int score {  set; get; }
 	}
 }
 

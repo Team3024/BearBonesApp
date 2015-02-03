@@ -139,7 +139,7 @@ namespace BearBones
 		public async Task<string> createNewReport(ReportViewModel vm)
 		{
 			string uri="http://71.92.131.203/db/data/cypher/";
-			string query="CREATE (x:Report {type:\"" + vm.reportType + "\", scout:\"" + vm.scoutName + "\",driveType:\"" + vm.driveType + "\" ,score:\"" + vm.score + "\"}) WITH x MATCH (a:Team) WHERE a.number = \"" + vm.teamNumber + "\" WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)";
+			string query="CREATE (x:Report {type:\"" + vm.reportType + "\",matchNumber:"+vm.matchNumber+" ,scout:\"" + vm.scoutName + "\",driveType:\"" + vm.driveType + "\" ,score:" + vm.score + "}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber + " WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 			return responseStr;
 		}
