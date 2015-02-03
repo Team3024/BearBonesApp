@@ -135,6 +135,7 @@ namespace BearBones
 			return responseStr;
 		}
 
+
 		public async Task<string> createNewReport(ReportViewModel vm)
 		{
 			string uri="http://71.92.131.203/db/data/cypher/";
@@ -142,6 +143,7 @@ namespace BearBones
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 			return responseStr;
 		}
+
 
 		public async Task<string> SendAndReceiveJsonRequest(string uri, string query)
 		{
