@@ -6,12 +6,13 @@ using System.Collections.ObjectModel;
 
 namespace BearBones
 {	
+
+
+
 	public partial class InfoPage : CarouselPage
 	{	
-	
-		string[] scores;
-		string[] drives;
-		string[] scouts;
+
+		public int teamNumber;
 
 		public InfoPage (HomePageViewModel hpvm)
 		{
@@ -19,7 +20,10 @@ namespace BearBones
 			InitializeComponent ();
 			getReports(hpvm.teamNumber);
 
-			title1.Text = hpvm.teamName + " " + hpvm.teamNumber + ": Rprt 1";
+			teamNumber = hpvm.teamNumber;
+
+			//title1.Text = hpvm.teamName + " " + hpvm.teamNumber + ": Rprt 1";
+
 
 
 		}
@@ -28,7 +32,7 @@ namespace BearBones
 		{
 			// leave this page
 			Navigation.PopModalAsync ();
-		
+
 		}
 
 		//test for replacing value of Label
@@ -54,29 +58,50 @@ namespace BearBones
 			Rest rest = new Rest ();
 			Task <ObservableCollection<InfoPageViewModel>> list =  rest.getReports (tNum);//SendAndReceiveJsonRequest ();
 			var reports = await list;
-			var count = 0;
+			//var count = 0;
+			List<string> scores = new List<string> ();
+			List<string> drives = new List<string> ();
+			List<string> scouts = new List<string> ();
 			foreach (InfoPageViewModel ip in reports) 
 			{
 				var p=ip;
-				scoreEntry.Text = Convert.ToString (ip.score);
-				driveEntry.Text = Convert.ToString (ip.drive);
-				scoutEntry.Text = Convert.ToString (ip.scout);
+				//scoreEntry.Text = Convert.ToString (ip.score);
+				//driveEntry.Text = Convert.ToString (ip.drive);
+				//scoutEntry.Text = Convert.ToString (ip.scout);
+
+				scores.Add (Convert.ToString (ip.score));
+				drives.Add (Convert.ToString (ip.drive));
+				scouts.Add (Convert.ToString (ip.scout));
+
+				InfoCell report = new InfoCell ();
+
+				this.Children.Add (report.CreatePage(ip.score, ip.drive, ip.scout));
+
+
 
 				//scores [count] = Convert.ToString (ip.score);
 				//drives [count] = Convert.ToString (ip.drive);
 				//scouts [count] = Convert.ToString (ip.scout);
+				//scores.Add (Convert.ToString(ip.score));
 
-				//NEED TO FIGURE THIS OUT
-			
 				//count++;
 
 			}
 
-	
+
 		}
 
+		async void NewMatchReport(object sender, EventArgs e)
+		{
+			MatchReportPage page = new MatchReportPage (teamNumber.ToString());
+			await Navigation.PushModalAsync (page);
+		}
 
-
+		async void NewScoutReport(object sender, EventArgs e)
+		{
+			ScoutReportPage page = new ScoutReportPage (teamNumber.ToString());
+			await Navigation.PushModalAsync (page);
+		}
 
 	}
 }

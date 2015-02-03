@@ -1,16 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" Title="Info" BackgroundImage="grizzly.png" BackgroundColor="Olive">-->
-<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:BearBones;assembly=BearBones" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Opacity=".5" Title="Info">
-	<ContentPage BackgroundColor="Transparent" BackgroundImage="grizzly.png">
+<CarouselPage x:Name="infoPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:BearBones;assembly=BearBones" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Opacity=".5" Title="Info">
+
+<ContentPage BackgroundColor="Transparent" BackgroundImage="grizzly.png">
+	<StackLayout>
+    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" />
+    		<Button Text="New Match Report" Clicked="NewMatchReport" />
+    		<Button Text="New Scout Report" Clicked="NewScoutReport" />
+
+	</StackLayout>
+</ContentPage>
 
 
-		<StackLayout Spacing="10">
+<!--		<StackLayout Spacing="10">
 
-			<!--Spacer for top-->
+			
 			<Label Text=""></Label>
 			<Label x:Name="title1" FontSize="20" FontAttributes="Bold"></Label>
 		
-			<!--First row-->
+			
 				<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
 					<Label x:Name="scoreLabel" Text="Score: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
 					<Label x:Name="scoreEntry" TextColor="Black" FontSize="20"></Label>
@@ -25,19 +33,8 @@
 					<Label x:Name="scoutLabel" Text="Scout: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
 					<Label x:Name="scoutEntry" TextColor="Black" FontSize="20"></Label>
 				</StackLayout>
-					
 
-			<!--<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
-				<Label x:Name="field2" Text="Drive: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
-				<Label x:Name="field2Entry" Text="49" TextColor="Black" FontSize="20"></Label>
-			</StackLayout>
-
-			<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="#faf7ff" Padding="5">
-				<Label x:Name="field3" Text="Scout: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
-				<Label x:Name="field3Entry" Text="49" TextColor="Black" FontSize="20"></Label>
-			</StackLayout>-->
-
-			<!--<Button
+			<Button
 				Text="+"
 				x:Name="changeButton"
 				Clicked="ChangeValue"
@@ -52,7 +49,7 @@
 				HorizontalOptions="Center"
 				VerticalOptions="CenterAndExpand"
 				WidthRequest="50"
-			/>-->
+			/>
     		
     		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" />
 
@@ -60,30 +57,11 @@
 
 
 	</ContentPage>
-<ContentPage>
-		<StackLayout Spacing="10">
-			<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="White" Padding="5" >
-				<Label x:Name="field2" Text="Score: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
-				<Label x:Name="field2Entry" Text="a million points" TextColor="Black" FontSize="20"></Label>
-			</StackLayout>
-			<Button Text="entry 1" x:Name="changeButton2" Clicked="ChangeValue" HorizontalOptions="Center" />
-
-
-    		<Button Text="Done" x:Name="Test2" Clicked="OnDoneClicked" HorizontalOptions="Center" />
-		</StackLayout>
-
+		
+	<ContentPage>
 	</ContentPage>
-<ContentPage>
-		<StackLayout Spacing="10">
-			<StackLayout VerticalOptions="End" HorizontalOptions="Start" Orientation="Horizontal" Spacing="0" BackgroundColor="White" Padding="5" >
-				<Label x:Name="field3" Text="Score: " TextColor="Red" FontAttributes="Bold" FontSize="20" HorizontalOptions="CenterAndExpand"></Label>
-				<Label x:Name="field3Entry" Text="a million points" TextColor="Black" FontSize="20"></Label>
-			</StackLayout>
-			<Button Text="entry 1" x:Name="changeButton3" Clicked="ChangeValue" HorizontalOptions="Center" />
 
+	<ContentPage>
+	</ContentPage>-->
 
-    		<Button Text="Done" x:Name="Test3" Clicked="OnDoneClicked" HorizontalOptions="Center" />
-		</StackLayout>
-	</ContentPage>
 </CarouselPage>
-<!--</ContentPage>-->
