@@ -84,6 +84,8 @@ namespace BearBones
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
+
+
 			title.SetBinding (Label.TextProperty, new Binding("PageName"));
 			/*
 

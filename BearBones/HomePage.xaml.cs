@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Diagnostics;
 using Xamarin.Forms;
@@ -89,8 +90,24 @@ namespace BearBones
 						{
 							newFRCTeam (vm.teamNumber,vm.teamName);
 						}
-						// populate the list with the results
-						//listView.ItemsSource = list.Result;
+						/*
+						var sortedOC = from item in models
+							orderby item.teamName ascending
+							select item;
+*/
+						models.Clear ();
+
+						ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
+
+						foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.teamNumber))
+						{
+							item.PageName=item.teamNumber+"--"+item.teamName;
+							home.Add (item);
+						}
+						listView.ItemsSource = models;
+						//foreach (var t in sortedOC.ase)
+						//	models.Add (t);
+
 						break;
 					} else
 					{
@@ -141,7 +158,7 @@ namespace BearBones
 
 			// add this to our Home Page ListView
 			home.Add (m);
-			// reset the data source--this will trigger an update
+
 			listView.ItemsSource = models;
 		}
 
@@ -156,6 +173,104 @@ namespace BearBones
 
 		}
 
+		async public void Refresh(object sender, EventArgs e)
+		{
+			models.Clear ();
+			//ToolbarItem tbi = (ToolbarItem) sender;
+			//this.DisplayAlert("Selected!", tbi.Name,"OK");
+			// get initial online status
+			if (CrossConnectivity.Current.IsConnected)
+			{
+				bConnected = true;
+				GetTeams ();
+			}
+			// reset the data source--this will trigger an update
+
+			listView.ItemsSource = models;
+
+		}
+
+		async public void SortByName(object sender, EventArgs e)
+		{
+
+			//ToolbarItem tbi = (ToolbarItem) sender;
+			//this.DisplayAlert("Selected!", tbi.Name,"OK");
+
+
+			ObservableCollection<HomePageViewModel> tList = new ObservableCollection<HomePageViewModel> ();
+			foreach (HomePageViewModel vm in models)
+				tList.Add (vm);
+
+			models.Clear ();
+
+			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
+
+			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.teamName))
+			{
+				item.PageName=item.teamName+"--"+item.teamNumber;
+				home.Add (item);
+			}
+
+			listView.ItemsSource = models;
+
+		}
+
+		async public void SortByNum(object sender, EventArgs e)
+		{
+
+			//ToolbarItem tbi = (ToolbarItem) sender;
+			//this.DisplayAlert("Selected!", tbi.Name,"OK");
+
+
+			ObservableCollection<HomePageViewModel> tList = new ObservableCollection<HomePageViewModel> ();
+			foreach (HomePageViewModel vm in models)
+				tList.Add (vm);
+
+			models.Clear ();
+
+			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
+
+			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.teamNumber))
+			{
+				item.PageName=item.teamNumber+"--"+item.teamName;
+				home.Add (item);
+			}
+			listView.ItemsSource = models;
+
+		}
+
+		/*
+		public void FilterTeams(string text)
+		{
+			model.Clear();
+			var sorted = from team in model
+				orderby group monkey 
+					by monkey.NameSort into monkeyGroup
+						select new Grouping<string, Monkey>(monkeyGroup.Key, monkeyGroup);
+		}
+
+		public string NameSort
+		{
+			get
+			{ 
+				if (string.IsNullOrWhiteSpace(Name) || Name.Length == 0)
+					return "?";
+
+				return Name[0].ToString().ToUpper();
+			}
+		}
+
+		public int NumSort
+		{
+			get
+			{ 
+				if (SortByNum )
+					return -1;
+
+				return Name[0].ToString().ToUpper();
+			}
+		}
+*/
 		async void NavigateTo(Type pageType)
 		{
 			// Get all the constructors of the page type.
