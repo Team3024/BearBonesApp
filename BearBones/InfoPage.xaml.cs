@@ -56,26 +56,26 @@ namespace BearBones
 		async void getReports(int tNum)
 		{
 			Rest rest = new Rest ();
-			Task <ObservableCollection<InfoPageViewModel>> list =  rest.getReports (tNum);//SendAndReceiveJsonRequest ();
+			Task <ObservableCollection<ReportViewModel>> list =  rest.getReports (tNum);//SendAndReceiveJsonRequest ();
 			var reports = await list;
 			//var count = 0;
 			List<string> scores = new List<string> ();
 			List<string> drives = new List<string> ();
 			List<string> scouts = new List<string> ();
-			foreach (InfoPageViewModel ip in reports) 
+			foreach (ReportViewModel ip in reports) 
 			{
 				var p=ip;
 				//scoreEntry.Text = Convert.ToString (ip.score);
 				//driveEntry.Text = Convert.ToString (ip.drive);
 				//scoutEntry.Text = Convert.ToString (ip.scout);
 
-				scores.Add (Convert.ToString (ip.score));
-				drives.Add (Convert.ToString (ip.drive));
-				scouts.Add (Convert.ToString (ip.scout));
+				scores.Add (ip.pointsScored);
+				drives.Add (ip.driveType);
+				scouts.Add (ip.scoutName);
 
 				InfoCell report = new InfoCell ();
 
-				this.Children.Add (report.CreatePage(ip.score, ip.drive, ip.scout));
+				this.Children.Add (report.CreatePage(ip.pointsScored, ip.driveType, ip.scoutName));
 
 
 

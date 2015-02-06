@@ -83,13 +83,13 @@ namespace BearBones
 			return results;
 		}
 
-		public async Task<ObservableCollection<InfoPageViewModel>>getReports(int teamNum)
+		public async Task<ObservableCollection<ReportViewModel>>getReports(int teamNum)
 		{
 			string uri="http://71.92.131.203/db/data/cypher/";
 			string query="MATCH (a:Team)-[HAS_REPORT]->(b:Report) where a.number="+teamNum.ToString()+" RETURN b";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 		
-			var results = new ObservableCollection<InfoPageViewModel>();
+			var results = new ObservableCollection<ReportViewModel>();
 
 			try
 			{
@@ -106,13 +106,32 @@ namespace BearBones
 								string values = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
 								string ds = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
 								JToken token = JObject.Parse(ds);
-								InfoPageViewModel data = new InfoPageViewModel();
-								data.scout = (string)token.SelectToken("scout");
-								data.drive = (string)token.SelectToken("drive");
+								ReportViewModel data = new ReportViewModel();
+								data.reportType = (string)token.SelectToken("type");
+								data.scoutName = (string)token.SelectToken("scout");
+								data.pointsScored = (string)token.SelectToken("score");
+								data.driveType = (string)token.SelectToken("driveType");
+								data.matchNumber = (string)token.SelectToken("matchNumber");
+								data.grabsContainer = (bool)token.SelectToken("grabsContainer");
+
+								data.maxStack = (string)token.SelectToken("maxStack");
+								data.grabsTote = (bool)token.SelectToken("grabsTote");
+								data.lastYearFinish = (string)token.SelectToken("lastYearFinish");
+								data.grabsToteOffStep = (bool)token.SelectToken("grabsToteOffStep");
+								data.noodleBonus = (bool)token.SelectToken("noodleBonus");
+								data.notes = (string)token.SelectToken("notes");
+
+								data.noodleCleanup = (bool)token.SelectToken("noodleCleanup");
+								data.brokeDown = (bool)token.SelectToken("brokeDown");
+								data.grabsContainerOffStep = (bool)token.SelectToken("grabsContainerOffStep");
+								data.noodleInContainer = (bool)token.SelectToken("noodleInContainer");
+								data.teamQuality = (string)token.SelectToken("teamQuality");
+								/*
 								if (token.SelectToken("score")!=null)
 									data.score =(int)token.SelectToken("score");
 								else
 									data.score=-1;
+									*/
 								results.Add(data);
 							}
 						}

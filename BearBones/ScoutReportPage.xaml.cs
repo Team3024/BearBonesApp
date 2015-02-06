@@ -55,7 +55,7 @@ namespace BearBones
 				model.teamNumber = 0;
 			Random rand = new Random ();
 			model.pointsScored = rand.Next().ToString();
-			model.matchNumber = rand.Next();
+			model.matchNumber = rand.Next().ToString();
 			model.reportType = "scout";
 			model.scoutName = "JOHNNY FIVE";
 

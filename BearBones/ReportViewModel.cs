@@ -26,7 +26,7 @@ namespace BearBones
 
 		public string scoutName {  set; get; }
 
-		public int matchNumber {  set; get; }
+		public string matchNumber {  set; get; }
 
 		public string driveType {  set; get; }		//swerve,mecanum,tank,other
 		public string buildQuality {  set; get; }	//junk,low,ok,high,superb
