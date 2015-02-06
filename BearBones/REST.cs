@@ -139,7 +139,15 @@ namespace BearBones
 		public async Task<string> createNewReport(ReportViewModel vm)
 		{
 			string uri="http://71.92.131.203/db/data/cypher/";
-			string query="CREATE (x:Report {type:\"" + vm.reportType + "\",matchNumber:"+vm.matchNumber+" ,scout:\"" + vm.scoutName + "\",driveType:\"" + vm.driveType + "\" ,score:" + vm.pointsScored + "}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber + " WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)";
+			string query="CREATE (x:Report {type:\"" + vm.reportType + "\",matchNumber:\""+vm.matchNumber+"\""+
+				" ,scout:\"" + vm.scoutName + "\",driveType:\"" + vm.driveType + "\" ,score:\"" + vm.pointsScored + "\""+
+				" ,maxStack:\"" + vm.maxStack + "\",grabsContainer:" + vm.grabsContainer + " ,grabsTote:" + vm.grabsTote +
+				" ,grabsContainerOffStep:" + vm.grabsContainerOffStep + ",grabsToteOffStep:" + vm.grabsToteOffStep +
+				" ,brokeDown:" + vm.brokeDown + " ,lastYearFinish:\"" + vm.lastYearFinish+"\""+
+				" ,noodleBonus:" + vm.noodleBonus + " ,noodleCleanup:" + vm.noodleCleanup +" ,noodleInContainer:" + vm.noodleInContainer +
+				" ,notes:\"" + vm.notes +"\" ,teamQuality:\"" + vm.teamQuality +"\""+
+				"}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber +
+				" WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 			return responseStr;
 		}

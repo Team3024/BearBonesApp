@@ -4,7 +4,7 @@
 		<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
 			<Button Text="Done" Clicked="OnDoneClicked" />
 			<StackLayout Orientation="Horizontal" HeightRequest="60">
-				<Picker x:Name="DriveType" Title="DriveType"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="driveType" Title="DriveType"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Mecanum</x:String> 
 			            <x:String>Tank</x:String>
@@ -12,7 +12,7 @@
 			            <x:String>Other</x:String>
 			        </Picker.Items>
 			    </Picker>
-				<Picker x:Name="BuildQuality" Title="Build Quality"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="buildQuality" Title="Build Quality"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Superb</x:String> 
 			            <x:String>High</x:String>
@@ -21,7 +21,7 @@
 			            <x:String>Junk</x:String>
 			        </Picker.Items>
 			    </Picker>
-				<Picker x:Name="LastYear"  Title="LastYear"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="autoCapability"  Title="Auto"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Never Moved</x:String> 
 			            <x:String>In Zone</x:String>
@@ -31,7 +31,7 @@
 			            <x:String>1 Container</x:String>  
 			        </Picker.Items>
 			    </Picker>
-				<Picker x:Name="Auto" Title="Auto"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="lastYear" Title="Last Year"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>World</x:String> 
 			            <x:String>Regional</x:String>
@@ -40,29 +40,41 @@
 			    </Picker>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="60">
-				<Picker x:Name="Score" Title="Points Scored"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="pointsScored" Title="Points Scored"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
-			            <x:String>No Points</x:String> 
-			            <x:String>5 Points</x:String>
-			            <x:String>10 Points</x:String>
-			            <x:String>20 Points</x:String>
-			            <x:String>30 Points</x:String>
-			          	<x:String>40 Points</x:String>
-			            <x:String>50 Points</x:String>
-			            <x:String>51-100 Points</x:String>
-			            <x:String>101-150 Points</x:String>
-			            <x:String>151-200 Points</x:String>
-			            <x:String>Over 200 Points</x:String>
+			            <x:String>0</x:String> 
+			            <x:String>5</x:String>
+			            <x:String>10</x:String>
+			            <x:String>20</x:String>
+			            <x:String>30</x:String>
+			          	<x:String>40</x:String>
+			            <x:String>50</x:String>
+			            <x:String>60</x:String> 
+			            <x:String>70</x:String>
+			            <x:String>80</x:String>
+			            <x:String>90</x:String>
+			            <x:String>100</x:String>
 			        </Picker.Items>
 			    </Picker>
 				<Picker x:Name="maxStack" Title="Tallest Stack"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
-			            <x:String>1 Totes</x:String> 
-			            <x:String>2 Totes</x:String>
-			            <x:String>3 Totes</x:String>
-			          	<x:String>4 Totes</x:String> 
-			            <x:String>5 Totes</x:String>
-			            <x:String>6 Totes</x:String>  
+			            <x:String>1</x:String> 
+			            <x:String>2</x:String>
+			            <x:String>3</x:String>
+			          	<x:String>4</x:String> 
+			            <x:String>5</x:String>
+			            <x:String>6</x:String>  
+			        </Picker.Items>
+			    </Picker>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HeightRequest="60">
+				<Picker x:Name="teamQuality" Title="Team Quality"  HorizontalOptions="FillAndExpand">
+			        <Picker.Items>
+			            <x:String>Superb</x:String> 
+			            <x:String>High</x:String>
+			            <x:String>OK</x:String> 
+			            <x:String>Low</x:String>
+			            <x:String>Poor</x:String>
 			        </Picker.Items>
 			    </Picker>
 			</StackLayout>
@@ -83,12 +95,13 @@
 				<Label Text="Rebuilds Stack"></Label>
 				<Label Text="Yellow Coop Stack"></Label>
 			</StackLayout>
-			<StackLayout Orientation="Horizontal" 	HeightRequest="60">
-				<Switch x:Name="brokeDown" 			WidthRequest="100"></Switch>
-				<Switch x:Name="rebuildsStack" 		WidthRequest="100"></Switch>
-				<Switch x:Name="yellowCoopStack" 	WidthRequest="100"></Switch>
-			</StackLayout>
 
+			<StackLayout Orientation="Horizontal" 	HeightRequest="60">
+				<Switch x:Name="brokeDown"			WidthRequest="100"></Switch>
+				<Switch x:Name="rebuildsStack"		WidthRequest="100"></Switch>
+				<Switch x:Name="yellowCoopStack"	WidthRequest="100"></Switch>
+			</StackLayout>
+				
 			<StackLayout Orientation="Horizontal" HeightRequest="60">
 				<Label Text="Container On Stack"></Label>
 				<Label Text="Grabs Containers"></Label>
@@ -96,9 +109,21 @@
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" 	HeightRequest="60">
 				<Switch x:Name="containerOnStack" 	WidthRequest="100"></Switch>
-				<Switch x:Name="grabsTotes" 		WidthRequest="100"></Switch>
-				<Switch x:Name="grabsTotesOffStep" 	WidthRequest="100"></Switch>
+				<Switch x:Name="grabsContainer" 		WidthRequest="100"></Switch>
+				<Switch x:Name="grabsContainerOffStep" 	WidthRequest="100"></Switch>
 			</StackLayout>
+
+			<StackLayout Orientation="Horizontal" HeightRequest="60">
+				<Label Text="Stacks Totes"></Label>
+				<Label Text="Grabs Totes"></Label>
+				<Label Text="Grabs Totes Off Step"></Label>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" 	HeightRequest="60">
+				<Switch x:Name="grabsTote" 	WidthRequest="100"></Switch>
+				<Switch x:Name="grabsToteOffStep" 	WidthRequest="100"></Switch>
+				<Switch x:Name="stacksTotes" 		WidthRequest="100"></Switch>
+			</StackLayout>
+			<Entry>x:Name="notes" Keyboard="Text" Placeholder="notes:"</Entry>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

@@ -54,17 +54,47 @@ namespace BearBones
 			else
 				model.teamNumber = 0;
 			Random rand = new Random ();
-			model.pointsScored = rand.Next();
-			model.driveType = "mecanum";
+			model.pointsScored = rand.Next().ToString();
 			model.matchNumber = rand.Next();
 			model.reportType = "scout";
-			model.scoutName = "Yoda";
+			model.scoutName = "JOHNNY FIVE";
 
-			Rest rest = new Rest ();
-			rest.createNewReport (model);
+
 		}
+
+		private void harvestUIControls()
+		{
+			model.driveType = driveType.Title;
+			model.pointsScored = pointsScored.Title;
+			model.buildQuality = buildQuality.Title;
+			model.autoCapability = autoCapability.Title;
+			model.maxStack = maxStack.Title;
+			model.teamQuality = teamQuality.Title;
+
+			model.noodleInContainer = noodleInContainer.IsToggled;
+			model.noodleCleanup = noodleCleanup.IsToggled;
+			model.noodleBonus = noodleBonus.IsToggled;
+
+			model.brokeDown = brokeDown.IsToggled;
+			model.rebuildsStack = rebuildsStack.IsToggled;
+			model.yellowCoopStack = yellowCoopStack.IsToggled;
+
+			model.setsContainerOnStack = containerOnStack.IsToggled;
+			model.grabsContainer = grabsContainer.IsToggled;
+			model.grabsContainerOffStep = grabsContainerOffStep.IsToggled;
+
+			model.stacksTotes = stacksTotes.IsToggled;
+			model.grabsTote = grabsTote.IsToggled;
+			model.grabsToteOffStep = grabsToteOffStep.IsToggled;
+			model.notes = "Yippeeee!";
+
+		}
+
 		void OnDoneClicked (object sender, EventArgs e)
 		{
+			harvestUIControls();
+			Rest rest = new Rest ();
+			rest.createNewReport (model);
 			// leave this page
 			Navigation.PopModalAsync ();
 		}
