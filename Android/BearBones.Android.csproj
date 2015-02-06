@@ -64,6 +64,9 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.1.3.2.6316\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="XLabs.Forms.Charting.Droid">
+      <HintPath>..\..\Mooderater\packages\XLabs.Forms.Charting.2.0.0\lib\MonoAndroid\XLabs.Forms.Charting.Droid.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BearBones\BearBones.csproj">

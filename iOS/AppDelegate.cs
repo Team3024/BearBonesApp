@@ -6,6 +6,8 @@ using Foundation;
 using UIKit;
 
 using Xamarin.Forms;
+using XLabs.Forms.Charting;
+using XLabs.Forms.Charting.Controls;
 
 namespace BearBones.iOS
 {
@@ -28,6 +30,7 @@ namespace BearBones.iOS
 			window.RootViewController = App.GetMainPage ().CreateViewController ();
 			HomePage.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
 			HomePage.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+			new ChartRenderer();
 			return true;
 		}
 	}
