@@ -3,7 +3,8 @@
 	<ContentPage.Content>
 		<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
 			<Button Text="Done" Clicked="OnDoneClicked" />
-			<StackLayout Orientation="Horizontal" HeightRequest="60">
+			<Entry>x:Name="notes" Keyboard="Text" Placeholder="notes:"</Entry>
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Picker x:Name="driveType" Title="DriveType"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Mecanum</x:String> 
@@ -31,15 +32,8 @@
 			            <x:String>1 Container</x:String>  
 			        </Picker.Items>
 			    </Picker>
-				<Picker x:Name="lastYear" Title="Last Year"  HorizontalOptions="FillAndExpand">
-			        <Picker.Items>
-			            <x:String>World</x:String> 
-			            <x:String>Regional</x:String>
-			            <x:String>Prelim</x:String> 
-			        </Picker.Items>
-			    </Picker>
 			</StackLayout>
-			<StackLayout Orientation="Horizontal" HeightRequest="60">
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Picker x:Name="pointsScored" Title="Points Scored"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>0</x:String> 
@@ -67,7 +61,7 @@
 			        </Picker.Items>
 			    </Picker>
 			</StackLayout>
-			<StackLayout Orientation="Horizontal" HeightRequest="60">
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Picker x:Name="teamQuality" Title="Team Quality"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Superb</x:String> 
@@ -77,53 +71,60 @@
 			            <x:String>Poor</x:String>
 			        </Picker.Items>
 			    </Picker>
+				<Picker x:Name="lastYear" Title="Last Year"  HorizontalOptions="FillAndExpand">
+			        <Picker.Items>
+			            <x:String>World</x:String> 
+			            <x:String>Regional</x:String>
+			            <x:String>Prelim</x:String> 
+			        </Picker.Items>
+			    </Picker>
 			</StackLayout>
 
-			<StackLayout Orientation="Horizontal" HeightRequest="60">
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Label Text="NoodleInContainer"></Label>
 				<Label Text="NoodleCleanup"></Label>
 				<Label Text="NoodleBonus"></Label>
 			</StackLayout>
-			<StackLayout Orientation="Horizontal"	HeightRequest="60">
+			<StackLayout Orientation="Horizontal"	HeightRequest="40">
 				<Switch x:Name="noodleInContainer" 	WidthRequest="100"></Switch>
 				<Switch x:Name="noodleCleanup" 		WidthRequest="100"></Switch>
 				<Switch x:Name="noodleBonus" 		WidthRequest="100"></Switch>
 			</StackLayout>
 
-			<StackLayout Orientation="Horizontal" HeightRequest="60">
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Label Text="Broke Down"></Label>
 				<Label Text="Rebuilds Stack"></Label>
 				<Label Text="Yellow Coop Stack"></Label>
 			</StackLayout>
 
-			<StackLayout Orientation="Horizontal" 	HeightRequest="60">
+			<StackLayout Orientation="Horizontal" 	HeightRequest="40">
 				<Switch x:Name="brokeDown"			WidthRequest="100"></Switch>
 				<Switch x:Name="rebuildsStack"		WidthRequest="100"></Switch>
 				<Switch x:Name="yellowCoopStack"	WidthRequest="100"></Switch>
 			</StackLayout>
 				
-			<StackLayout Orientation="Horizontal" HeightRequest="60">
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Label Text="Container On Stack"></Label>
 				<Label Text="Grabs Containers"></Label>
 				<Label Text="Grabs Container Off Step"></Label>
 			</StackLayout>
-			<StackLayout Orientation="Horizontal" 	HeightRequest="60">
+			<StackLayout Orientation="Horizontal" 	HeightRequest="40">
 				<Switch x:Name="containerOnStack" 	WidthRequest="100"></Switch>
 				<Switch x:Name="grabsContainer" 		WidthRequest="100"></Switch>
 				<Switch x:Name="grabsContainerOffStep" 	WidthRequest="100"></Switch>
 			</StackLayout>
 
-			<StackLayout Orientation="Horizontal" HeightRequest="60">
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Label Text="Stacks Totes"></Label>
 				<Label Text="Grabs Totes"></Label>
 				<Label Text="Grabs Totes Off Step"></Label>
 			</StackLayout>
-			<StackLayout Orientation="Horizontal" 	HeightRequest="60">
+			<StackLayout Orientation="Horizontal" 	HeightRequest="40">
 				<Switch x:Name="grabsTote" 	WidthRequest="100"></Switch>
 				<Switch x:Name="grabsToteOffStep" 	WidthRequest="100"></Switch>
 				<Switch x:Name="stacksTotes" 		WidthRequest="100"></Switch>
 			</StackLayout>
-			<Entry>x:Name="notes" Keyboard="Text" Placeholder="notes:"</Entry>
+
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
