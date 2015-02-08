@@ -79,52 +79,52 @@
 			        </Picker.Items>
 			    </Picker>
 			</StackLayout>
+			  <Grid>
+			    <Grid.RowDefinitions>
+			      <RowDefinition Height="Auto" />
+			      <RowDefinition Height="*" />
+			       <RowDefinition Height="50" />
+			    </Grid.RowDefinitions>
 
-			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Label Text="NoodleInContainer"></Label>
-				<Label Text="NoodleCleanup"></Label>
-				<Label Text="NoodleBonus"></Label>
-			</StackLayout>
-			<StackLayout Orientation="Horizontal"	HeightRequest="40">
-				<Switch x:Name="noodleInContainer" 	WidthRequest="100"></Switch>
-				<Switch x:Name="noodleCleanup" 		WidthRequest="100"></Switch>
-				<Switch x:Name="noodleBonus" 		WidthRequest="100"></Switch>
-			</StackLayout>
-
-			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Label Text="Broke Down"></Label>
-				<Label Text="Rebuilds Stack"></Label>
-				<Label Text="Yellow Coop Stack"></Label>
-			</StackLayout>
-
-			<StackLayout Orientation="Horizontal" 	HeightRequest="40">
-				<Switch x:Name="brokeDown"			WidthRequest="100"></Switch>
-				<Switch x:Name="rebuildsStack"		WidthRequest="100"></Switch>
-				<Switch x:Name="yellowCoopStack"	WidthRequest="100"></Switch>
-			</StackLayout>
+			    <Grid.ColumnDefinitions>
+			      <ColumnDefinition Width="Auto" />
+			      <ColumnDefinition Width="*" />
+			      <ColumnDefinition Width="100" />
+			    </Grid.ColumnDefinitions>
 				
-			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Label Text="Container On Stack"></Label>
-				<Label Text="Grabs Containers"></Label>
-				<Label Text="Grabs Container Off Step"></Label>
-			</StackLayout>
-			<StackLayout Orientation="Horizontal" 	HeightRequest="40">
-				<Switch x:Name="containerOnStack" 	WidthRequest="100"></Switch>
-				<Switch x:Name="grabsContainer" 		WidthRequest="100"></Switch>
-				<Switch x:Name="grabsContainerOffStep" 	WidthRequest="100"></Switch>
-			</StackLayout>
+				<Label BackgroundColor="Blue" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle in Can" FontSize="12" ></Label>
+				<Label BackgroundColor="Blue" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle Cleanup" FontSize="12"></Label>
+				<Label BackgroundColor="Blue" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle Bonus" FontSize="12"></Label>
+	
+				<Switch BackgroundColor="Red" x:Name="noodleInContainer" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1"></Switch>
+				<Switch BackgroundColor="Red" x:Name="noodleCleanup" 	 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"></Switch>
+				<Switch BackgroundColor="Red" x:Name="noodleBonus" 		 Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1"></Switch>
 
-			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Label Text="Stacks Totes"></Label>
-				<Label Text="Grabs Totes"></Label>
-				<Label Text="Grabs Totes Off Step"></Label>
-			</StackLayout>
-			<StackLayout Orientation="Horizontal" 	HeightRequest="40">
-				<Switch x:Name="grabsTote" 	WidthRequest="100"></Switch>
-				<Switch x:Name="grabsToteOffStep" 	WidthRequest="100"></Switch>
-				<Switch x:Name="stacksTotes" 		WidthRequest="100"></Switch>
-			</StackLayout>
+				<Label  BackgroundColor="Blue" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Broke Down" FontSize="12"></Label>
+				<Label  BackgroundColor="Blue" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Rebuilds Stack" FontSize="12"></Label>
+				<Label  BackgroundColor="Blue" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Yellow Stack" FontSize="12"></Label>
 
+				<Switch BackgroundColor="Red" x:Name="brokeDown"		 Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1"></Switch>
+				<Switch BackgroundColor="Red" x:Name="rebuildsStack"	 Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1"></Switch>
+				<Switch BackgroundColor="Red" x:Name="yellowCoopStack"	 Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="1"></Switch>
+
+				<Label  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Can On Stack" FontSize="12"></Label>
+				<Label  Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Can" FontSize="12"></Label>
+				<Label  Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Can Off Step" FontSize="12"></Label>
+		
+				<Switch x:Name="containerOnStack" 		 Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1"></Switch>
+				<Switch x:Name="grabsContainer" 		 Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1"></Switch>
+				<Switch x:Name="grabsContainerOffStep" 	 Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1"></Switch>
+
+				<Label  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Stacks Totes" FontSize="12"></Label>
+				<Label  Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Totes" FontSize="12"></Label>
+				<Label  Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Totes Off Step" FontSize="12"></Label>
+
+				<Switch x:Name="grabsTote" 			 Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="1"></Switch>
+				<Switch x:Name="grabsToteOffStep" 	 Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="1"></Switch>
+				<Switch x:Name="stacksTotes" 		 Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="1"></Switch>
+
+			</Grid>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

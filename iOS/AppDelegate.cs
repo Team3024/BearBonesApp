@@ -24,12 +24,11 @@ namespace BearBones.iOS
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
 			Forms.Init ();
-
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
-			window.MakeKeyAndVisible ();			
-			window.RootViewController = App.GetMainPage ().CreateViewController ();
+			window.MakeKeyAndVisible ();
 			HomePage.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
 			HomePage.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+			window.RootViewController = App.GetMainPage ().CreateViewController ();
 			new ChartRenderer();
 			return true;
 		}

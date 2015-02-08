@@ -16,8 +16,8 @@
     </ListView.ItemTemplate>
   </ListView>
 	<ContentPage.ToolbarItems>
-	  		<ToolbarItem Name="Sort By Name" Activated="SortByName" Order="Primary" Priority="0"/>
-	  		<ToolbarItem Name="Sort By Number" Activated="SortByNum" Order="Primary" Priority="0"/>
+	  		<ToolbarItem Name="By Name" Activated="SortByName" Order="Primary" Priority="0"/>
+	  		<ToolbarItem Name="By Number" Activated="SortByNum" Order="Primary" Priority="0"/>
 	  		<ToolbarItem Name="Refresh" Activated="Refresh" Order="Primary" Priority="0"/>
 	  		<ToolbarItem Name="NEW" Activated="OnClick" Order="Primary" Priority="0"/>
   	</ContentPage.ToolbarItems>

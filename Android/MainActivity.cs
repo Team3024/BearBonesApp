@@ -21,10 +21,10 @@ namespace BearBones.Android
 			base.OnCreate (bundle);
 
 			Xamarin.Forms.Forms.Init (this, bundle);
-
-			SetPage (App.GetMainPage ());
 			HomePage.ScreenWidth = (int)Resources.DisplayMetrics.WidthPixels; // real pixels
 			HomePage.ScreenHeight = (int)Resources.DisplayMetrics.HeightPixels; // real pixels
+			SetPage (App.GetMainPage ());
+
 		}
 	}
 }
