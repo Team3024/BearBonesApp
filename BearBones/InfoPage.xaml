@@ -3,11 +3,12 @@
 <CarouselPage x:Name="infoPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:BearBones;assembly=BearBones" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Opacity=".5" Title="Info">
 
 <ContentPage BackgroundColor="Transparent" BackgroundImage="grizzly.png">
-	<StackLayout>
-    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" />
-    		<Button Text="New Match Report" Clicked="NewMatchReport" />
-    		<Button Text="New Scout Report" Clicked="NewScoutReport" />
-
+	<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+		<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+	    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" HorizontalOptions="FillAndExpand"/>
+	    		<Button Text="+ Match Report" x:Name="matchReport" Clicked="NewMatchReport" HorizontalOptions="FillAndExpand" />
+	    		<Button Text="+ Scout Report" x:Name="scoutReport" Clicked="NewScoutReport" HorizontalOptions="FillAndExpand"/>
+		</StackLayout>
 	</StackLayout>
 </ContentPage>
 

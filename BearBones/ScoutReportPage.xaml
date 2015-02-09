@@ -90,18 +90,18 @@
 			    </Grid.RowDefinitions>
 
 			    <Grid.ColumnDefinitions>
-			      <ColumnDefinition Width="Auto" />
 			      <ColumnDefinition Width="*" />
-			      <ColumnDefinition Width="100" />
+			      <ColumnDefinition Width="*" />
+			      <ColumnDefinition Width="*" />
 			    </Grid.ColumnDefinitions>
 				
 				<Label BackgroundColor="Silver" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle in Can" FontSize="12" ></Label>
 				<Label BackgroundColor="Silver" TextColor="Black" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle Cleanup" FontSize="12"></Label>
 				<Label BackgroundColor="Silver" TextColor="Black" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle Bonus" FontSize="12"></Label>
 	
-				<Switch BackgroundColor="White" x:Name="noodleInContainer" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1"></Switch>
-				<Switch BackgroundColor="White" x:Name="noodleCleanup" 	 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"></Switch>
-				<Switch BackgroundColor="White" x:Name="noodleBonus" 		 Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1"></Switch>
+				<Switch BackgroundColor="White" x:Name="noodleInContainer" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="noodleCleanup" 	 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="noodleBonus" 		 Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
 
 				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Broke Down" FontSize="12"></Label>
 				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Rebuilds Stack" FontSize="12"></Label>
