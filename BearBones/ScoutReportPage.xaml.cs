@@ -90,6 +90,12 @@ namespace BearBones
 
 		}
 
+		void OnCancelClicked (object sender, EventArgs e)
+		{
+			// leave this page
+			Navigation.PopModalAsync ();
+		}
+
 		void OnDoneClicked (object sender, EventArgs e)
 		{
 			harvestUIControls();

@@ -20,14 +20,19 @@ namespace BearBones
 		protected override void OnBindingContextChanged ()
 		{
 			//make this cell a particular height, based on its index
-			this.Height = 90;
+			this.Height = 50;
 
 			base.OnBindingContextChanged ();
 			var temp = BindingContext as HomePageViewModel;
 			Label title = new Label
 			{
-				HorizontalOptions = LayoutOptions.StartAndExpand,
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				TextColor=Color.White,
+				BackgroundColor=Color.Red,
+				Opacity=.75,
+				FontSize=14,
+				HeightRequest=50
 			};
 
 

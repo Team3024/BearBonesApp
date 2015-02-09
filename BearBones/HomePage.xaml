@@ -5,10 +5,10 @@
              Title="Bear Bones Strategy"
              xmlns:local="clr-namespace:BearBones;assembly=BearBones"
              BackgroundImage="grizzly.png"
-             BackgroundColor="Transparent"
-             Opacity="1">
+             BackgroundColor="Red"
+             >
 
-  <ListView x:Name="listView" HasUnevenRows="true">
+  <ListView x:Name="listView" HasUnevenRows="true" BackgroundColor="Transparent" >
     <ListView.ItemTemplate>
       <DataTemplate>
       	<local:TeamCell></local:TeamCell>

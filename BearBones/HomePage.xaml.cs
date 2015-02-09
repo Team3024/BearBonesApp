@@ -24,6 +24,7 @@ namespace BearBones
 		{
 			// do the base class init();
 			InitializeComponent();
+			this.BackgroundColor = Color.Red;
 			// create a new observable data list for scrolling
 			models = new ObservableCollection<HomePageViewModel>();
 
