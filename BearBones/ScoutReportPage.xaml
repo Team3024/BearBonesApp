@@ -107,25 +107,25 @@
 				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Rebuilds Stack" FontSize="12"></Label>
 				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Yellow Stack" FontSize="12"></Label>
 
-				<Switch BackgroundColor="White" x:Name="brokeDown"		 Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1"></Switch>
-				<Switch BackgroundColor="White" x:Name="rebuildsStack"	 Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1"></Switch>
-				<Switch BackgroundColor="White" x:Name="yellowCoopStack"	 Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="1"></Switch>
+				<Switch BackgroundColor="White" x:Name="brokeDown"		 Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="rebuildsStack"	 Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="yellowCoopStack"	 Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
 
 				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Can On Stack" FontSize="12"></Label>
 				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Can" FontSize="12"></Label>
 				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Can Off Step" FontSize="12"></Label>
 		
-				<Switch BackgroundColor="White" x:Name="containerOnStack" 		 Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1"></Switch>
-				<Switch BackgroundColor="White" x:Name="grabsContainer" 		 Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1"></Switch>
-				<Switch BackgroundColor="White" x:Name="grabsContainerOffStep" 	 Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1"></Switch>
+				<Switch BackgroundColor="White" x:Name="containerOnStack" 		 Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="grabsContainer" 		 Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="grabsContainerOffStep" 	 Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
 
 				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Stacks Totes" FontSize="12"></Label>
 				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Totes" FontSize="12"></Label>
 				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Totes Off Step" FontSize="12"></Label>
 
-				<Switch BackgroundColor="White" x:Name="grabsTote" 			 Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="1"></Switch>
-				<Switch BackgroundColor="White" x:Name="grabsToteOffStep" 	 Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="1"></Switch>
-				<Switch BackgroundColor="White" x:Name="stacksTotes" 		 Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="1"></Switch>
+				<Switch BackgroundColor="White" x:Name="grabsTote" 			 Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="grabsToteOffStep" 	 Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="stacksTotes" 		 Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
 
 			</Grid>
 		</StackLayout>
