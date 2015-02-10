@@ -12,6 +12,10 @@
 				<Entry x:Name="scout" Keyboard="Text" Placeholder="Your Name Here..."></Entry>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				<Label Text="Match Number:"></Label>
+				<Entry x:Name="match" Keyboard="Text" Placeholder="Match Number here..."></Entry>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 				<Label Text="Notes Name:"></Label>
 				<Entry x:Name="notes" Keyboard="Text" Placeholder="Your Notes Here..."></Entry>
 			</StackLayout>
@@ -21,14 +25,14 @@
 				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Drive Type" ></Label>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Picker x:Name="lastYear" Title="Last Year"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="lastYear" SelectedIndex="0" Title="Last Year"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>World</x:String> 
 			            <x:String>Regional</x:String>
 			            <x:String>Prelim</x:String> 
 			        </Picker.Items>
 			    </Picker>
-				<Picker x:Name="buildQuality"  Title="Build Quality"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="buildQuality" SelectedIndex="0" Title="Build Quality"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Superb</x:String> 
 			            <x:String>High</x:String>
@@ -37,7 +41,7 @@
 			            <x:String>Junk</x:String>
 			        </Picker.Items>
 			    </Picker>
-				<Picker x:Name="driveType"  Title="DriveType"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="driveType" SelectedIndex="0" Title="DriveType"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Mecanum</x:String> 
 			            <x:String>Tank</x:String>
@@ -51,7 +55,7 @@
 				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Tallest Stack" FontSize="12"></Label>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Picker x:Name="teamQuality" Title="Team Quality"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="teamQuality" SelectedIndex="0" Title="Team Quality"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Superb</x:String> 
 			            <x:String>High</x:String>
@@ -60,7 +64,7 @@
 			            <x:String>Poor</x:String>
 			        </Picker.Items>
 			    </Picker>
-				<Picker x:Name="maxStack" Title="Tallest Stack"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="maxStack" Title="Tallest Stack" SelectedIndex="0" HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>1</x:String> 
 			            <x:String>2</x:String>
@@ -76,7 +80,7 @@
 				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Points Scored" FontSize="12"></Label>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Picker x:Name="autoCapability" Title="Auto"  HorizontalOptions="CenterAndExpand">
+				<Picker x:Name="autoCapability" SelectedIndex="0" Title="Auto"  HorizontalOptions="CenterAndExpand">
 			        <Picker.Items>
 			            <x:String>Never Moved</x:String> 
 			            <x:String>In Zone</x:String>
@@ -85,7 +89,7 @@
 			            <x:String>Tote Stack</x:String> 
 			        </Picker.Items>
 			    </Picker>
-			    <Picker x:Name="pointsScored"  Title="Points Scored"  HorizontalOptions="CenterAndExpand">
+			    <Picker x:Name="pointsScored" SelectedIndex="0"  Title="Points Scored"  HorizontalOptions="CenterAndExpand">
 			        <Picker.Items>
 			            <x:String>0</x:String> 
 			            <x:String>5</x:String>

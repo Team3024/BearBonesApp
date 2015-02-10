@@ -78,6 +78,7 @@ namespace BearBones
 			model.autoCapability = autoCap[autoCapability.SelectedIndex];
 			model.maxStack = maxStak[maxStack.SelectedIndex];
 			model.teamQuality = tmQuality[teamQuality.SelectedIndex];
+			model.lastYearFinish = lstYear[lastYear.SelectedIndex];
 
 			model.noodleInContainer = noodleInContainer.IsToggled;
 			model.noodleCleanup = noodleCleanup.IsToggled;
@@ -96,6 +97,7 @@ namespace BearBones
 			model.grabsToteOffStep = grabsToteOffStep.IsToggled;
 			model.notes = notes.Text;
 			model.scoutName = scout.Text;
+			model.matchNumber = match.Text;
 
 		}
 
