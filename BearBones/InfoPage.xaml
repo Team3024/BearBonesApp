@@ -36,7 +36,7 @@
 
 			</StackLayout>
 
-			<StackLayout x:Name="graphs" VerticalOptions="End">
+			<StackLayout x:Name="graphs">
 			</StackLayout>
 		</StackLayout>
 </ContentPage>

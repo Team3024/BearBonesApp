@@ -83,45 +83,45 @@ namespace BearBones
 
 		async void getReports(int tNum)
 		{
+
 			Rest rest = new Rest ();
 			Task <ObservableCollection<ReportViewModel>> list =  rest.getReports (tNum);//SendAndReceiveJsonRequest ();
 			var reports = await list;
 			var count = 0;
 
 
-			foreach (ReportViewModel ip in reports) 
-			{
-				var p=ip;
+			foreach (ReportViewModel ip in reports) {
+				var p = ip;
 
 				pointsScoreds.Add (ip.pointsScored);
 				driveTypes.Add (ip.driveType);
 				scoutNames.Add (ip.scoutName);
-				autoCapabilities.Add(ip.autoCapability);
-				brokeDowns.Add(ip.brokeDown);
-				buildQualities.Add(ip.buildQuality);
-				grabsContainers.Add(ip.grabsContainer);
-				grabsContainerOffSteps.Add(ip.grabsContainerOffStep);
-				grabsTotes.Add(ip.grabsTote);
-				grabsToteOffSteps.Add(ip.grabsToteOffStep);
-				lastYearFinishes.Add(ip.lastYearFinish);
-				matchNumbers.Add(ip.matchNumber);
-				maxStacks.Add(ip.maxStack);
-				noodleBonuses.Add(ip.noodleBonus);
-				noodleCleanups.Add(ip.noodleCleanup);
-				noodleInContainers.Add(ip.noodleInContainer);
-				noteses.Add(ip.notes);
-				rebuildsStacks.Add(ip.rebuildsStack);
-				reportTypes.Add(ip.reportType);
-				setsContainerOnStacks.Add(ip.setsContainerOnStack);
-				stacksToteses.Add(ip.stacksTotes);
-				teamNames.Add(ip.teamName);
-				teamNumbers.Add(ip.teamNumber);
-				teamQualities.Add(ip.teamQuality);
-				yellowCoopStacks.Add(ip.yellowCoopStack);
+				autoCapabilities.Add (ip.autoCapability);
+				brokeDowns.Add (ip.brokeDown);
+				buildQualities.Add (ip.buildQuality);
+				grabsContainers.Add (ip.grabsContainer);
+				grabsContainerOffSteps.Add (ip.grabsContainerOffStep);
+				grabsTotes.Add (ip.grabsTote);
+				grabsToteOffSteps.Add (ip.grabsToteOffStep);
+				lastYearFinishes.Add (ip.lastYearFinish);
+				matchNumbers.Add (ip.matchNumber);
+				maxStacks.Add (ip.maxStack);
+				noodleBonuses.Add (ip.noodleBonus);
+				noodleCleanups.Add (ip.noodleCleanup);
+				noodleInContainers.Add (ip.noodleInContainer);
+				noteses.Add (ip.notes);
+				rebuildsStacks.Add (ip.rebuildsStack);
+				reportTypes.Add (ip.reportType);
+				setsContainerOnStacks.Add (ip.setsContainerOnStack);
+				stacksToteses.Add (ip.stacksTotes);
+				teamNames.Add (ip.teamName);
+				teamNumbers.Add (ip.teamNumber);
+				teamQualities.Add (ip.teamQuality);
+				yellowCoopStacks.Add (ip.yellowCoopStack);
 
 				InfoCell report = new InfoCell ();
 
-				this.Children.Add (report.CreatePage(ip.pointsScored,
+				this.Children.Add (report.CreatePage (ip.pointsScored,
 					ip.driveType,
 					ip.scoutName,
 					ip.autoCapability,
@@ -161,8 +161,9 @@ namespace BearBones
 
 			}
 
-			//BuildGraphs ();
-
+			//Chart chart = await BuildGraphs ();
+			//graphs.Children.Add (chart);
+			await BuildGraphs ();
 
 		}
 
@@ -178,62 +179,109 @@ namespace BearBones
 			await Navigation.PushModalAsync (page);
 		}
 
-		void BuildGraphs()
+		async Task BuildGraphs()
 		{
-			Series scoreSeries = new Series
-			{
-				Color = Color.Red,
-				Type = ChartType.Line
-			};
+			if (pointsScoreds.Count > 0) {
 
-			Series breakDownSeries = new Series
-			{
-				Color = Color.Blue,
-				Type = ChartType.Line
-			};
+				Series scoreSeries = new Series {
+					Color = Color.Red,
+					Type = ChartType.Line
+				};
 
-			Series autoSeries = new Series
-			{
-				Color = Color.White,
-				Type = ChartType.Line
-			};
+				Series breakDownSeries = new Series {
+					Color = Color.Blue,
+					Type = ChartType.Bar
+				};
 
-			/*foreach (var score in pointsScoreds) {
-				int scoreInt;
-				if (score == null) {
-					scoreInt = -1;
-				} else {
-					int.TryParse (score, out scoreInt);
+				Series autoSeries = new Series {
+					Color = Color.White,
+					Type = ChartType.Bar
+				};
+
+				foreach (var score in pointsScoreds) {
+					int scoreInt;
+
+					if (score == null) {
+						scoreInt = -1;
+					} else {
+						int.TryParse (score, out scoreInt);
+					}
+
+					scoreSeries.Points.Add (new DataPoint (){ Label = score, Value = scoreInt });
 				}
-				scoreSeries.Points.Add (new DataPoint (){ Label=score, Value = scoreInt });
-			}*/
+				int counter = 1;
+				foreach (var brokeDown in brokeDowns) {
+					string label;
+					int value;
+					if (brokeDown) {
+						label = "Broke";
+						value = 50;
+					} else {
+						label = "Didn\'t Break";
+						value = 100;
+					}
+
+					breakDownSeries.Points.Add (new DataPoint (){ Label = "Match " + counter, Value = value });
+					counter++;
+				}
+
+				foreach (var auto in autoCapabilities) {
+					int value;
+
+					switch (auto) {
+					case "Never Moved":
+						value = 10;
+						break;
+					case "In AutoZone":
+						value = 20;
+						break;
+					case "1 Can":
+						value = 30;
+						break;
+					case "1 Tote":
+						value = 40;
+						break;
+					case "Tote Stack":
+						value = 50;
+						break;
+					default:
+						value = 0;
+						break;
+					}
+
+					autoSeries.Points.Add (new DataPoint (){ Label = auto, Value = value });
+
+				}
+
+				//lineSeries.Points.Add(new DataPoint() { Label = "Jan",   Value = 27.5 });
+				//lineSeries.Points.Add(new DataPoint() { Label = "Feb",   Value = 37.5 });
+				//lineSeries.Points.Add(new DataPoint() { Label = "March", Value = 42.5 });
 
 
-			//lineSeries.Points.Add(new DataPoint() { Label = "Jan",   Value = 27.5 });
-			//lineSeries.Points.Add(new DataPoint() { Label = "Feb",   Value = 37.5 });
-			//lineSeries.Points.Add(new DataPoint() { Label = "March", Value = 42.5 });
+				Chart chart = new Chart () {
+					Color = Color.Green,
+					WidthRequest = HomePage.ScreenWidth - 10,
+					HeightRequest = 500,
+					Spacing = 10
+				};
 
 
-			Chart chart = new Chart()
-			{
-				Color = Color.Black,
-				WidthRequest = HomePage.ScreenWidth-10,
-				HeightRequest = 100,
-				Spacing = 10
-			};
-			//chart.Series.Add(firstBarSeries);
-			//chart.Series.Add(secondBarSeries);
-			//chart.Series.Add(lineSeries);
-			StackLayout stack = new StackLayout ();
+				chart.Series.Add (breakDownSeries);
+				chart.Series.Add (autoSeries);
+				chart.Series.Add (scoreSeries);
+				StackLayout stack = new StackLayout ();
 
-			Label lbl = new Label {
-				Text = ""
-			};
+				Label lbl = new Label {
+					Text = ""
+				};
 
-			graphs.Children.Add(lbl);
-			graphs.Children.Add(chart);
+				//graphs.Children.Add(lbl);
+				//graphs.Children.Add(chart);
 
-
+				graphs.Children.Add (chart);
+			} else {
+				await Navigation.PopModalAsync ();
+			}
 		}
 
 	}
