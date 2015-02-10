@@ -161,7 +161,7 @@ namespace BearBones
 
 			}
 
-			BuildGraphs ();
+			//BuildGraphs ();
 
 
 		}
@@ -178,46 +178,52 @@ namespace BearBones
 			await Navigation.PushModalAsync (page);
 		}
 
-		async void BuildGraphs()
+		void BuildGraphs()
 		{
-			Series firstBarSeries = new Series
+			Series scoreSeries = new Series
 			{
 				Color = Color.Red,
-				Type = ChartType.Bar
-			};
-			firstBarSeries.Points.Add(new DataPoint() { Label = "Jan",   Value = 25});
-			firstBarSeries.Points.Add(new DataPoint() { Label = "Feb",   Value = 40});
-			firstBarSeries.Points.Add(new DataPoint() { Label = "March", Value = 45});
-
-			Series secondBarSeries = new Series
-			{
-				Color = Color.Blue,
-				Type = ChartType.Bar
-			};
-			secondBarSeries.Points.Add(new DataPoint() { Label = "Jan",   Value = 30 });
-			secondBarSeries.Points.Add(new DataPoint() { Label = "Feb",   Value = 35 });
-			secondBarSeries.Points.Add(new DataPoint() { Label = "March", Value = 40 });
-
-			Series lineSeries = new Series
-			{
-				Color = Color.Green,
 				Type = ChartType.Line
 			};
-			lineSeries.Points.Add(new DataPoint() { Label = "Jan",   Value = 27.5 });
-			lineSeries.Points.Add(new DataPoint() { Label = "Feb",   Value = 37.5 });
-			lineSeries.Points.Add(new DataPoint() { Label = "March", Value = 42.5 });
+
+			Series breakDownSeries = new Series
+			{
+				Color = Color.Blue,
+				Type = ChartType.Line
+			};
+
+			Series autoSeries = new Series
+			{
+				Color = Color.White,
+				Type = ChartType.Line
+			};
+
+			/*foreach (var score in pointsScoreds) {
+				int scoreInt;
+				if (score == null) {
+					scoreInt = -1;
+				} else {
+					int.TryParse (score, out scoreInt);
+				}
+				scoreSeries.Points.Add (new DataPoint (){ Label=score, Value = scoreInt });
+			}*/
+
+
+			//lineSeries.Points.Add(new DataPoint() { Label = "Jan",   Value = 27.5 });
+			//lineSeries.Points.Add(new DataPoint() { Label = "Feb",   Value = 37.5 });
+			//lineSeries.Points.Add(new DataPoint() { Label = "March", Value = 42.5 });
 
 
 			Chart chart = new Chart()
 			{
-				Color = Color.White,
+				Color = Color.Black,
 				WidthRequest = HomePage.ScreenWidth-10,
 				HeightRequest = 100,
 				Spacing = 10
 			};
-			chart.Series.Add(firstBarSeries);
-			chart.Series.Add(secondBarSeries);
-			chart.Series.Add(lineSeries);
+			//chart.Series.Add(firstBarSeries);
+			//chart.Series.Add(secondBarSeries);
+			//chart.Series.Add(lineSeries);
 			StackLayout stack = new StackLayout ();
 
 			Label lbl = new Label {

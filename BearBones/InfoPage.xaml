@@ -2,36 +2,6 @@
 <CarouselPage x:Name="infoCarousel" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:BearBones;assembly=BearBones" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Title="Info">
 
 <ContentPage BackgroundColor="Transparent" x:Name="GraphPage">
-
-	<!--
-	<ContentPage.Resources>
-		<ResourceDictionary>
-			<Style
-				x:Key="buttonStyle"
-				TargetType="Button">
-					<Setter 
-						Property="BackgroundColor"
-						Value="#hhhhhh"/>
-					<Setter 
-						Property="BorderColor"
-						Value="Navy"/>
-					<Setter 
-						Property="BorderRadius"
-						Value="15"/>
-					<Setter
-						Property="TextColor"
-						Value="Red"/>
-					<Setter 
-						Property="FontSize"
-						Value="20"/>
-					<Setter
-						Property="HorizontalOptions"
-						Value="Center"/>
-			</Style>
-		</ResourceDictionary>
-	</ContentPage.Resources>
-	-->
-
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<Style x:Key="ButtonStyle" TargetType="Button">
@@ -58,14 +28,16 @@
 			</Style>
 		</ResourceDictionary>
 	</ContentPage.Resources>
-		<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-				<Label Text="" HeightRequest="20"/>
-	    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" Style="{StaticResource ButtonStyle}"/>
-	    		<Button Text="New Scout Report" x:Name="newScout" Clicked="NewScoutReport" Style="{StaticResource ButtonStyle}"/>
+		<StackLayout>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
+					<Label Text="" HeightRequest="20"/>
+		    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" Style="{StaticResource ButtonStyle}"/>
+		    		<Button Text="New Scout Report" x:Name="newScout" Clicked="NewScoutReport" Style="{StaticResource ButtonStyle}"/>
 
-		</StackLayout>
+			</StackLayout>
 
-		<StackLayout x:Name="graphs">
+			<StackLayout x:Name="graphs" VerticalOptions="End">
+			</StackLayout>
 		</StackLayout>
 </ContentPage>
 
