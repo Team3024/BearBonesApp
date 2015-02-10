@@ -41,13 +41,13 @@ namespace BearBones
 	{	
 		ReportViewModel model;
 
-		string[] drvType = { "Mecanum", "Tank", "Swerve", "Other" };
-		string[] ptsScored = {"0","5","10","20","30","40","50","60","70","80","90","100"};
-		string[] bldQuality = {"Superb","High","OK","Low","Poor","Junk"};
-		string[] tmQuality = {"Superb","High","OK","Low","Poor"};
-		string[] maxStak = {"0","1","2","3","4","5","6"};
-		string[] autoCap = {"Never Moved","In AutoZone","1 Can","1 Tote","Tote Stack"};
-		string[] lstYear = {"World","District","Prelims"};
+		string[] drvType = { "Mecanum", "Tank", "Swerve", "Other","none" };
+		string[] ptsScored = {"0","5","10","20","30","40","50","60","70","80","90","100","150","200","250","none"};
+		string[] bldQuality = {"Superb","High","OK","Low","Poor","Junk","none"};
+		string[] tmQuality = {"Superb","High","OK","Low","Poor","none"};
+		string[] maxStak = {"0","1","2","3","4","5","6","none"};
+		string[] autoCap = {"Never Moved","In AutoZone","1 Can","1 Tote","Tote Stack","none"};
+		string[] lstYear = {"World","District","Prelims","none"};
 
 		public ScoutReportPage (string number)
 		{
@@ -72,13 +72,40 @@ namespace BearBones
 
 		private void harvestUIControls()
 		{
-			model.driveType = drvType[driveType.SelectedIndex];
-			model.pointsScored = ptsScored [pointsScored.SelectedIndex];
-			model.buildQuality = bldQuality[buildQuality.SelectedIndex];
-			model.autoCapability = autoCap[autoCapability.SelectedIndex];
-			model.maxStack = maxStak[maxStack.SelectedIndex];
-			model.teamQuality = tmQuality[teamQuality.SelectedIndex];
-			model.lastYearFinish = lstYear[lastYear.SelectedIndex];
+			if(driveType.SelectedIndex>=0)
+				model.driveType = drvType[driveType.SelectedIndex];
+			else
+				model.driveType = drvType[drvType.Length-1];
+
+			if(pointsScored.SelectedIndex>=0)
+				model.pointsScored = ptsScored [pointsScored.SelectedIndex];
+			else
+				model.pointsScored = ptsScored [ptsScored.Length-1];
+
+			if(buildQuality.SelectedIndex>=0)
+				model.buildQuality = bldQuality[buildQuality.SelectedIndex];
+			else
+				model.buildQuality = bldQuality[bldQuality.Length-1];
+
+			if(autoCapability.SelectedIndex>=0)
+				model.autoCapability = autoCap[autoCapability.SelectedIndex];
+			else
+				model.autoCapability = autoCap[autoCap.Length-1];
+
+			if(maxStack.SelectedIndex>=0)
+				model.maxStack = maxStak[maxStack.SelectedIndex];
+			else
+				model.maxStack = maxStak[maxStak.Length-1];
+
+			if(teamQuality.SelectedIndex>=0)
+				model.teamQuality = tmQuality[teamQuality.SelectedIndex];
+			else
+				model.teamQuality = tmQuality[tmQuality.Length-1];
+
+			if(lastYear.SelectedIndex>=0)
+				model.lastYearFinish = lstYear[lastYear.SelectedIndex];
+			else
+				model.lastYearFinish = lstYear[lstYear.Length-1];
 
 			model.noodleInContainer = noodleInContainer.IsToggled;
 			model.noodleCleanup = noodleCleanup.IsToggled;

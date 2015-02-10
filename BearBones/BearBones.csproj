@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -54,7 +54,6 @@
     <Compile Include="InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TeamCell.cs" />
     <Compile Include="REST.cs">
       <DependentUpon>MatchReportPage.xaml</DependentUpon>
     </Compile>
@@ -137,5 +136,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="ConnectivityReadme.txt" />
+    <Compile Include="TeamCell.cs" />
   </ItemGroup>
 </Project>

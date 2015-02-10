@@ -32,7 +32,7 @@
 			<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
 					<Label Text="" HeightRequest="20"/>
 		    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" Style="{StaticResource ButtonStyle}"/>
-		    		<Button Text="New Scout Report" x:Name="newScout" Clicked="NewScoutReport" Style="{StaticResource ButtonStyle}"/>
+		    		<Button Text="New Report" x:Name="newScout" Clicked="NewScoutReport" Style="{StaticResource ButtonStyle}"/>
 
 			</StackLayout>
 

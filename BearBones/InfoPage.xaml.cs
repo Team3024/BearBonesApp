@@ -280,7 +280,7 @@ namespace BearBones
 
 				graphs.Children.Add (chart);
 			} else {
-				await Navigation.PopModalAsync ();
+				//await Navigation.PopModalAsync ();
 			}
 		}
 

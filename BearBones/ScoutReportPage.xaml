@@ -29,7 +29,8 @@
 			        <Picker.Items>
 			            <x:String>World</x:String> 
 			            <x:String>Regional</x:String>
-			            <x:String>Prelim</x:String> 
+			            <x:String>Prelim</x:String>
+			            <x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>
 				<Picker x:Name="buildQuality" SelectedIndex="0" Title="Build Quality"  HorizontalOptions="FillAndExpand">
@@ -39,6 +40,7 @@
 			            <x:String>OK</x:String> 
 			            <x:String>Low</x:String>
 			            <x:String>Junk</x:String>
+			         	<x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>
 				<Picker x:Name="driveType" SelectedIndex="0" Title="DriveType"  HorizontalOptions="FillAndExpand">
@@ -47,6 +49,7 @@
 			            <x:String>Tank</x:String>
 			            <x:String>Swerve</x:String> 
 			            <x:String>Other</x:String>
+			           	<x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>
 			</StackLayout>
@@ -62,6 +65,7 @@
 			            <x:String>OK</x:String> 
 			            <x:String>Low</x:String>
 			            <x:String>Poor</x:String>
+			           	<x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>
 				<Picker x:Name="maxStack" Title="Tallest Stack" SelectedIndex="0" HorizontalOptions="FillAndExpand">
@@ -71,7 +75,8 @@
 			            <x:String>3</x:String>
 			          	<x:String>4</x:String> 
 			            <x:String>5</x:String>
-			            <x:String>6</x:String>  
+			            <x:String>6</x:String>
+			           	<x:String>none</x:String>  
 			        </Picker.Items>
 			    </Picker>
 			</StackLayout>
@@ -86,7 +91,8 @@
 			            <x:String>In Zone</x:String>
 			            <x:String>1 Container</x:String>
 			           	<x:String>1 Tote</x:String> 
-			            <x:String>Tote Stack</x:String> 
+			            <x:String>Tote Stack</x:String>
+			           	<x:String>none</x:String> 
 			        </Picker.Items>
 			    </Picker>
 			    <Picker x:Name="pointsScored" SelectedIndex="0"  Title="Points Scored"  HorizontalOptions="CenterAndExpand">
@@ -103,6 +109,10 @@
 			            <x:String>80</x:String>
 			            <x:String>90</x:String>
 			            <x:String>100</x:String>
+			          	<x:String>150</x:String>
+			            <x:String>200</x:String>
+			           	<x:String>250</x:String>
+			            <x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>
 			</StackLayout>
