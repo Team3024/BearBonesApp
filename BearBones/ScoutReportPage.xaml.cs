@@ -41,6 +41,14 @@ namespace BearBones
 	{	
 		ReportViewModel model;
 
+		string[] drvType = { "Mecanum", "Tank", "Swerve", "Other" };
+		string[] ptsScored = {"0","5","10","20","30","40","50","60","70","80","90","100"};
+		string[] bldQuality = {"Superb","High","OK","Low","Poor","Junk"};
+		string[] tmQuality = {"Superb","High","OK","Low","Poor"};
+		string[] maxStak = {"0","1","2","3","4","5","6"};
+		string[] autoCap = {"Never Moved","In AutoZone","1 Can","1 Tote","Tote Stack"};
+		string[] lstYear = {"World","District","Prelims"};
+
 		public ScoutReportPage (string number)
 		{
 			InitializeComponent ();
@@ -54,22 +62,22 @@ namespace BearBones
 			else
 				model.teamNumber = 0;
 			Random rand = new Random ();
-			model.pointsScored = rand.Next().ToString();
+			//model.pointsScored = rand.Next().ToString();
 			model.matchNumber = rand.Next().ToString();
 			model.reportType = "scout";
-			model.scoutName = "JOHNNY FIVE";
+			//model.scoutName = "JOHNNY FIVE";
 
 
 		}
 
 		private void harvestUIControls()
 		{
-			model.driveType = driveType.Title;
-			model.pointsScored = pointsScored.Title;
-			model.buildQuality = buildQuality.Title;
-			model.autoCapability = autoCapability.Title;
-			model.maxStack = maxStack.Title;
-			model.teamQuality = teamQuality.Title;
+			model.driveType = drvType[driveType.SelectedIndex];
+			model.pointsScored = ptsScored [pointsScored.SelectedIndex];
+			model.buildQuality = bldQuality[buildQuality.SelectedIndex];
+			model.autoCapability = autoCap[autoCapability.SelectedIndex];
+			model.maxStack = maxStak[maxStack.SelectedIndex];
+			model.teamQuality = tmQuality[teamQuality.SelectedIndex];
 
 			model.noodleInContainer = noodleInContainer.IsToggled;
 			model.noodleCleanup = noodleCleanup.IsToggled;
@@ -86,7 +94,8 @@ namespace BearBones
 			model.stacksTotes = stacksTotes.IsToggled;
 			model.grabsTote = grabsTote.IsToggled;
 			model.grabsToteOffStep = grabsToteOffStep.IsToggled;
-			model.notes = "Yippeeee!";
+			model.notes = notes.Text;
+			model.scoutName = scout.Text;
 
 		}
 

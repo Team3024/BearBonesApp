@@ -7,7 +7,19 @@
 				<Button Text="Cancel" Clicked="OnCancelClicked" HorizontalOptions="FillAndExpand" />
 				<Button Text="Submit" Clicked="OnDoneClicked" HorizontalOptions="FillAndExpand"  />
 			</StackLayout>
-			<Entry>x:Name="notes" Keyboard="Text" Placeholder="Notes:" Text="Notes:"</Entry>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				<Label Text="Scout Name:"></Label>
+				<Entry x:Name="scout" Keyboard="Text" Placeholder="Your Name Here..."></Entry>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+				<Label Text="Notes Name:"></Label>
+				<Entry x:Name="notes" Keyboard="Text" Placeholder="Your Notes Here..."></Entry>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
+				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Last Year"></Label>
+				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Build Quality" ></Label>
+				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Drive Type" ></Label>
+			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Picker x:Name="lastYear" Title="Last Year"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
@@ -35,6 +47,10 @@
 			    </Picker>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
+				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Team Quality" FontSize="12"></Label>
+				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Tallest Stack" FontSize="12"></Label>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Picker x:Name="teamQuality" Title="Team Quality"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Superb</x:String> 
@@ -56,17 +72,20 @@
 			    </Picker>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Picker x:Name="autoCapability" Title="Auto"  HorizontalOptions="FillAndExpand">
+				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Auto Capability" FontSize="12"></Label>
+				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Points Scored" FontSize="12"></Label>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
+				<Picker x:Name="autoCapability" Title="Auto"  HorizontalOptions="CenterAndExpand">
 			        <Picker.Items>
 			            <x:String>Never Moved</x:String> 
 			            <x:String>In Zone</x:String>
 			            <x:String>1 Container</x:String>
 			           	<x:String>1 Tote</x:String> 
-			            <x:String>Tote Stack</x:String>
-			            <x:String>1 Container</x:String>  
+			            <x:String>Tote Stack</x:String> 
 			        </Picker.Items>
 			    </Picker>
-			    <Picker x:Name="pointsScored"  Title="Points Scored"  HorizontalOptions="FillAndExpand">
+			    <Picker x:Name="pointsScored"  Title="Points Scored"  HorizontalOptions="CenterAndExpand">
 			        <Picker.Items>
 			            <x:String>0</x:String> 
 			            <x:String>5</x:String>
