@@ -1,15 +1,72 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" Title="Info" BackgroundImage="grizzly.png" BackgroundColor="Olive">-->
-<CarouselPage x:Name="infoPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:BearBones;assembly=BearBones" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Opacity=".5" Title="Info">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage x:Name="infoCarousel" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:BearBones;assembly=BearBones" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Title="Info">
 
-<ContentPage BackgroundColor="Transparent" BackgroundImage="grizzly.png">
-	<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
-		<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-	    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" HorizontalOptions="FillAndExpand"/>
-	    		<Button Text="+ Match Report" x:Name="matchReport" Clicked="NewMatchReport" HorizontalOptions="FillAndExpand" />
-	    		<Button Text="+ Scout Report" x:Name="scoutReport" Clicked="NewScoutReport" HorizontalOptions="FillAndExpand"/>
+<ContentPage BackgroundColor="Transparent" x:Name="GraphPage">
+
+	<!--
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style
+				x:Key="buttonStyle"
+				TargetType="Button">
+					<Setter 
+						Property="BackgroundColor"
+						Value="#hhhhhh"/>
+					<Setter 
+						Property="BorderColor"
+						Value="Navy"/>
+					<Setter 
+						Property="BorderRadius"
+						Value="15"/>
+					<Setter
+						Property="TextColor"
+						Value="Red"/>
+					<Setter 
+						Property="FontSize"
+						Value="20"/>
+					<Setter
+						Property="HorizontalOptions"
+						Value="Center"/>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	-->
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="ButtonStyle" TargetType="Button">
+				<Setter Property="BackgroundColor" Value="White"/>
+				<Setter Property="BorderRadius" Value="10"/>
+				<Setter Property="HeightRequest" Value="60"/>
+				<Setter Property="WidthRequest" Value="120"/>
+				<Setter Property="HorizontalOptions" Value="Center"/>
+				<Setter Property="VerticalOptions" Value="Start"/>
+				<Setter Property="TextColor" Value="Red"/>
+				<Setter Property="BorderColor" Value="Navy"/>
+				<Setter Property="BorderWidth" Value="3"/>
+			</Style>
+
+			<Style TargetType="Label">
+				<Setter Property="TextColor" Value="White"/>
+				<Setter Property="FontSize" Value="16"/>
+			</Style>
+
+			<Style x:Key="HeaderStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="White"/>
+				<Setter Property="FontSize" Value="18"/>
+				<Setter Property="FontAttributes" Value="Bold"/>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+		<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+				<Label Text="" HeightRequest="20"/>
+	    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" Style="{StaticResource ButtonStyle}"/>
+	    		<Button Text="New Scout Report" x:Name="newScout" Clicked="NewScoutReport" Style="{StaticResource ButtonStyle}"/>
+
 		</StackLayout>
-	</StackLayout>
+
+		<StackLayout x:Name="graphs">
+		</StackLayout>
 </ContentPage>
 
 
