@@ -25,7 +25,7 @@
 				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Drive Type" ></Label>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Picker x:Name="lastYear" SelectedIndex="0" Title="Last Year"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="lastYear" BackgroundColor="Red"  SelectedIndex="0" Title="Last Year"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>World</x:String> 
 			            <x:String>Regional</x:String>
@@ -33,7 +33,7 @@
 			            <x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>
-				<Picker x:Name="buildQuality" SelectedIndex="0" Title="Build Quality"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="buildQuality" BackgroundColor="Red" SelectedIndex="0" Title="Build Quality"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Superb</x:String> 
 			            <x:String>High</x:String>
@@ -43,7 +43,7 @@
 			         	<x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>
-				<Picker x:Name="driveType" SelectedIndex="0" Title="DriveType"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="driveType" BackgroundColor="Red" SelectedIndex="0" Title="DriveType"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Mecanum</x:String> 
 			            <x:String>Tank</x:String>
@@ -58,7 +58,7 @@
 				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Tallest Stack" FontSize="12"></Label>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Picker x:Name="teamQuality" SelectedIndex="0" Title="Team Quality"  HorizontalOptions="FillAndExpand">
+				<Picker x:Name="teamQuality" BackgroundColor="Red" SelectedIndex="0" Title="Team Quality"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Superb</x:String> 
 			            <x:String>High</x:String>
@@ -68,7 +68,7 @@
 			           	<x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>
-				<Picker x:Name="maxStack" Title="Tallest Stack" SelectedIndex="0" HorizontalOptions="FillAndExpand">
+				<Picker x:Name="maxStack" BackgroundColor="Red" Title="Tallest Stack" SelectedIndex="0" HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>1</x:String> 
 			            <x:String>2</x:String>
@@ -85,7 +85,7 @@
 				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="Silver" TextColor="Black"  Text="Points Scored" FontSize="12"></Label>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Picker x:Name="autoCapability" SelectedIndex="0" Title="Auto"  HorizontalOptions="CenterAndExpand">
+				<Picker x:Name="autoCapability" BackgroundColor="Red" SelectedIndex="0" Title="Auto"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>Never Moved</x:String> 
 			            <x:String>In Zone</x:String>
@@ -95,7 +95,7 @@
 			           	<x:String>none</x:String> 
 			        </Picker.Items>
 			    </Picker>
-			    <Picker x:Name="pointsScored" SelectedIndex="0"  Title="Points Scored"  HorizontalOptions="CenterAndExpand">
+			    <Picker x:Name="pointsScored" BackgroundColor="Red" SelectedIndex="0"  Title="Points Scored"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>0</x:String> 
 			            <x:String>5</x:String>
@@ -129,37 +129,37 @@
 			      <ColumnDefinition Width="*" />
 			    </Grid.ColumnDefinitions>
 				
-				<Label BackgroundColor="Silver" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle in Can" FontSize="12" ></Label>
-				<Label BackgroundColor="Silver" TextColor="Black" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle Cleanup" FontSize="12"></Label>
-				<Label BackgroundColor="Silver" TextColor="Black" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle Bonus" FontSize="12"></Label>
+				<Label BackgroundColor="White" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle in Can" FontSize="12" HorizontalOptions="FillAndExpand" ></Label>
+				<Label BackgroundColor="White" TextColor="Black" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle Cleanup" FontSize="12"  HorizontalOptions="FillAndExpand"></Label>
+				<Label BackgroundColor="White" TextColor="Black" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Noodle Bonus" FontSize="12"  HorizontalOptions="FillAndExpand"></Label>
 	
-				<Switch BackgroundColor="White" x:Name="noodleInContainer" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
-				<Switch BackgroundColor="White" x:Name="noodleCleanup" 	 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
-				<Switch BackgroundColor="White" x:Name="noodleBonus" 		 Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="Red" x:Name="noodleInContainer" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="FillAndExpand"></Switch>
+				<Switch BackgroundColor="Red" x:Name="noodleCleanup" 	 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="FillAndExpand"></Switch>
+				<Switch BackgroundColor="Red" x:Name="noodleBonus" 		 Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="FillAndExpand"></Switch>
 
-				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Broke Down" FontSize="12"></Label>
-				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Rebuilds Stack" FontSize="12"></Label>
-				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Yellow Stack" FontSize="12"></Label>
+				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Broke Down" FontSize="12" HorizontalOptions="FillAndExpand" ></Label>
+				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Rebuilds Stack" FontSize="12" HorizontalOptions="FillAndExpand" ></Label>
+				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Yellow Stack" FontSize="12" HorizontalOptions="FillAndExpand" ></Label>
 
-				<Switch BackgroundColor="White" x:Name="brokeDown"		 Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
-				<Switch BackgroundColor="White" x:Name="rebuildsStack"	 Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
-				<Switch BackgroundColor="White" x:Name="yellowCoopStack"	 Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="brokeDown"		 Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1"  HorizontalOptions="FillAndExpand" ></Switch>
+				<Switch BackgroundColor="White" x:Name="rebuildsStack"	 Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1"  HorizontalOptions="FillAndExpand" ></Switch>
+				<Switch BackgroundColor="White" x:Name="yellowCoopStack"	 Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="1"  HorizontalOptions="FillAndExpand" ></Switch>
 
-				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Can On Stack" FontSize="12"></Label>
-				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Can" FontSize="12"></Label>
-				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Can Off Step" FontSize="12"></Label>
+				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Can On Stack" FontSize="12"  HorizontalOptions="FillAndExpand" ></Label>
+				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Can" FontSize="12" HorizontalOptions="FillAndExpand" ></Label>
+				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Can Off Step" FontSize="12" HorizontalOptions="FillAndExpand" ></Label>
 		
-				<Switch BackgroundColor="White" x:Name="containerOnStack" 		 Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
-				<Switch BackgroundColor="White" x:Name="grabsContainer" 		 Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
-				<Switch BackgroundColor="White" x:Name="grabsContainerOffStep" 	 Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="containerOnStack" 		 Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1"  HorizontalOptions="FillAndExpand" ></Switch>
+				<Switch BackgroundColor="White" x:Name="grabsContainer" 		 Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1"  HorizontalOptions="FillAndExpand" ></Switch>
+				<Switch BackgroundColor="White" x:Name="grabsContainerOffStep" 	 Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1"  HorizontalOptions="FillAndExpand" ></Switch>
 
-				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Stacks Totes" FontSize="12"></Label>
-				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Totes" FontSize="12"></Label>
-				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Totes Off Step" FontSize="12"></Label>
+				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Stacks Totes" FontSize="12" HorizontalOptions="FillAndExpand" ></Label>
+				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Totes" FontSize="12" HorizontalOptions="FillAndExpand" ></Label>
+				<Label  BackgroundColor="Silver" TextColor="Black" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1" XAlign="Center" YAlign="Center" Text="Grabs Totes Off Step" FontSize="12" HorizontalOptions="FillAndExpand" ></Label>
 
-				<Switch BackgroundColor="White" x:Name="grabsTote" 			 Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
-				<Switch BackgroundColor="White" x:Name="grabsToteOffStep" 	 Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
-				<Switch BackgroundColor="White" x:Name="stacksTotes" 		 Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand"></Switch>
+				<Switch BackgroundColor="White" x:Name="grabsTote" 			 Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="1"  HorizontalOptions="FillAndExpand" ></Switch>
+				<Switch BackgroundColor="White" x:Name="grabsToteOffStep" 	 Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="1"  HorizontalOptions="FillAndExpand" ></Switch>
+				<Switch BackgroundColor="White" x:Name="stacksTotes" 		 Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="1"  HorizontalOptions="FillAndExpand" ></Switch>
 
 			</Grid>
 		</StackLayout>
