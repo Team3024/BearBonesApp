@@ -41,6 +41,7 @@ namespace BearBones
 		public List<bool> yellowCoopStacks = new List<bool> ();
 
 		public int teamNumber;
+		public string teamName;
 
 		public InfoPage (HomePageViewModel hpvm)
 		{
@@ -49,6 +50,7 @@ namespace BearBones
 			getReports(hpvm.teamNumber);
 
 			teamNumber = hpvm.teamNumber;
+			teamName = hpvm.teamName;
 
 			//title1.Text = hpvm.teamName + " " + hpvm.teamNumber + ": Rprt 1";
 
@@ -185,17 +187,18 @@ namespace BearBones
 
 				Series scoreSeries = new Series {
 					Color = Color.Red,
-					Type = ChartType.Line
+					Type = ChartType.Line,
 				};
+					
 
 				Series breakDownSeries = new Series {
 					Color = Color.Blue,
-					Type = ChartType.Bar
+					Type = ChartType.Line
 				};
 
 				Series autoSeries = new Series {
 					Color = Color.White,
-					Type = ChartType.Bar
+					Type = ChartType.Line
 				};
 
 				foreach (var score in pointsScoreds) {
@@ -215,15 +218,16 @@ namespace BearBones
 					int value;
 					if (brokeDown) {
 						label = "Broke";
-						value = 50;
+						value = 100;
 					} else {
 						label = "Didn\'t Break";
-						value = 100;
+						value = 50;
 					}
 
 					breakDownSeries.Points.Add (new DataPoint (){ Label = "Match " + counter, Value = value });
 					counter++;
 				}
+
 
 				foreach (var auto in autoCapabilities) {
 					int value;
@@ -261,26 +265,30 @@ namespace BearBones
 				Chart chart = new Chart () {
 					Color = Color.Green,
 					WidthRequest = HomePage.ScreenWidth - 10,
-					HeightRequest = 500,
-					Spacing = 10
+					HeightRequest = 250,
+					Spacing = 0,
+					VerticalOptions=LayoutOptions.FillAndExpand
 				};
-
 
 				chart.Series.Add (breakDownSeries);
 				chart.Series.Add (autoSeries);
 				chart.Series.Add (scoreSeries);
 				StackLayout stack = new StackLayout ();
 
-				Label lbl = new Label {
-					Text = ""
-				};
 
 				//graphs.Children.Add(lbl);
 				//graphs.Children.Add(chart);
 
 				graphs.Children.Add (chart);
+
+				graphs.Children.Add (new Label{Text="Score", BackgroundColor=Color.Red, TextColor=Color.Black, FontSize = 15});
+				graphs.Children.Add (new Label{Text="Reliability", BackgroundColor=Color.Blue, TextColor=Color.Black, FontSize = 15});
+				graphs.Children.Add (new Label{Text="Auto Capabilities", BackgroundColor=Color.White, TextColor=Color.Black, FontSize = 15});
+
+
 			} else {
 				//await Navigation.PopModalAsync ();
+				graphs.Children.Add ( new Label{Text = "Sorry, it looks like there aren\'t any reports for " + teamName} );
 			}
 		}
 
