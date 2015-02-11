@@ -7,6 +7,15 @@
              BackgroundImage="grizzly.png"
              BackgroundColor="Red"
              >
+<StackLayout>
+  <StackLayout Orientation="Horizontal">
+			<Label Text="Sort By:" VerticalOptions="Center" ></Label>
+  	  		<Button Text="Name"  Clicked="SortByName"></Button>
+	  		<Button Text="Number" Clicked="SortByNum"></Button>
+	  		<Button Text="Score" Clicked="SortByScore"></Button>
+	  		<Button Text="Rely" Clicked="SortByRely"></Button>
+	  		<Button Text="Auto" Clicked="SortByAuto"></Button>
+  </StackLayout>
 
   <ListView x:Name="listView" HasUnevenRows="true" BackgroundColor="Transparent" >
     <ListView.ItemTemplate>
@@ -15,9 +24,8 @@
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>
+</StackLayout>
 	<ContentPage.ToolbarItems>
-	  		<ToolbarItem Name="SortBy: Name" Activated="SortByName" Order="Primary" Priority="0"/>
-	  		<ToolbarItem Name="Number" Activated="SortByNum" Order="Primary" Priority="0"/>
 	  		<ToolbarItem Name="Refresh" Activated="Refresh" Order="Primary" Priority="0"/>
 	  		<ToolbarItem Name="NEW" Activated="OnClick" Order="Primary" Priority="0"/>
   	</ContentPage.ToolbarItems>

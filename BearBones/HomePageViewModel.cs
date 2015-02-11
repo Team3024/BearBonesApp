@@ -23,6 +23,12 @@ namespace BearBones
 
 		public string scoutName {  set; get; }
 
+		public string score {  set; get; }
+
+		public string reliability {  set; get; }
+
+		public string auto {  set; get; }
+
 		public int index {  set; get; }
 
 	}

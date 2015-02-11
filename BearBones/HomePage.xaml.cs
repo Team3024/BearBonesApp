@@ -66,12 +66,21 @@ namespace BearBones
 				((ListView)sender).SelectedItem = null; // de-select the row
 				HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
 				InfoPage page = new InfoPage (hpvm);// sent it the hpvm object
-				Navigation.PushModalAsync (page);
+				goInfo(page);
+ 				page=page;
+
 			};
 			// set the ListView data source to empty list
 			listView.ItemsSource = models;
 
 		}
+
+		async void goInfo(InfoPage page)
+		{
+			await Navigation.PushModalAsync (page);
+			page=page;
+		}
+
 
 		async void GetTeams()
 		{
@@ -171,7 +180,7 @@ namespace BearBones
 
 			NewTeamPage page = new NewTeamPage (this);
 			await Navigation.PushModalAsync (page);
-
+			page = page;
 		}
 
 		async public void Refresh(object sender, EventArgs e)
@@ -240,6 +249,78 @@ namespace BearBones
 
 		}
 
+		async public void SortByScore(object sender, EventArgs e)
+		{
+
+			//ToolbarItem tbi = (ToolbarItem) sender;
+			//this.DisplayAlert("Selected!", tbi.Name,"OK");
+
+
+			ObservableCollection<HomePageViewModel> tList = new ObservableCollection<HomePageViewModel> ();
+			foreach (HomePageViewModel vm in models)
+				tList.Add (vm);
+
+			models.Clear ();
+
+			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
+
+			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.score))
+			{
+				item.PageName=item.score+"--"+item.teamName+"--"+item.teamNumber;
+				home.Add (item);
+			}
+			listView.ItemsSource = models;
+
+		}
+
+		async public void SortByRely(object sender, EventArgs e)
+		{
+
+			//ToolbarItem tbi = (ToolbarItem) sender;
+			//this.DisplayAlert("Selected!", tbi.Name,"OK");
+
+
+			ObservableCollection<HomePageViewModel> tList = new ObservableCollection<HomePageViewModel> ();
+			foreach (HomePageViewModel vm in models)
+				tList.Add (vm);
+
+			models.Clear ();
+
+			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
+
+			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.reliability))
+			{
+				item.PageName=item.reliability+"--"+item.teamName+"--"+item.teamNumber;
+				home.Add (item);
+			}
+			listView.ItemsSource = models;
+
+		}
+
+		async public void SortByAuto(object sender, EventArgs e)
+		{
+
+			//ToolbarItem tbi = (ToolbarItem) sender;
+			//this.DisplayAlert("Selected!", tbi.Name,"OK");
+
+
+			ObservableCollection<HomePageViewModel> tList = new ObservableCollection<HomePageViewModel> ();
+			foreach (HomePageViewModel vm in models)
+				tList.Add (vm);
+
+			models.Clear ();
+
+			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
+
+			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.auto))
+			{
+				item.PageName=item.auto+"--"+item.teamName+"--"+item.teamNumber;
+				home.Add (item);
+			}
+			listView.ItemsSource = models;
+
+		}
+
 		/*
 		public void FilterTeams(string text)
 		{
@@ -296,6 +377,7 @@ namespace BearBones
 			HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
 			InfoPage page = new InfoPage (hpvm);
 			await Navigation.PushModalAsync (page);
+			hpvm = hpvm;
 		}
 
 		async void NewMatchReport(string pageName)
