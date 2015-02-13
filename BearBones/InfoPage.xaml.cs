@@ -14,7 +14,7 @@ namespace BearBones
 	public partial class InfoPage : CarouselPage
 	{	
 
-		public List<string> pointsScoreds = new List<string> ();
+		public List<string> allianceScore = new List<string> ();
 		public List<string> driveTypes = new List<string> ();
 		public List<string> scoutNames = new List<string> ();
 		public List<string> autoCapabilities = new List<string> ();
@@ -42,10 +42,12 @@ namespace BearBones
 
 		public int teamNumber;
 		public string teamName;
+		public HomePageViewModel hp;
 
 		public InfoPage (HomePageViewModel hpvm)
 		{
-
+			if(hpvm != null)
+				hp = hpvm;
 			InitializeComponent ();
 			getReports(hpvm.teamNumber);
 
@@ -95,7 +97,7 @@ namespace BearBones
 			foreach (ReportViewModel ip in reports) {
 				var p = ip;
 
-				pointsScoreds.Add (ip.pointsScored);
+				allianceScore.Add (ip.allianceScore);
 				driveTypes.Add (ip.driveType);
 				scoutNames.Add (ip.scoutName);
 				autoCapabilities.Add (ip.autoCapability);
@@ -120,10 +122,27 @@ namespace BearBones
 				teamNumbers.Add (ip.teamNumber);
 				teamQualities.Add (ip.teamQuality);
 				yellowCoopStacks.Add (ip.yellowCoopStack);
+				if (hp != null)
+				{
+					if (ip.allianceScore != null)
+						hp.score = ip.allianceScore.ToString ();
+					else
+						hp.score = "";
+
+					if (ip.brokeDown != null)
+						hp.reliability = ip.brokeDown.ToString ();
+					else
+						hp.reliability = "";
+
+					if (ip.autoCapability != null)
+						hp.auto = ip.autoCapability.ToString ();
+					else
+						hp.auto = "";
+				}
 
 				InfoCell report = new InfoCell ();
 
-				this.Children.Add (report.CreatePage (ip.pointsScored,
+				this.Children.Add (report.CreatePage (ip.allianceScore,
 					ip.driveType,
 					ip.scoutName,
 					ip.autoCapability,
@@ -183,7 +202,7 @@ namespace BearBones
 
 		async Task BuildGraphs()
 		{
-			if (pointsScoreds.Count > 0) {
+			if (allianceScore.Count > 0) {
 
 				Series scoreSeries = new Series {
 					Color = Color.Red,
@@ -201,7 +220,7 @@ namespace BearBones
 					Type = ChartType.Line
 				};
 
-				foreach (var score in pointsScoreds) {
+				foreach (var score in allianceScore) {
 					int scoreInt;
 
 					if (score == null) {

@@ -54,7 +54,9 @@ namespace BearBones
 		public string teamQuality {  set; get; }	//bad,poor,ok,good,superb
 		public string notes {  set; get; }
 		//add photo
-		public string pointsScored {  set; get; }	//0,5,10,20,30,40,50-200
+		public string allianceScore {  set; get; }	//0,5,10,20,30,40,50-200
+		public string canScore {  set; get; }	//0,5,10,20,30,40,50-200
+		public string toteScore {  set; get; }	//0,5,10,20,30,40,50-200
 	}
 }
 

@@ -42,7 +42,9 @@ namespace BearBones
 		ReportViewModel model;
 
 		string[] drvType = { "Mecanum", "Tank", "Swerve", "Other","none" };
-		string[] ptsScored = {"0","5","10","20","30","40","50","60","70","80","90","100","150","200","250","none"};
+		string[] allianceScor = {"0","5","10","20","30","40","50","60","70","80","90","100","150","200","250","none"};
+		string[] toteScor = {"2","4","6","8","10","12","none"};
+		string[] canScor = {"4","8","12","16","20","24","28","32","none"};
 		string[] bldQuality = {"Superb","High","OK","Low","Poor","Junk","none"};
 		string[] tmQuality = {"Superb","High","OK","Low","Poor","none"};
 		string[] maxStak = {"0","1","2","3","4","5","6","none"};
@@ -77,10 +79,10 @@ namespace BearBones
 			else
 				model.driveType = drvType[drvType.Length-1];
 
-			if(pointsScored.SelectedIndex>=0)
-				model.pointsScored = ptsScored [pointsScored.SelectedIndex];
+			if(allianceScore.SelectedIndex>=0)
+				model.allianceScore = allianceScor [allianceScore.SelectedIndex];
 			else
-				model.pointsScored = ptsScored [ptsScored.Length-1];
+				model.allianceScore = allianceScor [allianceScor.Length-1];
 
 			if(buildQuality.SelectedIndex>=0)
 				model.buildQuality = bldQuality[buildQuality.SelectedIndex];

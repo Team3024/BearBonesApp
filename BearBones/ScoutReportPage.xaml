@@ -82,7 +82,7 @@
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Auto Capability"></Label>
-				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Points Scored"></Label>
+				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Alliance Score"></Label>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Picker x:Name="autoCapability" BackgroundColor="Red" SelectedIndex="0" Title="Auto"  HorizontalOptions="FillAndExpand">
@@ -95,7 +95,7 @@
 			           	<x:String>none</x:String> 
 			        </Picker.Items>
 			    </Picker>
-			    <Picker x:Name="pointsScored" BackgroundColor="Red" SelectedIndex="0"  Title="Points Scored"  HorizontalOptions="FillAndExpand">
+			    <Picker x:Name="allianceScore" BackgroundColor="Red" SelectedIndex="0"  Title="Alliance Score"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			            <x:String>0</x:String> 
 			            <x:String>5</x:String>
@@ -112,6 +112,36 @@
 			          	<x:String>150</x:String>
 			            <x:String>200</x:String>
 			           	<x:String>250</x:String>
+			            <x:String>none</x:String>
+			        </Picker.Items>
+			    </Picker>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
+				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Can Score"></Label>
+				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Tote Score"></Label>
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" HeightRequest="40">
+				<Picker x:Name="canScore" BackgroundColor="Red" SelectedIndex="0" Title="Can Score"  HorizontalOptions="FillAndExpand">
+			        <Picker.Items>
+			            <x:String>4</x:String> 
+			            <x:String>8</x:String>
+			            <x:String>12</x:String>
+			           	<x:String>16</x:String> 
+			            <x:String>20</x:String>
+			          	<x:String>24</x:String>
+			           	<x:String>28</x:String> 
+			            <x:String>32</x:String>
+			           	<x:String>none</x:String> 
+			        </Picker.Items>
+			    </Picker>
+			    <Picker x:Name="toteScore" BackgroundColor="Red" SelectedIndex="0"  Title="Tote Score"  HorizontalOptions="FillAndExpand">
+			        <Picker.Items>
+			            <x:String>2</x:String> 
+			            <x:String>4</x:String>
+			            <x:String>6</x:String>
+			            <x:String>8</x:String>
+			            <x:String>10</x:String>
+			          	<x:String>12</x:String>
 			            <x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>

@@ -60,7 +60,7 @@ namespace BearBones
 				model.teamNumber = 0;
 
 			Random rand = new Random ();
-			model.pointsScored = rand.Next().ToString();
+			model.allianceScore = rand.Next().ToString();
 			model.driveType = "mecanum";
 			model.matchNumber = rand.Next().ToString();
 			model.reportType = "match";

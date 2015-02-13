@@ -109,7 +109,7 @@ namespace BearBones
 								ReportViewModel data = new ReportViewModel();
 								data.reportType = (string)token.SelectToken("type");
 								data.scoutName = (string)token.SelectToken("scout");
-								data.pointsScored = (string)token.SelectToken("score");
+								data.allianceScore = (string)token.SelectToken("score");
 								data.driveType = (string)token.SelectToken("driveType");
 								data.matchNumber = (string)token.SelectToken("matchNumber");
 								data.grabsContainer = (bool)token.SelectToken("grabsContainer");
@@ -160,7 +160,7 @@ namespace BearBones
 		{
 			string uri="http://71.92.131.203/db/data/cypher/";
 			string query="CREATE (x:Report {type:\"" + vm.reportType + "\",matchNumber:\""+vm.matchNumber+"\""+
-				" ,scout:\"" + vm.scoutName + "\",driveType:\"" + vm.driveType + "\" ,score:\"" + vm.pointsScored + "\""+
+				" ,scout:\"" + vm.scoutName + "\",driveType:\"" + vm.driveType + "\" ,score:\"" + vm.allianceScore + "\""+
 				" ,maxStack:\"" + vm.maxStack + "\",grabsContainer:" + vm.grabsContainer + " ,grabsTote:" + vm.grabsTote +
 				" ,grabsContainerOffStep:" + vm.grabsContainerOffStep + ",grabsToteOffStep:" + vm.grabsToteOffStep +
 				" ,brokeDown:" + vm.brokeDown + " ,lastYearFinish:\"" + vm.lastYearFinish+"\""+
