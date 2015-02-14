@@ -110,6 +110,8 @@ namespace BearBones
 								data.reportType = (string)token.SelectToken("type");
 								data.scoutName = (string)token.SelectToken("scout");
 								data.allianceScore = (string)token.SelectToken("score");
+								data.canScore = (string)token.SelectToken("canScore");
+								data.toteScore = (string)token.SelectToken("toteScore");
 								data.driveType = (string)token.SelectToken("driveType");
 								data.matchNumber = (string)token.SelectToken("matchNumber");
 								data.grabsContainer = (bool)token.SelectToken("grabsContainer");
@@ -164,6 +166,7 @@ namespace BearBones
 				" ,maxStack:\"" + vm.maxStack + "\",grabsContainer:" + vm.grabsContainer + " ,grabsTote:" + vm.grabsTote +
 				" ,grabsContainerOffStep:" + vm.grabsContainerOffStep + ",grabsToteOffStep:" + vm.grabsToteOffStep +
 				" ,brokeDown:" + vm.brokeDown + " ,lastYearFinish:\"" + vm.lastYearFinish+"\""+
+				" ,toteScore:" + vm.toteScore + " ,canScore:\"" + vm.canScore+"\""+
 				" ,noodleBonus:" + vm.noodleBonus + " ,noodleCleanup:" + vm.noodleCleanup +" ,noodleInContainer:" + vm.noodleInContainer +
 				" ,notes:\"" + vm.notes +"\" ,teamQuality:\"" + vm.teamQuality +"\" ,autoCapability:\"" + vm.autoCapability +"\""+
 				"}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber +

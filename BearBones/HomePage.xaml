@@ -6,15 +6,16 @@
              xmlns:local="clr-namespace:BearBones;assembly=BearBones"
              BackgroundImage="grizzly.png"
              BackgroundColor="Red"
+             Padding="0,0,0,0"
              >
-<StackLayout>
-  <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+<StackLayout >
+  <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
 			<!--<Label Text="Sort By:" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" ></Label>-->
-  	  		<Button Text="Name"  Clicked="SortByName" HorizontalOptions="FillAndExpand"></Button>
-	  		<Button Text="Num" Clicked="SortByNum" HorizontalOptions="FillAndExpand"></Button>
-	  		<Button Text="Score" Clicked="SortByScore" HorizontalOptions="FillAndExpand"></Button>
-	  		<Button Text="Rely" Clicked="SortByRely" HorizontalOptions="FillAndExpand"></Button>
-	  		<Button Text="Auto" Clicked="SortByAuto" HorizontalOptions="FillAndExpand"></Button>
+  	  		<Button FontSize="12" Text="Name"  Clicked="SortByName" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button FontSize="12" Text="Num" Clicked="SortByNum" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button FontSize="12" Text="Score" Clicked="SortByScore" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button FontSize="12" Text="Rely" Clicked="SortByRely" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button FontSize="12" Text="Auto" Clicked="SortByAuto" HorizontalOptions="FillAndExpand"></Button>
   </StackLayout>
 
   <ListView x:Name="listView" HasUnevenRows="true" BackgroundColor="Transparent" >
