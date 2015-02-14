@@ -8,13 +8,13 @@
              BackgroundColor="Red"
              >
 <StackLayout>
-  <StackLayout Orientation="Horizontal">
-			<Label Text="Sort By:" VerticalOptions="Center" ></Label>
-  	  		<Button Text="Name"  Clicked="SortByName"></Button>
-	  		<Button Text="Number" Clicked="SortByNum"></Button>
-	  		<Button Text="Score" Clicked="SortByScore"></Button>
-	  		<Button Text="Rely" Clicked="SortByRely"></Button>
-	  		<Button Text="Auto" Clicked="SortByAuto"></Button>
+  <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+			<!--<Label Text="Sort By:" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" ></Label>-->
+  	  		<Button Text="Name"  Clicked="SortByName" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button Text="Num" Clicked="SortByNum" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button Text="Score" Clicked="SortByScore" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button Text="Rely" Clicked="SortByRely" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button Text="Auto" Clicked="SortByAuto" HorizontalOptions="FillAndExpand"></Button>
   </StackLayout>
 
   <ListView x:Name="listView" HasUnevenRows="true" BackgroundColor="Transparent" >
