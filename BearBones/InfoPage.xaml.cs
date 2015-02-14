@@ -163,8 +163,8 @@ namespace BearBones
 					ip.reportType,
 					ip.setsContainerOnStack,
 					ip.stacksTotes,
-					ip.teamName,
-					ip.teamNumber,
+					teamName,
+					teamNumber,
 					ip.teamQuality,
 					ip.yellowCoopStack,
 					count));
@@ -182,7 +182,9 @@ namespace BearBones
 
 			}
 
+
 			buildAttributes ();
+
 			//Chart chart = await BuildGraphs ();
 			//graphs.Children.Add (chart);
 			await BuildGraphs ();
@@ -202,7 +204,7 @@ namespace BearBones
 		}
 
 		void buildAttributes(){
-
+		
 			attributes.Children.Add(BuildSummary ("Grabs Can", grabsContainers[0]));
 			attributes.Children.Add(BuildSummary ("Grabs Can of Step", grabsContainerOffSteps[0]));
 			attributes.Children.Add(BuildSummary ("Grabs Totes", grabsTotes[0]));
@@ -326,13 +328,11 @@ namespace BearBones
 
 				//graphs.Children.Add(lbl);
 				//graphs.Children.Add(chart);
-
 				graphs.Children.Add (chart);
-				graphs.Children.Remove (graphLoading);
 				graphs.Children.Add (new Label{Text="Score", BackgroundColor=Color.Red, TextColor=Color.Black, FontSize = 15});
 				graphs.Children.Add (new Label{Text="Reliability", BackgroundColor=Color.Blue, TextColor=Color.Black, FontSize = 15});
 				graphs.Children.Add (new Label{Text="Auto Capabilities", BackgroundColor=Color.White, TextColor=Color.Black, FontSize = 15});
-
+				graphs.Children.Remove (graphLoading);
 
 			} else {
 				//await Navigation.PopModalAsync ();
