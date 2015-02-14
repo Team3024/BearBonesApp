@@ -39,8 +39,8 @@ namespace BearBones
 		public List<int> teamNumbers = new List<int> ();
 		public List<string> teamQualities = new List<string> ();
 		public List<bool> yellowCoopStacks = new List<bool> ();
-		public List<string> toteScores = new List<string> ();
-		public List<string> canScores = new List<string> ();
+		public List<int> toteScores = new List<int> ();
+		public List<int> canScores = new List<int> ();
 
 		public int teamNumber;
 		public string teamName;
@@ -97,8 +97,10 @@ namespace BearBones
 
 			if (reports != null && reports.Count > 0)
 			{
-				foreach (ReportViewModel ip in reports) {
+				foreach (ReportViewModel ip in reports)
+				{
 					var p = ip;
+
 
 					allianceScore.Add (ip.allianceScore);
 					driveTypes.Add (ip.driveType);
@@ -125,62 +127,29 @@ namespace BearBones
 					teamNumbers.Add (ip.teamNumber);
 					teamQualities.Add (ip.teamQuality);
 					yellowCoopStacks.Add (ip.yellowCoopStack);
-					if (hp != null) {
+					toteScores.Add (ip.toteScore);
+					canScores.Add (ip.canScore);
+					if (hp != null)
+					{
 						if (ip.allianceScore != null)
 							hp.score = ip.allianceScore.ToString ();
 						else
 							hp.score = "";
 
-<<<<<<< Upstream, based on origin/master
-				allianceScore.Add (ip.allianceScore);
-				driveTypes.Add (ip.driveType);
-				scoutNames.Add (ip.scoutName);
-				autoCapabilities.Add (ip.autoCapability);
-				brokeDowns.Add (ip.brokeDown);
-				buildQualities.Add (ip.buildQuality);
-				grabsContainers.Add (ip.grabsContainer);
-				grabsContainerOffSteps.Add (ip.grabsContainerOffStep);
-				grabsTotes.Add (ip.grabsTote);
-				grabsToteOffSteps.Add (ip.grabsToteOffStep);
-				lastYearFinishes.Add (ip.lastYearFinish);
-				matchNumbers.Add (ip.matchNumber);
-				maxStacks.Add (ip.maxStack);
-				noodleBonuses.Add (ip.noodleBonus);
-				noodleCleanups.Add (ip.noodleCleanup);
-				noodleInContainers.Add (ip.noodleInContainer);
-				noteses.Add (ip.notes);
-				rebuildsStacks.Add (ip.rebuildsStack);
-				reportTypes.Add (ip.reportType);
-				setsContainerOnStacks.Add (ip.setsContainerOnStack);
-				stacksToteses.Add (ip.stacksTotes);
-				teamNames.Add (ip.teamName);
-				teamNumbers.Add (ip.teamNumber);
-				teamQualities.Add (ip.teamQuality);
-				yellowCoopStacks.Add (ip.yellowCoopStack);
-				toteScores.Add (ip.toteScore);
-				canScores.Add (ip.canScore);
-				if (hp != null)
-				{
-					if (ip.allianceScore != null)
-						hp.score = ip.allianceScore.ToString ();
-					else
-						hp.score = "";
-=======
 						if (ip.brokeDown != null)
 							hp.reliability = ip.brokeDown.ToString ();
 						else
 							hp.reliability = "";
->>>>>>> 540ac96 * InfoCell.cs: 
 
 						if (ip.autoCapability != null)
 							hp.auto = ip.autoCapability.ToString ();
 						else
 							hp.auto = "";
 					}
-
+						
 					InfoCell report = new InfoCell ();
 
-					this.Children.Add (report.CreatePage (ip.allianceScore,
+					this.Children.Add (report.CreatePage (ip.allianceScore, ip.toteScore, ip.canScore,
 						ip.driveType,
 						ip.scoutName,
 						ip.autoCapability,
@@ -201,8 +170,8 @@ namespace BearBones
 						ip.reportType,
 						ip.setsContainerOnStack,
 						ip.stacksTotes,
-						ip.teamName,
-						ip.teamNumber,
+						teamName,
+						teamNumber,
 						ip.teamQuality,
 						ip.yellowCoopStack,
 						count));
@@ -219,57 +188,10 @@ namespace BearBones
 					count++;
 
 				}
-
-<<<<<<< Upstream, based on origin/master
-				InfoCell report = new InfoCell ();
-
-				this.Children.Add (report.CreatePage (ip.allianceScore, ip.toteScore, ip.canScore,
-					ip.driveType,
-					ip.scoutName,
-					ip.autoCapability,
-					ip.brokeDown,
-					ip.buildQuality,
-					ip.grabsContainer,
-					ip.grabsContainerOffStep,
-					ip.grabsTote,
-					ip.grabsToteOffStep,
-					ip.lastYearFinish,
-					ip.matchNumber,
-					ip.maxStack,
-					ip.noodleBonus,
-					ip.noodleCleanup,
-					ip.noodleInContainer,
-					ip.notes,
-					ip.rebuildsStack,
-					ip.reportType,
-					ip.setsContainerOnStack,
-					ip.stacksTotes,
-					teamName,
-					teamNumber,
-					ip.teamQuality,
-					ip.yellowCoopStack,
-					count));
-
-				//this.Children.Add (report.CreatePage(ip.pointsScored, ip.driveType, ip.scoutName));
-
-
-
-				//scores [count] = Convert.ToString (ip.score);
-				//drives [count] = Convert.ToString (ip.drive);
-				//scouts [count] = Convert.ToString (ip.scout);
-				//scores.Add (Convert.ToString(ip.score));
-
-				count++;
-
-			}
-
-
-=======
->>>>>>> 540ac96 * InfoCell.cs: 
-			buildAttributes ();
-			//Chart chart = await BuildGraphs ();
-			//graphs.Children.Add (chart);
-			await BuildGraphs ();
+				buildAttributes ();
+				//Chart chart = await BuildGraphs ();
+				//graphs.Children.Add (chart);
+				await BuildGraphs ();
 			}
 		
 		}
@@ -340,8 +262,8 @@ namespace BearBones
 
 					int toteScoreInt;
 					int canScoreInt;
-					string toteScore = toteScores [x];
-					string canScore = canScores [x];
+					string toteScore = toteScores [x].ToString();
+					string canScore = canScores [x].ToString();
 
 					if (toteScore == null) {
 						toteScoreInt = 0;
