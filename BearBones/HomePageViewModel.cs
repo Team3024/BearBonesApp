@@ -24,6 +24,8 @@ namespace BearBones
 		public string scoutName {  set; get; }
 
 		public string score {  set; get; }
+		public int toteScore {  set; get; }
+		public int canScore {  set; get; }
 
 		public string reliability {  set; get; }
 

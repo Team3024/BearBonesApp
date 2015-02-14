@@ -69,6 +69,20 @@ namespace BearBones
 								else
 									data.teamNumber=-1;
 
+								data.score = (string)token.SelectToken("score");
+								try
+								{
+									data.toteScore = (int)token.SelectToken("toteScore");
+									data.canScore = (int)token.SelectToken("canScore");
+									data.auto = (string)token.SelectToken("auto");
+									data.reliability = (string)token.SelectToken("reliability");
+								}
+
+								catch(Exception ex)
+								{
+
+								}
+
 								results.Add(data);
 							}
 						}
@@ -171,7 +185,8 @@ namespace BearBones
 				" ,noodleBonus:" + vm.noodleBonus + " ,noodleCleanup:" + vm.noodleCleanup +" ,noodleInContainer:" + vm.noodleInContainer +
 				" ,notes:\"" + vm.notes +"\" ,teamQuality:\"" + vm.teamQuality +"\" ,buildQuality:\""+vm.buildQuality+"\" ,autoCapability:\"" + vm.autoCapability +"\""+
 				"}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber +
-				" WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)";
+				" WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)"+
+				" WITH a SET  a.auto=\""+vm.autoCapability+"\", a.reliability=\""+vm.brokeDown+"\", a.score=\""+vm.allianceScore+"\" ,a.toteScore="+vm.toteScore+" ,a.canScore="+vm.canScore+" ";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 			return responseStr;
 		}

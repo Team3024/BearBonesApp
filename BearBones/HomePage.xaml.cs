@@ -111,7 +111,7 @@ namespace BearBones
 
 						foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.teamNumber))
 						{
-							item.PageName=item.teamNumber+"--"+item.teamName;
+							item.PageName=item.teamNumber+"--"+item.teamName+"\nBroke:"+item.reliability+" Auto:"+item.auto;
 							home.Add (item);
 						}
 						listView.ItemsSource = models;
@@ -217,7 +217,7 @@ namespace BearBones
 
 			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.teamName))
 			{
-				item.PageName=item.teamName+"--"+item.teamNumber;
+				item.PageName=item.teamName+"--"+item.teamNumber+"\nBroke:"+item.reliability+" Auto:"+item.auto;
 				home.Add (item);
 			}
 
@@ -242,14 +242,14 @@ namespace BearBones
 
 			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.teamNumber))
 			{
-				item.PageName=item.teamNumber+"--"+item.teamName;
+				item.PageName=item.teamNumber+"--"+item.teamName+"\nBroke:"+item.reliability+" Auto:"+item.auto;
 				home.Add (item);
 			}
 			listView.ItemsSource = models;
 
 		}
 
-		async public void SortByScore(object sender, EventArgs e)
+		async public void SortByToteScore(object sender, EventArgs e)
 		{
 
 			//ToolbarItem tbi = (ToolbarItem) sender;
@@ -264,16 +264,16 @@ namespace BearBones
 
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
 
-			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.score))
+			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.toteScore)))
 			{
-				item.PageName=item.score+"--"+item.teamName+"--"+item.teamNumber;
+				item.PageName=item.score+"--"+item.teamName+"--"+item.teamNumber+"\nBroke:"+item.reliability+" Auto:"+item.auto;
 				home.Add (item);
 			}
 			listView.ItemsSource = models;
 
 		}
 
-		async public void SortByRely(object sender, EventArgs e)
+		async public void SortByCanScore(object sender, EventArgs e)
 		{
 
 			//ToolbarItem tbi = (ToolbarItem) sender;
@@ -288,9 +288,9 @@ namespace BearBones
 
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
 
-			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.reliability))
+			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.canScore)))
 			{
-				item.PageName=item.reliability+"--"+item.teamName+"--"+item.teamNumber;
+				item.PageName=item.canScore+"--"+item.teamName+"--"+item.teamNumber+"\nBroke:"+item.reliability+" Auto:"+item.auto;
 				home.Add (item);
 			}
 			listView.ItemsSource = models;
