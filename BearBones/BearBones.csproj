@@ -54,14 +54,14 @@
     <Compile Include="InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="REST.cs">
-      <DependentUpon>MatchReportPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Neo4jData.cs" />
     <Compile Include="SampleEvent.cs" />
     <Compile Include="InfoPageViewModel.cs" />
     <Compile Include="ReportViewModel.cs" />
     <Compile Include="InfoCell.cs" />
+    <Compile Include="REST.cs">
+      <DependentUpon>REST.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

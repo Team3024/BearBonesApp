@@ -128,6 +128,7 @@ namespace BearBones
 								data.grabsContainerOffStep = (bool)token.SelectToken("grabsContainerOffStep");
 								data.noodleInContainer = (bool)token.SelectToken("noodleInContainer");
 								data.teamQuality = (string)token.SelectToken("teamQuality");
+								data.buildQuality = (string)token.SelectToken("buildQuality");
 								data.autoCapability = (string)token.SelectToken("autoCapability");
 								/*
 								if (token.SelectToken("score")!=null)
@@ -166,9 +167,9 @@ namespace BearBones
 				" ,maxStack:\"" + vm.maxStack + "\",grabsContainer:" + vm.grabsContainer + " ,grabsTote:" + vm.grabsTote +
 				" ,grabsContainerOffStep:" + vm.grabsContainerOffStep + ",grabsToteOffStep:" + vm.grabsToteOffStep +
 				" ,brokeDown:" + vm.brokeDown + " ,lastYearFinish:\"" + vm.lastYearFinish+"\""+
-				" ,toteScore:" + vm.toteScore + " ,canScore:\"" + vm.canScore+"\""+
+				" ,toteScore:\"" + vm.toteScore + "\" ,canScore:\"" + vm.canScore+"\""+
 				" ,noodleBonus:" + vm.noodleBonus + " ,noodleCleanup:" + vm.noodleCleanup +" ,noodleInContainer:" + vm.noodleInContainer +
-				" ,notes:\"" + vm.notes +"\" ,teamQuality:\"" + vm.teamQuality +"\" ,autoCapability:\"" + vm.autoCapability +"\""+
+				" ,notes:\"" + vm.notes +"\" ,teamQuality:\"" + vm.teamQuality +"\" ,buildQuality:\""+vm.buildQuality+"\" ,autoCapability:\"" + vm.autoCapability +"\""+
 				"}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber +
 				" WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
