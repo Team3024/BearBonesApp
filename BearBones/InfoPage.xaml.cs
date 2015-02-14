@@ -39,6 +39,8 @@ namespace BearBones
 		public List<int> teamNumbers = new List<int> ();
 		public List<string> teamQualities = new List<string> ();
 		public List<bool> yellowCoopStacks = new List<bool> ();
+		public List<string> toteScores = new List<string> ();
+		public List<string> canScores = new List<string> ();
 
 		public int teamNumber;
 		public string teamName;
@@ -122,6 +124,8 @@ namespace BearBones
 				teamNumbers.Add (ip.teamNumber);
 				teamQualities.Add (ip.teamQuality);
 				yellowCoopStacks.Add (ip.yellowCoopStack);
+				toteScores.Add (ip.toteScore);
+				canScores.Add (ip.canScore);
 				if (hp != null)
 				{
 					if (ip.allianceScore != null)
@@ -142,7 +146,7 @@ namespace BearBones
 
 				InfoCell report = new InfoCell ();
 
-				this.Children.Add (report.CreatePage (ip.allianceScore,
+				this.Children.Add (report.CreatePage (ip.allianceScore, ip.toteScore, ip.canScore,
 					ip.driveType,
 					ip.scoutName,
 					ip.autoCapability,
@@ -251,17 +255,33 @@ namespace BearBones
 					Type = ChartType.Line
 				};
 
-				foreach (var score in allianceScore) {
-					int scoreInt;
 
-					if (score == null) {
-						scoreInt = -1;
+
+				for (var x = 0; x < toteScores.Count; x++) {
+
+					int toteScoreInt;
+					int canScoreInt;
+					string toteScore = toteScores [x];
+					string canScore = canScores [x];
+
+					if (toteScore == null) {
+						toteScoreInt = 0;
 					} else {
-						int.TryParse (score, out scoreInt);
+						int.TryParse (toteScore, out toteScoreInt);
 					}
 
-					scoreSeries.Points.Add (new DataPoint (){ Label = score, Value = scoreInt });
+					if (canScore == null) {
+						canScoreInt = 0;
+					} else {
+						int.TryParse (canScore, out canScoreInt);
+					}
+
+					DataPoint dp = new DataPoint (){ Value = (toteScoreInt + canScoreInt) };
+
+					scoreSeries.Points.Add (dp);
+
 				}
+
 				int counter = 1;
 				foreach (var brokeDown in brokeDowns) {
 					string label;

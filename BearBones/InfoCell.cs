@@ -17,6 +17,8 @@ namespace BearBones
 
 
 		public ContentPage CreatePage(string teamScore,
+			string toteScore,
+			string canScore,
 			string teamDrive,
 			string scoutName,
 			string autoCapabilities,
@@ -66,18 +68,43 @@ namespace BearBones
 				pageIndicator.Children.Add (new BoxView { BackgroundColor = Color.Black, WidthRequest = 5, HeightRequest = 5 });
 			}
 
+			int canScoreInt;
+			int toteScoreInt;
+
+			if (canScore == null) {
+				canScoreInt = 0;
+			} else {
+				int.TryParse (canScore, out canScoreInt);
+			}
+
+			if (toteScore == null) {
+				toteScoreInt = 0;
+			} else {
+				int.TryParse (toteScore, out toteScoreInt);
+			}
+
+			
 
 			var report = new ContentPage {
 
 				Content = new ScrollView{ 
 					Content = new StackLayout{
-						BackgroundColor= new Color(0,0,0,0),
 						Padding=5,
 						Children = {
-							new Label {Text = teamName + " " + teamNumber.ToString(), FontSize = 30, TextColor = Color.Black, XAlign = TextAlignment.Center},
+							new Label {Text = teamName + " " + teamNumber.ToString(), FontSize = 30, TextColor = Color.Black, FontAttributes= FontAttributes.Bold, XAlign = TextAlignment.Center},
 							new Label {Text = "",
 								HeightRequest=12},
-							new Label {Text = "Score: " + teamScore, TextColor = Color.White,
+							new Label {Text="Robot:", FontSize=20, FontAttributes = FontAttributes.Bold, TextColor = Color.Black},
+							new Label {Text = "Alliance Score: " + teamScore, TextColor = Color.White,
+								//FontSize=25,
+								FontAttributes= FontAttributes.Bold},
+							new Label {Text = "Tote Score: " + toteScore, TextColor = Color.White,
+								//FontSize=25,
+								FontAttributes= FontAttributes.Bold},
+							new Label {Text = "Can Score: " + canScore, TextColor = Color.White,
+								//FontSize=25,
+								FontAttributes= FontAttributes.Bold},
+							new Label {Text = "Total Individual Score: " + (toteScoreInt + canScoreInt).ToString(), TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
 							new Label {Text = "Drive: " + teamDrive,
@@ -110,41 +137,41 @@ namespace BearBones
 							//Seperator
 							new BoxView{WidthRequest=HomePage.ScreenWidth, HeightRequest=2, Color=Color.Black, BackgroundColor=Color.Black},
 							//Robot Abilities
-							new Label {Text="Robot:", FontSize=20, FontAttributes = FontAttributes.Bold},
-							new Label {Text = "\t\t" + brokeDownText, TextColor = Color.White,
+							new Label {Text="Robot:", FontSize=20, FontAttributes = FontAttributes.Bold, TextColor = Color.Black},
+							new Label {Text = brokeDownText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + grabsContainerText, TextColor = Color.White,
+							new Label {Text = grabsContainerText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + grabsContainerOffStepText, TextColor = Color.White,
+							new Label {Text = grabsContainerOffStepText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + grabsToteText, TextColor = Color.White,
+							new Label {Text = grabsToteText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + grabsToteOffStepText, TextColor = Color.White,
+							new Label {Text = grabsToteOffStepText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + noodleBonusText, TextColor = Color.White,
+							new Label {Text = noodleBonusText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + noodleCleanupText, TextColor = Color.White,
+							new Label {Text = noodleCleanupText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + noodleInContainerText, TextColor = Color.White,
+							new Label {Text = noodleInContainerText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + rebuildStackText, TextColor = Color.White,
+							new Label {Text = rebuildStackText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + setsContainerOnStackText, TextColor = Color.White,
+							new Label {Text = setsContainerOnStackText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + stacksTotesText, TextColor = Color.White,
+							new Label {Text = stacksTotesText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
-							new Label {Text = "\t\t" + yellowCoopStackText, TextColor = Color.White,
+							new Label {Text = yellowCoopStackText, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
 							pageIndicator
