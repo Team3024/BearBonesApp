@@ -55,8 +55,8 @@ namespace BearBones
 		public string notes {  set; get; }
 		//add photo
 		public string allianceScore {  set; get; }	//0,5,10,20,30,40,50-200
-		public string canScore {  set; get; }	//0,5,10,20,30,40,50-200
-		public string toteScore {  set; get; }	//0,5,10,20,30,40,50-200
+		public int canScore {  set; get; }	//0,5,10,20,30,40,50-200
+		public int toteScore {  set; get; }	//0,5,10,20,30,40,50-200
 	}
 }
 

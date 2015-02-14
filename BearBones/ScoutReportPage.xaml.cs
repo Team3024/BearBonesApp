@@ -43,8 +43,8 @@ namespace BearBones
 
 		string[] drvType = { "Mecanum", "Tank", "Swerve", "Other","none" };
 		string[] allianceScor = {"0","5","10","20","30","40","50","60","70","80","90","100","150","200","250","none"};
-		string[] toteScor = {"2","4","6","8","10","12","none"};
-		string[] canScor = {"4","8","12","16","20","24","28","32","none"};
+		string[] toteScor = {"0","2","4","6","8","10","12"};
+		string[] canScor = {"0","4","8","12","16","20","24","28","32"};
 		string[] bldQuality = {"Superb","High","OK","Low","Poor","Junk","none"};
 		string[] tmQuality = {"Superb","High","OK","Low","Poor","none"};
 		string[] maxStak = {"0","1","2","3","4","5","6","none"};
@@ -67,6 +67,24 @@ namespace BearBones
 			//model.pointsScored = rand.Next().ToString();
 			model.matchNumber = rand.Next().ToString();
 			model.reportType = "scout";
+
+			canScore.SelectedIndexChanged += (object sender, EventArgs e) => 
+			{
+				Picker pik=(Picker)sender;
+				canScore.Unfocus();
+				model.canScore+=canScore.SelectedIndex*4;
+				canScoreTitle.Text="Can Score:"+model.canScore.ToString();
+				canScore.SelectedIndex=0;
+			};
+
+			toteScore.SelectedIndexChanged += (object sender, EventArgs e) => 
+			{
+				toteScore.Unfocus();
+				model.toteScore+=toteScore.SelectedIndex*2;
+				toteScore.SelectedIndex = 0;//On the screen picker stay at the old value
+				toteScoreTitle.Text="Tote Score:"+model.toteScore.ToString();
+				toteScore.SelectedIndex=0;
+			};
 			//model.scoutName = "JOHNNY FIVE";
 
 
@@ -132,6 +150,8 @@ namespace BearBones
 
 		void OnCancelClicked (object sender, EventArgs e)
 		{
+			model.canScore = 0;
+			model.toteScore = 0;
 			// leave this page
 			Navigation.PopModalAsync ();
 		}

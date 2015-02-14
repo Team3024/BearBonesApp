@@ -117,12 +117,13 @@
 			    </Picker>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
-				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Can Score"></Label>
-				<Label HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Tote Score"></Label>
+				<Label x:Name="canScoreTitle" HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Can Score"></Label>
+				<Label x:Name="toteScoreTitle"  HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Tote Score"></Label>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Picker x:Name="canScore" BackgroundColor="Red" SelectedIndex="0" Title="Can Score"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
+			        	<x:String>0</x:String> 
 			            <x:String>4</x:String> 
 			            <x:String>8</x:String>
 			            <x:String>12</x:String>
@@ -131,18 +132,17 @@
 			          	<x:String>24</x:String>
 			           	<x:String>28</x:String> 
 			            <x:String>32</x:String>
-			           	<x:String>none</x:String> 
 			        </Picker.Items>
 			    </Picker>
 			    <Picker x:Name="toteScore" BackgroundColor="Red" SelectedIndex="0"  Title="Tote Score"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
+			        	<x:String>0</x:String> 
 			            <x:String>2</x:String> 
 			            <x:String>4</x:String>
 			            <x:String>6</x:String>
 			            <x:String>8</x:String>
 			            <x:String>10</x:String>
 			          	<x:String>12</x:String>
-			            <x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>
 			</StackLayout>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -91,14 +91,47 @@ namespace BearBones
 		{
 
 			Rest rest = new Rest ();
-			Task <ObservableCollection<ReportViewModel>> list =  rest.getReports (tNum);//SendAndReceiveJsonRequest ();
+			Task <ObservableCollection<ReportViewModel>> list = rest.getReports (tNum);//SendAndReceiveJsonRequest ();
 			var reports = await list;
 			var count = 0;
 
+			if (reports != null && reports.Count > 0)
+			{
+				foreach (ReportViewModel ip in reports) {
+					var p = ip;
 
-			foreach (ReportViewModel ip in reports) {
-				var p = ip;
+					allianceScore.Add (ip.allianceScore);
+					driveTypes.Add (ip.driveType);
+					scoutNames.Add (ip.scoutName);
+					autoCapabilities.Add (ip.autoCapability);
+					brokeDowns.Add (ip.brokeDown);
+					buildQualities.Add (ip.buildQuality);
+					grabsContainers.Add (ip.grabsContainer);
+					grabsContainerOffSteps.Add (ip.grabsContainerOffStep);
+					grabsTotes.Add (ip.grabsTote);
+					grabsToteOffSteps.Add (ip.grabsToteOffStep);
+					lastYearFinishes.Add (ip.lastYearFinish);
+					matchNumbers.Add (ip.matchNumber);
+					maxStacks.Add (ip.maxStack);
+					noodleBonuses.Add (ip.noodleBonus);
+					noodleCleanups.Add (ip.noodleCleanup);
+					noodleInContainers.Add (ip.noodleInContainer);
+					noteses.Add (ip.notes);
+					rebuildsStacks.Add (ip.rebuildsStack);
+					reportTypes.Add (ip.reportType);
+					setsContainerOnStacks.Add (ip.setsContainerOnStack);
+					stacksToteses.Add (ip.stacksTotes);
+					teamNames.Add (ip.teamName);
+					teamNumbers.Add (ip.teamNumber);
+					teamQualities.Add (ip.teamQuality);
+					yellowCoopStacks.Add (ip.yellowCoopStack);
+					if (hp != null) {
+						if (ip.allianceScore != null)
+							hp.score = ip.allianceScore.ToString ();
+						else
+							hp.score = "";
 
+<<<<<<< Upstream, based on origin/master
 				allianceScore.Add (ip.allianceScore);
 				driveTypes.Add (ip.driveType);
 				scoutNames.Add (ip.scoutName);
@@ -132,18 +165,62 @@ namespace BearBones
 						hp.score = ip.allianceScore.ToString ();
 					else
 						hp.score = "";
+=======
+						if (ip.brokeDown != null)
+							hp.reliability = ip.brokeDown.ToString ();
+						else
+							hp.reliability = "";
+>>>>>>> 540ac96 * InfoCell.cs: 
 
-					if (ip.brokeDown != null)
-						hp.reliability = ip.brokeDown.ToString ();
-					else
-						hp.reliability = "";
+						if (ip.autoCapability != null)
+							hp.auto = ip.autoCapability.ToString ();
+						else
+							hp.auto = "";
+					}
 
-					if (ip.autoCapability != null)
-						hp.auto = ip.autoCapability.ToString ();
-					else
-						hp.auto = "";
+					InfoCell report = new InfoCell ();
+
+					this.Children.Add (report.CreatePage (ip.allianceScore,
+						ip.driveType,
+						ip.scoutName,
+						ip.autoCapability,
+						ip.brokeDown,
+						ip.buildQuality,
+						ip.grabsContainer,
+						ip.grabsContainerOffStep,
+						ip.grabsTote,
+						ip.grabsToteOffStep,
+						ip.lastYearFinish,
+						ip.matchNumber,
+						ip.maxStack,
+						ip.noodleBonus,
+						ip.noodleCleanup,
+						ip.noodleInContainer,
+						ip.notes,
+						ip.rebuildsStack,
+						ip.reportType,
+						ip.setsContainerOnStack,
+						ip.stacksTotes,
+						ip.teamName,
+						ip.teamNumber,
+						ip.teamQuality,
+						ip.yellowCoopStack,
+						count));
+
+					//this.Children.Add (report.CreatePage(ip.pointsScored, ip.driveType, ip.scoutName));
+
+
+
+					//scores [count] = Convert.ToString (ip.score);
+					//drives [count] = Convert.ToString (ip.drive);
+					//scouts [count] = Convert.ToString (ip.scout);
+					//scores.Add (Convert.ToString(ip.score));
+
+					count++;
+
 				}
 
+<<<<<<< Upstream, based on origin/master
 				InfoCell report = new InfoCell ();
 
 				this.Children.Add (report.CreatePage (ip.allianceScore, ip.toteScore, ip.canScore,
@@ -187,12 +264,14 @@ namespace BearBones
 			}
 
 
+=======
+>>>>>>> 540ac96 * InfoCell.cs: 
 			buildAttributes ();
-
 			//Chart chart = await BuildGraphs ();
 			//graphs.Children.Add (chart);
 			await BuildGraphs ();
-	
+			}
+		
 		}
 
 		async void NewMatchReport(object sender, EventArgs e)
@@ -208,7 +287,7 @@ namespace BearBones
 		}
 
 		void buildAttributes(){
-		
+
 			attributes.Children.Add(BuildSummary ("Grabs Can", grabsContainers[0]));
 			attributes.Children.Add(BuildSummary ("Grabs Can of Step", grabsContainerOffSteps[0]));
 			attributes.Children.Add(BuildSummary ("Grabs Totes", grabsTotes[0]));
@@ -348,11 +427,13 @@ namespace BearBones
 
 				//graphs.Children.Add(lbl);
 				//graphs.Children.Add(chart);
+
 				graphs.Children.Add (chart);
+				graphs.Children.Remove (graphLoading);
 				graphs.Children.Add (new Label{Text="Score", BackgroundColor=Color.Red, TextColor=Color.Black, FontSize = 15});
 				graphs.Children.Add (new Label{Text="Reliability", BackgroundColor=Color.Blue, TextColor=Color.Black, FontSize = 15});
 				graphs.Children.Add (new Label{Text="Auto Capabilities", BackgroundColor=Color.White, TextColor=Color.Black, FontSize = 15});
-				graphs.Children.Remove (graphLoading);
+
 
 			} else {
 				//await Navigation.PopModalAsync ();

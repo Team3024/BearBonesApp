@@ -110,8 +110,8 @@ namespace BearBones
 								data.reportType = (string)token.SelectToken("type");
 								data.scoutName = (string)token.SelectToken("scout");
 								data.allianceScore = (string)token.SelectToken("score");
-								data.canScore = (string)token.SelectToken("canScore");
-								data.toteScore = (string)token.SelectToken("toteScore");
+								data.canScore = (int)token.SelectToken("canScore");
+								data.toteScore = (int)token.SelectToken("toteScore");
 								data.driveType = (string)token.SelectToken("driveType");
 								data.matchNumber = (string)token.SelectToken("matchNumber");
 								data.grabsContainer = (bool)token.SelectToken("grabsContainer");

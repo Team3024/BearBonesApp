@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<CarouselPage x:Name="infoCarousel" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:BearBones;assembly=BearBones" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="#ed1c24" Title="Info">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CarouselPage x:Name="infoCarousel" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:BearBones;assembly=BearBones" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BearBones.InfoPage" BackgroundColor="Red" Title="Info">
 
 <ContentPage BackgroundColor="Transparent" x:Name="GraphPage">
 	<ContentPage.Resources>
@@ -29,7 +29,6 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 		<StackLayout>
-			<Label HeightRequest="5"/>
 			<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
 					<Label Text="" HeightRequest="20"/>
 		    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" Style="{StaticResource ButtonStyle}"/>
