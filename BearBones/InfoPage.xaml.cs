@@ -215,7 +215,7 @@ namespace BearBones
 		void buildAttributes(){
 
 			attributes.Children.Add(BuildSummary ("Grabs Can", grabsContainers[0]));
-			attributes.Children.Add(BuildSummary ("Grabs Can of Step", grabsContainerOffSteps[0]));
+			attributes.Children.Add(BuildSummary ("Grabs Can off Step", grabsContainerOffSteps[0]));
 			attributes.Children.Add(BuildSummary ("Grabs Totes", grabsTotes[0]));
 			attributes.Children.Add(BuildSummary ("Grabs Totes off Step", grabsToteOffSteps[0]));
 			attributes.Children.Add(BuildSummary ("Noodle Bonus", noodleBonuses[0]));
