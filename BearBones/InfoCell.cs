@@ -79,7 +79,7 @@ namespace BearBones
 
 				Content = new ScrollView{ 
 					Content = new StackLayout{
-						BackgroundColor = Red,
+						BackgroundColor = Color.Red,
 						Padding=5,
 						Children = {
 							new Label {Text = teamName + " " + teamNumber.ToString(), FontSize = 30, TextColor = Color.Black, FontAttributes= FontAttributes.Bold, XAlign = TextAlignment.Center},
