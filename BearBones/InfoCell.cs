@@ -43,6 +43,7 @@ namespace BearBones
 			int teamNumber,
 			string teamQuality,
 			bool yellowCoopStack,
+			int currentPage,
 			int pageNumber)
 		{
 
@@ -64,8 +65,14 @@ namespace BearBones
 
 			StackLayout pageIndicator = new StackLayout{HorizontalOptions = LayoutOptions.CenterAndExpand, Orientation = StackOrientation.Horizontal};
 
-			for (int x = 0; x <= pageNumber; x++) {
-				pageIndicator.Children.Add (new BoxView { BackgroundColor = Color.Black, WidthRequest = 5, HeightRequest = 5 });
+			for (int x = 0; x < pageNumber; x++) {
+				BoxView bv = new BoxView{ WidthRequest = 5, HeightRequest = 5, VerticalOptions = LayoutOptions.Center };
+				if (currentPage == x) {
+					bv.BackgroundColor = Color.White;
+				} else {
+					bv.BackgroundColor = Color.Black;
+				}
+				pageIndicator.Children.Add (bv);
 			}
 				
 			var report = new ContentPage {
@@ -77,7 +84,7 @@ namespace BearBones
 							new Label {Text = teamName + " " + teamNumber.ToString(), FontSize = 30, TextColor = Color.Black, FontAttributes= FontAttributes.Bold, XAlign = TextAlignment.Center},
 							new Label {Text = "",
 								HeightRequest=12},
-							new Label {Text="Robot:", FontSize=20, FontAttributes = FontAttributes.Bold, TextColor = Color.Black},
+							new Label {Text="Match:", FontSize=20, FontAttributes = FontAttributes.Bold, TextColor = Color.Black},
 							new Label {Text = "Alliance Score: " + teamScore, TextColor = Color.White,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold},
@@ -93,9 +100,6 @@ namespace BearBones
 							new Label {Text = "Drive: " + teamDrive,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold, TextColor = Color.White},
-							new Label {Text = "Scout: " + scoutName,
-								//FontSize=25,
-								FontAttributes= FontAttributes.Bold, TextColor = Color.White},
 							new Label {Text = "Auto Capabilities: " + autoCapabilities,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold, TextColor = Color.White},
@@ -109,6 +113,9 @@ namespace BearBones
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold, TextColor = Color.White},
 							new Label {Text = "Last Year Finish: " + lastYearFinish,
+								//FontSize=25,
+								FontAttributes= FontAttributes.Bold, TextColor = Color.White},
+							new Label {Text = "Scout: " + scoutName,
 								//FontSize=25,
 								FontAttributes= FontAttributes.Bold, TextColor = Color.White},
 							new Label {Text = "Match Number: " + matchNumber,

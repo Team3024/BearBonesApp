@@ -29,6 +29,7 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 		<StackLayout>
+			<Label HeightRequest="5"/>
 			<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
 					<Label Text="" HeightRequest="20"/>
 		    		<Button Text="Done" x:Name="done" Clicked="OnDoneClicked" Style="{StaticResource ButtonStyle}"/>

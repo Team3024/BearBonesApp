@@ -95,10 +95,10 @@ namespace BearBones
 			var reports = await list;
 			var count = 0;
 
-			if (reports != null && reports.Count > 0)
-			{
-				foreach (ReportViewModel ip in reports)
-				{
+			var pages = reports.Count;
+
+			if (reports != null && reports.Count > 0) {
+				foreach (ReportViewModel ip in reports) {
 					var p = ip;
 
 
@@ -129,8 +129,7 @@ namespace BearBones
 					yellowCoopStacks.Add (ip.yellowCoopStack);
 					toteScores.Add (ip.toteScore);
 					canScores.Add (ip.canScore);
-					if (hp != null)
-					{
+					if (hp != null) {
 						if (ip.allianceScore != null)
 							hp.score = ip.allianceScore.ToString ();
 						else
@@ -147,6 +146,8 @@ namespace BearBones
 							hp.auto = "";
 					}
 						
+
+
 					InfoCell report = new InfoCell ();
 
 					this.Children.Add (report.CreatePage (ip.allianceScore, ip.toteScore, ip.canScore,
@@ -174,7 +175,8 @@ namespace BearBones
 						teamNumber,
 						ip.teamQuality,
 						ip.yellowCoopStack,
-						count));
+						count,
+						pages));
 
 					//this.Children.Add (report.CreatePage(ip.pointsScored, ip.driveType, ip.scoutName));
 
@@ -192,6 +194,8 @@ namespace BearBones
 				//Chart chart = await BuildGraphs ();
 				//graphs.Children.Add (chart);
 				await BuildGraphs ();
+			} else {
+				graphs.Children.Add (new Label{ Text="I'm sorry. There are no reports for this team.", XAlign = TextAlignment.Center });
 			}
 		
 		}
