@@ -37,7 +37,23 @@
 			</StackLayout>
 
 			<StackLayout x:Name="graphs" VerticalOptions="Start">
+				<ActivityIndicator IsRunning="true" IsVisible="true" x:Name="graphLoading"></ActivityIndicator>
 			</StackLayout>
+			<StackLayout>
+				<TableView RowHeight="0" HeightRequest="3">
+					<TableView.Root>
+						<TableSection>
+						</TableSection>
+					</TableView.Root>
+				</TableView>
+				<Label Text="Attributes" Style="{StaticResource HeaderStyle}"/>
+			</StackLayout>
+				
+
+			<ScrollView x:Name="attributesContainer">
+				<StackLayout x:Name="attributes">
+				</StackLayout>
+			</ScrollView>
 		</StackLayout>
 </ContentPage>
 
@@ -95,3 +111,4 @@
 	</ContentPage>-->
 
 </CarouselPage>
+	

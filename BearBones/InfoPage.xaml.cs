@@ -182,10 +182,11 @@ namespace BearBones
 
 			}
 
+			buildAttributes ();
 			//Chart chart = await BuildGraphs ();
 			//graphs.Children.Add (chart);
 			await BuildGraphs ();
-
+	
 		}
 
 		async void NewMatchReport(object sender, EventArgs e)
@@ -198,6 +199,34 @@ namespace BearBones
 		{
 			ScoutReportPage page = new ScoutReportPage (teamNumber.ToString());
 			await Navigation.PushModalAsync (page);
+		}
+
+		void buildAttributes(){
+
+			attributes.Children.Add(BuildSummary ("Grabs Can", grabsContainers[0]));
+			attributes.Children.Add(BuildSummary ("Grabs Can of Step", grabsContainerOffSteps[0]));
+			attributes.Children.Add(BuildSummary ("Grabs Totes", grabsTotes[0]));
+			attributes.Children.Add(BuildSummary ("Grabs Totes off Step", grabsToteOffSteps[0]));
+			attributes.Children.Add(BuildSummary ("Noodle Bonus", noodleBonuses[0]));
+			attributes.Children.Add(BuildSummary ("Noodle in Can", noodleInContainers[0]));
+			attributes.Children.Add(BuildSummary ("Noodle Cleanup", noodleCleanups[0]));
+			attributes.Children.Add(BuildSummary ("Rebuild Stacks", rebuildsStacks[0]));
+			attributes.Children.Add(BuildSummary ("Can on Stack", setsContainerOnStacks[0]));
+			attributes.Children.Add(BuildSummary ("Stack Totes", stacksToteses[0]));
+			attributes.Children.Add(BuildSummary ("Co-op Stack", yellowCoopStacks[0]));
+		}
+
+
+		Label BuildSummary(string labelText, bool attribute)
+		{
+			var indicatorColor = Color.White;
+			if (attribute) {
+				indicatorColor = Color.Green;
+			} else {
+				indicatorColor = Color.Red;
+			}
+			Label LabelText = new Label{ Text = labelText, BackgroundColor = indicatorColor };
+			return LabelText;
 		}
 
 		async Task BuildGraphs()
@@ -299,7 +328,7 @@ namespace BearBones
 				//graphs.Children.Add(chart);
 
 				graphs.Children.Add (chart);
-
+				graphs.Children.Remove (graphLoading);
 				graphs.Children.Add (new Label{Text="Score", BackgroundColor=Color.Red, TextColor=Color.Black, FontSize = 15});
 				graphs.Children.Add (new Label{Text="Reliability", BackgroundColor=Color.Blue, TextColor=Color.Black, FontSize = 15});
 				graphs.Children.Add (new Label{Text="Auto Capabilities", BackgroundColor=Color.White, TextColor=Color.Black, FontSize = 15});
