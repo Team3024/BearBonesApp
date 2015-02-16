@@ -112,7 +112,6 @@
 			          	<x:String>150</x:String>
 			            <x:String>200</x:String>
 			           	<x:String>250</x:String>
-			            <x:String>none</x:String>
 			        </Picker.Items>
 			    </Picker>
 			</StackLayout>

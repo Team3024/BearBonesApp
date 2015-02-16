@@ -65,7 +65,7 @@ namespace BearBones
 				//((ListView)sender).match.IsEnabled=false;
 				((ListView)sender).SelectedItem = null; // de-select the row
 				HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
-				InfoPage page = new InfoPage (hpvm);// sent it the hpvm object
+				InfoPage page = new InfoPage (this,hpvm);// sent it the hpvm object
 				goInfo(page);
  				page=page;
 
@@ -266,7 +266,7 @@ namespace BearBones
 
 			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.toteScore)))
 			{
-				item.PageName=item.score+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
+				item.PageName=item.toteScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
 				home.Add (item);
 			}
 			listView.ItemsSource = models;
@@ -352,21 +352,9 @@ namespace BearBones
 		async void Info(string pageName)
 		{
 			HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
-			InfoPage page = new InfoPage (hpvm);
+			InfoPage page = new InfoPage (this,hpvm);
 			await Navigation.PushModalAsync (page);
 			hpvm = hpvm;
-		}
-
-		async void NewMatchReport(string pageName)
-		{
-			MatchReportPage page = new MatchReportPage (pageName);
-			await Navigation.PushModalAsync (page);
-		}
-			
-		async void NewScoutReport(string pageName)
-		{
-			ScoutReportPage page = new ScoutReportPage (pageName);
-			await Navigation.PushModalAsync (page);
 		}
 
 		// Also go to the page when the ListView item is selected.
@@ -377,7 +365,7 @@ namespace BearBones
 			if (viewModel != null)
 			{
 				HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
-				InfoPage page = new InfoPage (hpvm);
+				InfoPage page = new InfoPage (this,hpvm);
 				//await Navigation.PushModalAsync (page);viewModel.InfoCommand.Execute(viewModel.PageType);
 			}
 		}

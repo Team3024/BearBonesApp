@@ -45,9 +45,11 @@ namespace BearBones
 		public int teamNumber;
 		public string teamName;
 		public HomePageViewModel hp;
+		public HomePage home;
 
-		public InfoPage (HomePageViewModel hpvm)
+		public InfoPage (HomePage h,HomePageViewModel hpvm)
 		{
+			home = h;
 			if(hpvm != null)
 				hp = hpvm;
 			InitializeComponent ();
@@ -64,6 +66,7 @@ namespace BearBones
 
 		void OnDoneClicked (object sender, EventArgs e)
 		{
+			home.Refresh (sender,e);
 			// leave this page
 			Navigation.PopModalAsync ();
 
@@ -200,6 +203,11 @@ namespace BearBones
 		
 		}
 
+		public void Refresh(object sender, EventArgs e)
+		{
+			getReports(hp.teamNumber);
+		}
+
 		async void NewMatchReport(object sender, EventArgs e)
 		{
 			MatchReportPage page = new MatchReportPage (teamNumber.ToString());
@@ -208,7 +216,7 @@ namespace BearBones
 
 		async void NewScoutReport(object sender, EventArgs e)
 		{
-			ScoutReportPage page = new ScoutReportPage (teamNumber.ToString());
+			ScoutReportPage page = new ScoutReportPage (this,teamNumber.ToString());
 			await Navigation.PushModalAsync (page);
 		}
 
@@ -293,10 +301,10 @@ namespace BearBones
 					int value;
 					if (brokeDown) {
 						label = "Broke";
-						value = 100;
+						value = 50;
 					} else {
 						label = "Didn\'t Break";
-						value = 50;
+						value = 100;
 					}
 
 					breakDownSeries.Points.Add (new DataPoint (){ Label = "Match " + counter, Value = value });
@@ -353,7 +361,7 @@ namespace BearBones
 
 				//graphs.Children.Add(lbl);
 				//graphs.Children.Add(chart);
-
+				graphs.Children.Clear ();
 				graphs.Children.Add (chart);
 				graphs.Children.Remove (graphLoading);
 				graphs.Children.Add (new Label{Text="Score", BackgroundColor=Color.Red, TextColor=Color.Black, FontSize = 15});

@@ -40,6 +40,7 @@ namespace BearBones
 	public partial class ScoutReportPage : ContentPage
 	{	
 		ReportViewModel model;
+		InfoPage iPage;
 
 		string[] drvType = { "Mecanum", "Tank", "Swerve", "Other","none" };
 		string[] allianceScor = {"0","5","10","20","30","40","50","60","70","80","90","100","150","200","250","none"};
@@ -51,9 +52,10 @@ namespace BearBones
 		string[] autoCap = {"Never Moved","In AutoZone","1 Can","1 Tote","Tote Stack","none"};
 		string[] lstYear = {"World","District","Prelims","none"};
 
-		public ScoutReportPage (string number)
+		public ScoutReportPage (InfoPage ip,string number)
 		{
 			InitializeComponent ();
+			iPage = ip;
 			model = new ReportViewModel ();
 			model.teamName = "???";
 			int n;
@@ -152,6 +154,7 @@ namespace BearBones
 		{
 			model.canScore = 0;
 			model.toteScore = 0;
+
 			// leave this page
 			Navigation.PopModalAsync ();
 		}
@@ -161,6 +164,7 @@ namespace BearBones
 			harvestUIControls();
 			Rest rest = new Rest ();
 			rest.createNewReport (model);
+			//iPage.Refresh ();
 			// leave this page
 			Navigation.PopModalAsync ();
 		}
