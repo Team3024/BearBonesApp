@@ -92,7 +92,7 @@ namespace BearBones
 
 		async void getReports(int tNum)
 		{
-
+			graphLoading.IsVisible = true;
 			Rest rest = new Rest ();
 			Task <ObservableCollection<ReportViewModel>> list = rest.getReports (tNum);//SendAndReceiveJsonRequest ();
 			var reports = await list;
@@ -363,8 +363,8 @@ namespace BearBones
 				//graphs.Children.Add(chart);
 				graphs.Children.Clear ();
 				graphs.Children.Add (chart);
-				graphs.Children.Remove (graphLoading);
-				graphs.Children.Add (new Label{Text="Score", BackgroundColor=Color.Red, TextColor=Color.Black, FontSize = 15});
+				graphLoading.IsVisible = false;
+				graphs.Children.Add (new Label{Text="Composite Score", BackgroundColor=Color.Red, TextColor=Color.Black, FontSize = 15});
 				graphs.Children.Add (new Label{Text="Reliability", BackgroundColor=Color.Blue, TextColor=Color.Black, FontSize = 15});
 				graphs.Children.Add (new Label{Text="Auto Capabilities", BackgroundColor=Color.White, TextColor=Color.Black, FontSize = 15});
 

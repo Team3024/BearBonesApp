@@ -9,7 +9,7 @@
 				<Setter Property="BorderRadius" Value="10"/>
 				<Setter Property="HeightRequest" Value="60"/>
 				<Setter Property="WidthRequest" Value="120"/>
-				<Setter Property="HorizontalOptions" Value="Center"/>
+				<Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
 				<Setter Property="VerticalOptions" Value="Start"/>
 				<Setter Property="TextColor" Value="Red"/>
 				<Setter Property="BorderColor" Value="Navy"/>
