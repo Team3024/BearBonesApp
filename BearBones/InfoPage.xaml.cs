@@ -14,6 +14,7 @@ namespace BearBones
 	public partial class InfoPage : CarouselPage
 	{	
 
+		public ActivityIndicator spinningWheel;
 		public List<string> allianceScore = new List<string> ();
 		public List<string> driveTypes = new List<string> ();
 		public List<string> scoutNames = new List<string> ();
@@ -92,7 +93,12 @@ namespace BearBones
 
 		async void getReports(int tNum)
 		{
+
+			//RemoveGraph ();
+
 			graphLoading.IsVisible = true;
+
+
 			Rest rest = new Rest ();
 			Task <ObservableCollection<ReportViewModel>> list = rest.getReports (tNum);//SendAndReceiveJsonRequest ();
 			var reports = await list;
@@ -148,7 +154,7 @@ namespace BearBones
 						else
 							hp.auto = "";
 					}
-						
+
 
 
 					InfoCell report = new InfoCell ();
@@ -200,7 +206,7 @@ namespace BearBones
 			} else {
 				graphs.Children.Add (new Label{ Text="I'm sorry. There are no reports for this team.", XAlign = TextAlignment.Center });
 			}
-		
+
 		}
 
 		public void Refresh(object sender, EventArgs e)
@@ -220,25 +226,40 @@ namespace BearBones
 			await Navigation.PushModalAsync (page);
 		}
 
-		void buildAttributes(){
+		void buildAttributes()
+		{
 
-			attributes.Children.Add(BuildSummary ("Grabs Can", grabsContainers[0]));
-			attributes.Children.Add(BuildSummary ("Grabs Can off Step", grabsContainerOffSteps[0]));
-			attributes.Children.Add(BuildSummary ("Grabs Totes", grabsTotes[0]));
-			attributes.Children.Add(BuildSummary ("Grabs Totes off Step", grabsToteOffSteps[0]));
-			attributes.Children.Add(BuildSummary ("Noodle Bonus", noodleBonuses[0]));
-			attributes.Children.Add(BuildSummary ("Noodle in Can", noodleInContainers[0]));
-			attributes.Children.Add(BuildSummary ("Noodle Cleanup", noodleCleanups[0]));
-			attributes.Children.Add(BuildSummary ("Rebuild Stacks", rebuildsStacks[0]));
-			attributes.Children.Add(BuildSummary ("Can on Stack", setsContainerOnStacks[0]));
-			attributes.Children.Add(BuildSummary ("Stack Totes", stacksToteses[0]));
-			attributes.Children.Add(BuildSummary ("Co-op Stack", yellowCoopStacks[0]));
+			attributes.Children.Add(BuildSummary ("Grabs Can", grabsContainers[grabsContainers.Count - 1]));
+			//attributes.Children.Add (CreateDivider());
+			attributes.Children.Add(BuildSummary ("Grabs Can off Step", grabsContainerOffSteps[grabsContainerOffSteps.Count - 1]));
+			//attributes.Children.Add (CreateDivider());
+			attributes.Children.Add(BuildSummary ("Grabs Totes", grabsTotes[grabsTotes.Count - 1]));
+			//attributes.Children.Add (CreateDivider());
+			attributes.Children.Add(BuildSummary ("Grabs Totes off Step", grabsToteOffSteps[grabsToteOffSteps.Count - 1]));
+			//attributes.Children.Add (CreateDivider());
+			attributes.Children.Add(BuildSummary ("Noodle Bonus", noodleBonuses[noodleBonuses.Count - 1]));
+			//attributes.Children.Add (CreateDivider());
+			attributes.Children.Add(BuildSummary ("Noodle in Can", noodleInContainers[noodleInContainers.Count - 1]));
+			//attributes.Children.Add (CreateDivider());
+			attributes.Children.Add(BuildSummary ("Noodle Cleanup", noodleCleanups[noodleCleanups.Count - 1]));
+			//attributes.Children.Add (CreateDivider());
+			attributes.Children.Add(BuildSummary ("Rebuild Stacks", rebuildsStacks[rebuildsStacks.Count - 1]));
+			//attributes.Children.Add (CreateDivider());
+			attributes.Children.Add(BuildSummary ("Can on Stack", setsContainerOnStacks[setsContainerOnStacks.Count - 1]));
+			//attributes.Children.Add (CreateDivider());
+			attributes.Children.Add(BuildSummary ("Stack Totes", stacksToteses[stacksToteses.Count - 1]));
+			//attributes.Children.Add (CreateDivider());
+			attributes.Children.Add(BuildSummary ("Co-op Stack", yellowCoopStacks[yellowCoopStacks.Count - 1]));
 		}
 
+		BoxView CreateDivider()
+		{
+			return new BoxView{ WidthRequest = HomePage.ScreenWidth, HeightRequest = 2, BackgroundColor = Color.Black };
+		}
 
 		Label BuildSummary(string labelText, bool attribute)
 		{
-			var indicatorColor = Color.White;
+			var indicatorColor = Color.Black;
 			if (attribute) {
 				indicatorColor = Color.Green;
 			} else {
@@ -256,7 +277,7 @@ namespace BearBones
 					Color = Color.Red,
 					Type = ChartType.Line,
 				};
-					
+
 
 				Series breakDownSeries = new Series {
 					Color = Color.Blue,
@@ -350,7 +371,7 @@ namespace BearBones
 					WidthRequest = HomePage.ScreenWidth - 10,
 					HeightRequest = 250,
 					Spacing = 0,
-					VerticalOptions=LayoutOptions.FillAndExpand
+					VerticalOptions=LayoutOptions.FillAndExpand,
 				};
 
 				chart.Series.Add (breakDownSeries);
@@ -359,20 +380,38 @@ namespace BearBones
 				StackLayout stack = new StackLayout ();
 
 
+
 				//graphs.Children.Add(lbl);
 				//graphs.Children.Add(chart);
-				graphs.Children.Clear ();
+				RemoveGraph ();
+				//graphs.Children.Clear ();
 				graphs.Children.Add (chart);
 				graphLoading.IsVisible = false;
-				graphs.Children.Add (new Label{Text="Composite Score", BackgroundColor=Color.Red, TextColor=Color.Black, FontSize = 15});
-				graphs.Children.Add (new Label{Text="Reliability", BackgroundColor=Color.Blue, TextColor=Color.Black, FontSize = 15});
-				graphs.Children.Add (new Label{Text="Auto Capabilities", BackgroundColor=Color.White, TextColor=Color.Black, FontSize = 15});
+				//graphs.Children.Add (new Label{Text="Composite Score", BackgroundColor=Color.Red, TextColor=Color.Black, FontSize = 15});
+				//graphs.Children.Add (new Label{Text="Reliability", BackgroundColor=Color.Blue, TextColor=Color.Black, FontSize = 15});
+				//graphs.Children.Add (new Label{Text="Auto Capabilities", BackgroundColor=Color.White, TextColor=Color.Black, FontSize = 15});
 
 
 			} else {
 				//await Navigation.PopModalAsync ();
 				graphs.Children.Add ( new Label{Text = "Sorry, it looks like there aren\'t any reports for " + teamName} );
 			}
+		}
+
+		void RemoveGraph(){
+			int x = 0;
+
+			foreach (View child in graphs.Children) {
+
+				if (child.GetType () == typeof(Chart)) {
+					graphs.Children.RemoveAt (x);
+					break;
+				}
+				x++;
+			}
+
+
+
 		}
 
 	}
