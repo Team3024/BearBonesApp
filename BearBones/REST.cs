@@ -144,6 +144,16 @@ namespace BearBones
 								data.teamQuality = (string)token.SelectToken("teamQuality");
 								data.buildQuality = (string)token.SelectToken("buildQuality");
 								data.autoCapability = (string)token.SelectToken("autoCapability");
+								try{
+										data.timestamp=(double)token.SelectToken("timestamp");
+										data.setsContainerOnStack = (bool)token.SelectToken("setsContainerOnStack");
+										data.yellowCoopStack = (bool)token.SelectToken("yellowCoopStack");
+										data.stacksTotes = (bool)token.SelectToken("stacksTotes");
+										data.rebuildsStack = (bool)token.SelectToken("rebuildsStack");
+								}
+								catch(Exception ex)
+								{
+								}
 								/*
 								if (token.SelectToken("score")!=null)
 									data.score =(int)token.SelectToken("score");
@@ -176,10 +186,12 @@ namespace BearBones
 		public async Task<string> createNewReport(ReportViewModel vm)
 		{
 			string uri="http://71.92.131.203/db/data/cypher/";
-			string query="CREATE (x:Report {type:\"" + vm.reportType + "\",matchNumber:\""+vm.matchNumber+"\""+
+			string query="CREATE (x:Report {timestamp:timestamp() , type:\"" + vm.reportType + "\",matchNumber:\""+vm.matchNumber+"\""+
 				" ,scout:\"" + vm.scoutName + "\",driveType:\"" + vm.driveType + "\" ,score:\"" + vm.allianceScore + "\""+
 				" ,maxStack:\"" + vm.maxStack + "\",grabsContainer:" + vm.grabsContainer + " ,grabsTote:" + vm.grabsTote +
 				" ,grabsContainerOffStep:" + vm.grabsContainerOffStep + ",grabsToteOffStep:" + vm.grabsToteOffStep +
+				" ,rebuildsStack:" + vm.rebuildsStack + ",stacksTotes:" + vm.stacksTotes +
+				" ,yellowCoopStack:" + vm.yellowCoopStack + ",setsContainerOnStack:" + vm.setsContainerOnStack +
 				" ,brokeDown:" + vm.brokeDown + " ,lastYearFinish:\"" + vm.lastYearFinish+"\""+
 				" ,toteScore:\"" + vm.toteScore + "\" ,canScore:\"" + vm.canScore+"\""+
 				" ,noodleBonus:" + vm.noodleBonus + " ,noodleCleanup:" + vm.noodleCleanup +" ,noodleInContainer:" + vm.noodleInContainer +

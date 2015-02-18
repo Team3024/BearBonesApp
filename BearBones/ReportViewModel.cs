@@ -17,6 +17,7 @@ namespace BearBones
 			}
 			*/
 		}
+		public double timestamp {  set; get; }
 
 		public string reportType {  set; get; }
 
@@ -42,15 +43,16 @@ namespace BearBones
 
 		public bool grabsContainer {  set; get; }
 		public bool grabsContainerOffStep {  set; get; }
-		public bool setsContainerOnStack {  set; get; }
 
+		public bool setsContainerOnStack {  set; get; }
 		public bool yellowCoopStack {  set; get; }
+		public bool stacksTotes {  set; get; }
+		public bool rebuildsStack {  set; get; }
 
 		public bool grabsTote {  set; get; }
 		public bool grabsToteOffStep {  set; get; }
-		public bool stacksTotes {  set; get; }
 
-		public bool rebuildsStack {  set; get; }
+
 		public string teamQuality {  set; get; }	//bad,poor,ok,good,superb
 		public string notes {  set; get; }
 		//add photo
