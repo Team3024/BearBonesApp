@@ -99,12 +99,53 @@ namespace BearBones
 
 		}
 
-		private async Task SelectPicture (IMediaPicker mp)
+		private async Task PhotoAlbum (IMediaPicker mp)
 		{
 			//Setup ();
 			try
 			{
 				var mediaFile = await mp.SelectPhotoAsync (new CameraMediaStorageOptions {
+					DefaultCamera = CameraDevice.Front,
+					MaxPixelDimension = 400
+				});
+				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
+				this.img.Source = imgSource;
+				Stor
+				var guid = System.Guid.NewGuid();
+
+			} catch (System.Exception ex)
+			{
+				Debug.WriteLine (ex.Message);
+			}
+
+
+		}
+
+		private async Task CameraVideo (IMediaPicker mp)
+		{
+			//Setup ();
+			try
+			{
+				var mediaFile = await mp.TakeVideoAsync (new VideoMediaStorageOptions {
+					DefaultCamera = CameraDevice.Front,
+					MaxPixelDimension = 400
+				});
+				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
+				this.img.Source = imgSource;
+				var guid = System.Guid.NewGuid();
+
+			} catch (System.Exception ex)
+			{
+				Debug.WriteLine (ex.Message);
+			}
+		}
+
+		private async Task CameraPhoto (IMediaPicker mp)
+		{
+			//Setup ();
+			try
+			{
+				var mediaFile = await mp.TakePhotoAsync (new CameraMediaStorageOptions {
 					DefaultCamera = CameraDevice.Front,
 					MaxPixelDimension = 400
 				});
@@ -182,7 +223,21 @@ namespace BearBones
 		{
 			var device = XLabs.Ioc.Resolver.Resolve<XLabs.Platform.Device.IDevice>();
 			var mediaPicker = DependencyService.Get<XLabs.Platform.Services.Media.IMediaPicker> ()?? device.MediaPicker;
-			SelectPicture (mediaPicker);
+			PhotoAlbum (mediaPicker);
+		}
+
+		void TakePhoto (object sender, EventArgs e)
+		{
+			var device = XLabs.Ioc.Resolver.Resolve<XLabs.Platform.Device.IDevice>();
+			var mediaPicker = DependencyService.Get<XLabs.Platform.Services.Media.IMediaPicker> ()?? device.MediaPicker;
+			CameraPhoto (mediaPicker);
+		}
+
+		void TakeVideo (object sender, EventArgs e)
+		{
+			var device = XLabs.Ioc.Resolver.Resolve<XLabs.Platform.Device.IDevice>();
+			var mediaPicker = DependencyService.Get<XLabs.Platform.Services.Media.IMediaPicker> ()?? device.MediaPicker;
+			CameraVideo (mediaPicker);
 		}
 
 		void OnCancelClicked (object sender, EventArgs e)
