@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
+using XLabs.Data;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services.Media;
 /*
 SCOUT REPORT
 
@@ -41,6 +46,7 @@ namespace BearBones
 	{	
 		ReportViewModel model;
 		InfoPage iPage;
+		//IMediaPicker mediaPicker;
 
 		string[] drvType = { "Mecanum", "Tank", "Swerve", "Other","none" };
 		string[] allianceScor = {"0","5","10","20","30","40","50","60","70","80","90","100","150","200","250","none"};
@@ -59,6 +65,7 @@ namespace BearBones
 			model = new ReportViewModel ();
 			model.teamName = "???";
 			int n;
+
 			if (number != null) {
 				int.TryParse (number, out n);
 				model.teamNumber = n;
@@ -88,6 +95,27 @@ namespace BearBones
 				toteScore.SelectedIndex=0;
 			};
 			//model.scoutName = "JOHNNY FIVE";
+
+
+		}
+
+		private async Task SelectPicture (IMediaPicker mp)
+		{
+			//Setup ();
+			try
+			{
+				var mediaFile = await mp.SelectPhotoAsync (new CameraMediaStorageOptions {
+					DefaultCamera = CameraDevice.Front,
+					MaxPixelDimension = 400
+				});
+				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
+				this.img.Source = imgSource;
+				var guid = System.Guid.NewGuid();
+
+			} catch (System.Exception ex)
+			{
+				Debug.WriteLine (ex.Message);
+			}
 
 
 		}
@@ -148,6 +176,13 @@ namespace BearBones
 			model.scoutName = scout.Text;
 			model.matchNumber = match.Text;
 
+		}
+
+		void AddPhoto (object sender, EventArgs e)
+		{
+			var device = XLabs.Ioc.Resolver.Resolve<XLabs.Platform.Device.IDevice>();
+			var mediaPicker = DependencyService.Get<XLabs.Platform.Services.Media.IMediaPicker> ()?? device.MediaPicker;
+			SelectPicture (mediaPicker);
 		}
 
 		void OnCancelClicked (object sender, EventArgs e)
