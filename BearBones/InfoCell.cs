@@ -76,10 +76,11 @@ namespace BearBones
 			}
 				
 			var report = new ContentPage {
-
+				BackgroundImage = "background.jpg",
 				Content = new ScrollView{ 
+
 					Content = new StackLayout{
-						BackgroundColor = Color.Red,
+						//BackgroundColor = Color.Red,
 						Padding=5,
 						Children = {
 							new Label {Text = teamName + " " + teamNumber.ToString(), FontSize = 30, TextColor = Color.Black, FontAttributes= FontAttributes.Bold, XAlign = TextAlignment.Center},

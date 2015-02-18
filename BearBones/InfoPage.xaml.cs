@@ -56,6 +56,11 @@ namespace BearBones
 			InitializeComponent ();
 			getReports(hpvm.teamNumber);
 
+			label1.TextColor = Color.FromRgb (170,170,170);
+			label2.TextColor = Color.FromRgb (170,170,170);
+			label3.TextColor = Color.FromRgb (170,170,170);
+
+
 			teamNumber = hpvm.teamNumber;
 			teamName = hpvm.teamName;
 
@@ -94,7 +99,7 @@ namespace BearBones
 		async void getReports(int tNum)
 		{
 
-			//RemoveGraph ();
+			RemoveGraph ();
 
 			graphLoading.IsVisible = true;
 
@@ -107,9 +112,39 @@ namespace BearBones
 			var pages = reports.Count;
 
 			if (reports != null && reports.Count > 0) {
+
+
+				allianceScore.Clear ();
+				driveTypes.Clear ();
+				scoutNames.Clear ();
+				autoCapabilities.Clear ();
+				brokeDowns.Clear ();
+				buildQualities.Clear ();
+				grabsContainers.Clear ();
+				grabsContainerOffSteps.Clear ();
+				grabsTotes.Clear ();
+				grabsToteOffSteps.Clear ();
+				lastYearFinishes.Clear ();
+				matchNumbers.Clear ();
+				maxStacks.Clear ();
+				noodleBonuses.Clear ();
+				noodleCleanups.Clear ();
+				noodleInContainers.Clear ();
+				noteses.Clear ();
+				rebuildsStacks.Clear ();
+				reportTypes.Clear ();
+				setsContainerOnStacks.Clear ();
+				stacksToteses.Clear ();
+				teamNames.Clear ();
+				teamNumbers.Clear ();
+				teamQualities.Clear ();
+				yellowCoopStacks.Clear ();
+				toteScores.Clear ();
+				canScores.Clear ();
+
+
 				foreach (ReportViewModel ip in reports) {
 					var p = ip;
-
 
 					allianceScore.Add (ip.allianceScore);
 					driveTypes.Add (ip.driveType);
@@ -229,6 +264,8 @@ namespace BearBones
 		void buildAttributes()
 		{
 
+			attributes.Children.Clear ();
+
 			attributes.Children.Add(BuildSummary ("Grabs Can", grabsContainers[grabsContainers.Count - 1]));
 			//attributes.Children.Add (CreateDivider());
 			attributes.Children.Add(BuildSummary ("Grabs Can off Step", grabsContainerOffSteps[grabsContainerOffSteps.Count - 1]));
@@ -318,8 +355,8 @@ namespace BearBones
 
 				int counter = 1;
 				foreach (var brokeDown in brokeDowns) {
-					string label;
 					int value;
+					string label;
 					if (brokeDown) {
 						label = "Broke";
 						value = 50;
@@ -367,9 +404,9 @@ namespace BearBones
 
 
 				Chart chart = new Chart () {
-					Color = Color.Green,
+					Color = Color.Black,
 					WidthRequest = HomePage.ScreenWidth - 10,
-					HeightRequest = 250,
+					HeightRequest = 700,
 					Spacing = 0,
 					VerticalOptions=LayoutOptions.FillAndExpand,
 				};
@@ -377,25 +414,22 @@ namespace BearBones
 				chart.Series.Add (breakDownSeries);
 				chart.Series.Add (autoSeries);
 				chart.Series.Add (scoreSeries);
-				StackLayout stack = new StackLayout ();
 
 
 
-				//graphs.Children.Add(lbl);
-				//graphs.Children.Add(chart);
-				RemoveGraph ();
-				//graphs.Children.Clear ();
 				graphs.Children.Add (chart);
+				//autoSeries.Points.Clear ();
 				graphLoading.IsVisible = false;
+
 				//graphs.Children.Add (new Label{Text="Composite Score", BackgroundColor=Color.Red, TextColor=Color.Black, FontSize = 15});
 				//graphs.Children.Add (new Label{Text="Reliability", BackgroundColor=Color.Blue, TextColor=Color.Black, FontSize = 15});
 				//graphs.Children.Add (new Label{Text="Auto Capabilities", BackgroundColor=Color.White, TextColor=Color.Black, FontSize = 15});
-
 
 			} else {
 				//await Navigation.PopModalAsync ();
 				graphs.Children.Add ( new Label{Text = "Sorry, it looks like there aren\'t any reports for " + teamName} );
 			}
+				
 		}
 
 		void RemoveGraph(){
@@ -405,12 +439,12 @@ namespace BearBones
 
 				if (child.GetType () == typeof(Chart)) {
 					graphs.Children.RemoveAt (x);
+					Chart nc = (Chart)child;
+					nc.Series.Clear ();
 					break;
 				}
 				x++;
 			}
-
-
 
 		}
 
