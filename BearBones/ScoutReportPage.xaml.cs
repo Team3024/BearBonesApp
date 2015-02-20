@@ -2,10 +2,15 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Net.Http;
 using Xamarin.Forms;
 using XLabs.Data;
 using XLabs.Platform.Device;
 using XLabs.Platform.Services.Media;
+
+//using DataNuage.Aws;
+
+
 /*
 SCOUT REPORT
 
@@ -110,8 +115,12 @@ namespace BearBones
 				});
 				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
 				this.img.Source = imgSource;
-				Stor
+
 				var guid = System.Guid.NewGuid();
+				if (imgSource != null) {
+
+					DependencyService.Get<IPicture> ().SavePictureToDisk (imgSource,guid);
+				}
 
 			} catch (System.Exception ex)
 			{
@@ -152,6 +161,7 @@ namespace BearBones
 				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
 				this.img.Source = imgSource;
 				var guid = System.Guid.NewGuid();
+				DependencyService.Get<IAws>().awsSaveFile(img,guid.ToString());
 
 			} catch (System.Exception ex)
 			{

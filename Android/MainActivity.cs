@@ -8,7 +8,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+
 using XLabs.Forms;
 using XLabs.Forms.Controls;
 using XLabs.Forms.Charting;
@@ -18,8 +20,13 @@ using XLabs.Platform.Device;
 using XLabs.Serialization;
 using XLabs.Platform.Services.Media;
 
+[assembly: Dependency(typeof(BearBones.Android.Picture))]
+[assembly: Dependency(typeof(BearBones.Android.AWS))]
+//[assembly: Dependency(typeof(BearBones.Media.IMediaPicker))]
+
 namespace BearBones.Android
 {
+	using DataNuage.Aws;
 	[Activity (Label = "BearBones.Android.Android", MainLauncher = true, ScreenOrientation=ScreenOrientation.Portrait , ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : AndroidActivity
 	{
@@ -39,7 +46,7 @@ namespace BearBones.Android
 			var resolverContainer = new XLabs.Ioc.SimpleContainer ();
 			resolverContainer.Register< XLabs.Platform.Device.IDevice> (t => AndroidDevice.CurrentDevice)
 				.Register<XLabs.Platform.Device.IDisplay> (t => t.Resolve<XLabs.Platform.Device.IDevice> ().Display)
-				//.Register<IMediaPicker>(t => new MediaPicker())
+				.Register<BearBones.Media.IMediaPicker>(t => new BearBones.Media.MediaPicker())
 				.Register<XLabs.Ioc.IDependencyContainer> (t => resolverContainer);
 			XLabs.Ioc.Resolver.SetResolver (resolverContainer.GetResolver ());
 		}

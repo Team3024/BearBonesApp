@@ -12,8 +12,10 @@ using System.Threading.Tasks;
 
 namespace BearBones
 {
+
 	public partial class HomePage : ContentPage
 	{
+
 		bool bConnected=false;	//
 		public List<NewTeamPage> teams = new List<NewTeamPage> (); 
 		ObservableCollection<HomePageViewModel> models;//= new ObservableCollection<HomePageViewModel>();

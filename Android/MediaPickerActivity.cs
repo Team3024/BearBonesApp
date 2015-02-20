@@ -1,25 +1,25 @@
-﻿namespace XLabs.Platform.Services.Media
+﻿
+using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Android.App;
+using Android.Content;
+using Android.Database;
+using Android.OS;
+using Android.Provider;
+
+using Environment = Android.OS.Environment;
+using Uri = Android.Net.Uri;
+
+namespace BearBones.Media
 {
-	using System;
-	using System.IO;
-	using System.Threading;
-	using System.Threading.Tasks;
-
-	using Android.App;
-	using Android.Content;
-	using Android.Database;
-	using Android.OS;
-	using Android.Provider;
-
-	using Environment = Android.OS.Environment;
-	using Uri = Android.Net.Uri;
-
 	/// <summary>
 	/// Class MediaPickerActivity.
 	/// </summary>
 	[Activity]
-	internal class MyMediaPickerActivity
-		: Activity
+	internal class MediaPickerActivity: Activity
 	{
 		#region Constants
 		/// <summary>

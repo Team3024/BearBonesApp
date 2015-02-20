@@ -1,21 +1,22 @@
-﻿namespace XLabs.Platform.Services.Media
+﻿
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
+using Android.OS;
+using Android.Provider;
+
+using Xamarin.Forms.Platform.Android;
+
+namespace BearBones.Media
 {
-	using System;
-	using System.Threading;
-	using System.Threading.Tasks;
-
-	using Android.App;
-	using Android.Content;
-	using Android.Content.PM;
-	using Android.OS;
-	using Android.Provider;
-
-
-
 	/// <summary>
 	///     Class MediaPicker.
 	/// </summary>
-	public class MyMediaPicker : IMediaPicker
+	public class MediaPicker : IMediaPicker
 	{
 		private TaskCompletionSource<MediaFile> _completionSource;
 		private int _requestId;
@@ -28,7 +29,7 @@
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MediaPicker"/> class.
 		/// </summary>
-		public MyMediaPicker()
+		public MediaPicker()
 		{
 			IsPhotosSupported = true;
 			IsVideosSupported = true;
@@ -160,16 +161,16 @@
 		/// <returns>Intent to create media.</returns>
 		private Intent CreateMediaIntent(int id, string type, string action, MediaStorageOptions options, bool tasked = true)
 		{
-			var pickerIntent = new Intent(Context, typeof(MyMediaPickerActivity));
+			var pickerIntent = new Intent(Context, typeof(MediaPickerActivity));
 			pickerIntent.SetFlags(ActivityFlags.NewTask);
-			pickerIntent.PutExtra(MyMediaPickerActivity.ExtraId, id);
-			pickerIntent.PutExtra(MyMediaPickerActivity.ExtraType, type);
-			pickerIntent.PutExtra(MyMediaPickerActivity.ExtraAction, action);
-			pickerIntent.PutExtra(MyMediaPickerActivity.ExtraTasked, tasked);
+			pickerIntent.PutExtra(MediaPickerActivity.ExtraId, id);
+			pickerIntent.PutExtra(MediaPickerActivity.ExtraType, type);
+			pickerIntent.PutExtra(MediaPickerActivity.ExtraAction, action);
+			pickerIntent.PutExtra(MediaPickerActivity.ExtraTasked, tasked);
 
 			if (options != null)
 			{
-				pickerIntent.PutExtra(MyMediaPickerActivity.ExtraPath, options.Directory);
+				pickerIntent.PutExtra(MediaPickerActivity.ExtraPath, options.Directory);
 				pickerIntent.PutExtra(MediaStore.Images.ImageColumns.Title, options.Name);
 
 				var vidOptions = options as VideoMediaStorageOptions;
@@ -227,7 +228,7 @@
 			{
 				var tcs = Interlocked.Exchange(ref _completionSource, null);
 
-				MyMediaPickerActivity.MediaPicked -= handler;
+				MediaPickerActivity.MediaPicked -= handler;
 
 				if (e.RequestId != id)
 				{
@@ -248,7 +249,7 @@
 				}
 			};
 
-			MyMediaPickerActivity.MediaPicked += handler;
+			MediaPickerActivity.MediaPicked += handler;
 
 			return ntcs.Task;
 		}

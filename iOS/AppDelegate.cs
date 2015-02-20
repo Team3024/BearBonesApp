@@ -13,16 +13,22 @@ using XLabs.Forms.Charting.Controls;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Forms;
-using XLabs.Ioc;
 using XLabs.Forms.Controls;
 using XLabs.Serialization;
 using XLabs.Serialization.JsonNET;
 
-[assembly: Xamarin.Forms.Dependency (typeof (IDevice))]
 
-namespace BearBones.iOS
+
+[assembly: Xamarin.Forms.Dependency (typeof (IDevice))]
+[assembly: Dependency(typeof(BearBones.IOS.Picture))]
+[assembly: Dependency(typeof(BearBones.iOS.AWS))]
+
+namespace BearBones.IOS
 {
+	using DataNuage.Aws;
+
 	[Register ("AppDelegate")]
+
 	public partial class AppDelegate : UIApplicationDelegate
 	{
 		UIWindow window;
@@ -45,6 +51,8 @@ namespace BearBones.iOS
 			return true;
 		}
 
+
+
 		private void SetIoc()
 		{
 			//var resolverContainer = new SimpleContainer();
@@ -53,6 +61,7 @@ namespace BearBones.iOS
 				.Register<XLabs.Platform.Device.IDisplay> (t => t.Resolve<XLabs.Platform.Device.IDevice> ().Display)
 				.Register<XLabs.Ioc.IDependencyContainer> (t => resolverContainer);
 			XLabs.Ioc.Resolver.SetResolver (resolverContainer.GetResolver ());
+
 			/*
 			resolverContainer.Register<IDevice> (t => AppleDevice.CurrentDevice)
 				.Register<IDisplay> (t => t.Resolve<IDevice> ().Display)
