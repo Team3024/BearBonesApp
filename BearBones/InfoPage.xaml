@@ -37,7 +37,10 @@
 		    		<Button Text="Refresh" x:Name="refresh" Clicked="Refresh" Style="{StaticResource ButtonStyle}"/>
 		    		<Button Text="New Report" x:Name="newScout" Clicked="NewScoutReport" Style="{StaticResource ButtonStyle}"/>
 			</StackLayout>
-			<Image x:Name="img" HeightRequest="200" Aspect="AspectFit"></Image>
+			<StackLayout Orientation="Vertical" HeightRequest="220">
+				<Image x:Name="img" HeightRequest="200" Aspect="AspectFit"></Image>
+				<Label x:Name="lbl" HeightRequest="20" BackgroundColor="Blue" TextColor="White"/>
+			</StackLayout>
 			<!--<ScrollView IsEnabled="false" IsClippedToBounds="false" HeightRequest="350" Orientation="Vertical">-->
 			<StackLayout x:Name="graphs" VerticalOptions="Start" Opacity=".9" HeightRequest="200">
 				<BoxView HeightRequest="1" BackgroundColor="Black" />

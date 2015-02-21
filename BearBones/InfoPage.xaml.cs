@@ -78,7 +78,7 @@ namespace BearBones
 			// FIRST check locally
 
 			// THEN DOWNLOAD and save locally
-			Task<ImageSource> result =  DependencyService.Get<IAws>().awsGetFile(name);
+			Task<ImageSource> result =  DependencyService.Get<IAws>().awsGetFile(name,lbl);
 			return  await result;
 		}
 
@@ -264,14 +264,15 @@ namespace BearBones
 				{	
 					try
 					{
-					string fname = DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
+						string fname = DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
 						if(fname!=null)
 						{
+							lbl.Text="You took this...";
 							img.Source = ImageSource.FromFile(fname);
 						}
 						else
 						{
-							Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1]);
+							Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1],lbl);
 							ImageSource source = await result;
 							img.Source = source;
 						}

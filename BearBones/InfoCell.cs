@@ -21,7 +21,7 @@ namespace BearBones
 		{
 			if (name == null)
 				return null;
-			Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (name);
+			Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (name,null);
 			//return await result;
 			ImageSource source = await result;
 			return source;

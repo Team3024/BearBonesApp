@@ -8,8 +8,8 @@ namespace BearBones
 	public interface IAws
 	{
 		void awsSaveFile (MediaFile img,string name,Label lbl);
-		void awsDeleteFile (string name);
-		Task<ImageSource> awsGetFile (string name);
+		void awsDeleteFile (string name,Label lbl);
+		Task<ImageSource> awsGetFile (string name,Label lbl);
 
 	}
 }

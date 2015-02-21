@@ -13,7 +13,7 @@
 				<!---<Button Text="+Video" Clicked="TakeVideo" HorizontalOptions="FillAndExpand"  />-->
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="20">
-				<Label x:Name="lbl" HorizontalOptions="FillAndExpand" HeightRequest="20" BackgroundColor="Black" TextColor="White"></Label>
+				<Label x:Name="lbl" HorizontalOptions="FillAndExpand" HeightRequest="20" BackgroundColor="Blue" TextColor="White"></Label>
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
 				<Label Text="Scout Name:" ></Label>

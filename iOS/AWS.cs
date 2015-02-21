@@ -55,7 +55,7 @@ namespace BearBones.iOS
 
 				//await s3.DeleteBucketAsync(bucket);
 				//System.Diagnostics.Debug.WriteLine (String.Format("Empty bucket {0} deleted", bucket));
-				lbl.Text="Success";
+				lbl.Text="Upload successful!";
 				System.Diagnostics.Debug.WriteLine ("Success");
 			}
 			catch (Exception ex)
@@ -67,7 +67,7 @@ namespace BearBones.iOS
 		}
 
 
-		public async Task<ImageSource> awsGetFile(string name)
+		public async Task<ImageSource> awsGetFile(string name,Label lbl)
 		{
 			var s3 = new S3(key,secret);
 
@@ -76,8 +76,10 @@ namespace BearBones.iOS
 			//name = "4f73e9c4-2296-4da9-83c7-5fba52dea117";
 			try
 			{
+				lbl.Text="Downloading file...";
 				Stream stream = await s3.GetObjectAsStreamAsync(bucket, name);
 				imgSource = ImageSource.FromStream(() => stream);
+				lbl.Text="Download successful.";
 				//img = new Image();
 				//img.Source = imgSource;
 				System.Diagnostics.Debug.WriteLine ("Success");
@@ -90,7 +92,7 @@ namespace BearBones.iOS
 			return imgSource;
 		}
 
-		public async void awsDeleteFile(string name)
+		public async void awsDeleteFile(string name,Label lbl)
 		{
 			var s3 = new S3(key,secret);
 
