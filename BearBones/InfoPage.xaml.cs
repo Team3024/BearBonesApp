@@ -264,7 +264,7 @@ namespace BearBones
 				{	
 					try
 					{
-						string fname = DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
+					string fname = DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
 						if(fname!=null)
 						{
 							img.Source = ImageSource.FromFile(fname);

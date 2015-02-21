@@ -12,11 +12,11 @@ namespace BearBones.iOS
 {
 	public class AWS : IAws
 	{
-		static string key = "AKIAIDJKIX3XN26PEZQA";
-		static string secret = "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";
+		static string key = "AWS KEY";
+		static string secret = "AWS Secret Key";
 
 		byte[] imageData;// = new byte[10000000];
-		public async void awsSaveFile(MediaFile img,string name)
+		public async void awsSaveFile(MediaFile img,string name,Label lbl)
 		{
 			var s3 = new S3(key,secret);
 
@@ -49,13 +49,13 @@ namespace BearBones.iOS
 				//System.Diagnostics.Debug.WriteLine (String.Format("Object myobject deleted"));
 
 
-				await s3.PutObjectAsync(bucket, name, imageData, progress: l => System.Diagnostics.Debug.WriteLine (string.Format("Upload {0}%", (100 * l) / imageData.Length)));
+				await s3.PutObjectAsync(bucket, name, imageData, progress: l => lbl.Text=string.Format("Uploaded {0}%", (100 * l) / imageData.Length));
 
 				//await s3.DeleteObjectAsync(bucket, name);
 
 				//await s3.DeleteBucketAsync(bucket);
 				//System.Diagnostics.Debug.WriteLine (String.Format("Empty bucket {0} deleted", bucket));
-
+				lbl.Text="Success";
 				System.Diagnostics.Debug.WriteLine ("Success");
 			}
 			catch (Exception ex)
