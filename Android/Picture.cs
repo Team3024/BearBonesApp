@@ -70,7 +70,18 @@ namespace BearBones.Android
 				GC.Collect ();
 			}
 
-		}     
+		}
+
+		public string GetPictureFromDisk(string name)
+		{
+
+			var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			string jpgFilename = System.IO.Path.Combine (documentsDirectory, name+".jpg");
+			if (File.Exists (jpgFilename))
+				return jpgFilename;
+			else
+				return null;
+		}
 	}
 }
 

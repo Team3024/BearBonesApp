@@ -262,23 +262,31 @@ namespace BearBones
 			if (photos.Count > 0)
 				if (photos [photos.Count - 1] != null)
 				{	
-					string fname =DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
-					if(fname!=null)
+					try
 					{
-						img.Source = ImageSource.FromFile(fname);
+						string fname = DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
+						if(fname!=null)
+						{
+							img.Source = ImageSource.FromFile(fname);
+						}
+						else
+						{
+							Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1]);
+							ImageSource source = await result;
+							img.Source = source;
+						}
 					}
-					else
+					catch(Exception ex)
 					{
-						Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1]);
-						ImageSource source = await result;
-						img.Source = source;
+						System.Diagnostics.Debug.WriteLine (ex.Message);
 					}
 				}
 		}
 
-		public void Refresh(object sender, EventArgs e)
+		public async void Refresh(object sender, EventArgs e)
 		{
 			getReports(hp.teamNumber);
+
 		}
 
 		async void NewMatchReport(object sender, EventArgs e)
