@@ -110,7 +110,7 @@ namespace BearBones
 			try
 			{
 				var mediaFile = await mp.SelectPhotoAsync (new CameraMediaStorageOptions {
-					DefaultCamera = CameraDevice.Front,
+					DefaultCamera = CameraDevice.Rear,
 					MaxPixelDimension = 400
 				});
 				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
@@ -119,7 +119,14 @@ namespace BearBones
 				var guid = System.Guid.NewGuid();
 				if (imgSource != null) {
 
+					model.photo=guid.ToString();
 					DependencyService.Get<IPicture> ().SavePictureToDisk (imgSource,guid);
+					DependencyService.Get<IAws>().awsSaveFile(mediaFile,guid.ToString());
+					/*
+					Task<ImageSource> result  = DependencyService.Get<IAws>().awsGetFile(guid.ToString());
+					ImageSource source = await result;
+					this.img.Source=source;
+					*/
 				}
 
 			} catch (System.Exception ex)
@@ -136,7 +143,7 @@ namespace BearBones
 			try
 			{
 				var mediaFile = await mp.TakeVideoAsync (new VideoMediaStorageOptions {
-					DefaultCamera = CameraDevice.Front,
+					DefaultCamera = CameraDevice.Rear,
 					MaxPixelDimension = 400
 				});
 				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
@@ -155,13 +162,15 @@ namespace BearBones
 			try
 			{
 				var mediaFile = await mp.TakePhotoAsync (new CameraMediaStorageOptions {
-					DefaultCamera = CameraDevice.Front,
+					DefaultCamera = CameraDevice.Rear,
 					MaxPixelDimension = 400
 				});
 				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
 				this.img.Source = imgSource;
 				var guid = System.Guid.NewGuid();
-				DependencyService.Get<IAws>().awsSaveFile(img,guid.ToString());
+				model.photo=guid.ToString();
+				DependencyService.Get<IPicture> ().SavePictureToDisk (imgSource,guid);
+				DependencyService.Get<IAws>().awsSaveFile(mediaFile,guid.ToString());
 
 			} catch (System.Exception ex)
 			{

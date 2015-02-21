@@ -1,5 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
+using XLabs.Platform.Services.Media;
+using System.Threading.Tasks;
 
 namespace BearBones
 {
@@ -15,6 +17,15 @@ namespace BearBones
 
 		}
 
+		async Task<ImageSource> getPhoto(string name)
+		{
+			if (name == null)
+				return null;
+			Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (name);
+			//return await result;
+			ImageSource source = await result;
+			return source;
+		}
 
 		public ContentPage CreatePage(string teamScore,
 			int toteScore,
@@ -43,6 +54,7 @@ namespace BearBones
 			int teamNumber,
 			string teamQuality,
 			bool yellowCoopStack,
+			string photo,
 			int currentPage,
 			int pageNumber)
 		{
@@ -62,6 +74,7 @@ namespace BearBones
 			string stacksTotesText = (stacksTotes) ? "stackes totes" : "can\'t stack totes";
 			string yellowCoopStackText = (yellowCoopStack) ? "execute co-op stack" : "can\'t execute co-op stack";
 
+		
 
 			StackLayout pageIndicator = new StackLayout{HorizontalOptions = LayoutOptions.CenterAndExpand, Orientation = StackOrientation.Horizontal};
 
@@ -74,7 +87,7 @@ namespace BearBones
 				}
 				pageIndicator.Children.Add (bv);
 			}
-				
+
 			var report = new ContentPage {
 				BackgroundImage = "background.jpg",
 				Content = new ScrollView{ 
@@ -84,6 +97,7 @@ namespace BearBones
 						Padding=5,
 						Children = {
 							new Label {Text = teamName + " " + teamNumber.ToString(), FontSize = 30, TextColor = Color.Black, FontAttributes= FontAttributes.Bold, XAlign = TextAlignment.Center},
+							//new Image { Source=getPhoto(photo).Result},
 							new Label {Text = "",
 								HeightRequest=12},
 							new Label {Text="Match:", FontSize=20, FontAttributes = FontAttributes.Bold, TextColor = Color.Black},

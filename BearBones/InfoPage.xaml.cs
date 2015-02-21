@@ -42,6 +42,7 @@ namespace BearBones
 		public List<bool> yellowCoopStacks = new List<bool> ();
 		public List<int> toteScores = new List<int> ();
 		public List<int> canScores = new List<int> ();
+		public List<string> photos = new List<string> ();
 
 		public int teamNumber;
 		public string teamName;
@@ -70,6 +71,17 @@ namespace BearBones
 
 		}
 
+		async Task<ImageSource> getPhoto(string name)
+		{
+			if (name == null)
+				return null;
+			// FIRST check locally
+
+			// THEN DOWNLOAD and save locally
+			Task<ImageSource> result =  DependencyService.Get<IAws>().awsGetFile(name);
+			return  await result;
+		}
+
 		void OnDoneClicked (object sender, EventArgs e)
 		{
 			home.Refresh (sender,e);
@@ -95,6 +107,7 @@ namespace BearBones
 			}
 			*/
 		}
+
 
 		async void getReports(int tNum)
 		{
@@ -141,6 +154,7 @@ namespace BearBones
 				yellowCoopStacks.Clear ();
 				toteScores.Clear ();
 				canScores.Clear ();
+				photos.Clear ();
 
 
 				foreach (ReportViewModel ip in reports) {
@@ -173,6 +187,8 @@ namespace BearBones
 					yellowCoopStacks.Add (ip.yellowCoopStack);
 					toteScores.Add (ip.toteScore);
 					canScores.Add (ip.canScore);
+					photos.Add (ip.photo);
+
 					if (hp != null) {
 						if (ip.allianceScore != null)
 							hp.score = ip.allianceScore.ToString ();
@@ -219,6 +235,7 @@ namespace BearBones
 						teamNumber,
 						ip.teamQuality,
 						ip.yellowCoopStack,
+						ip.photo,
 						count,
 						pages));
 
@@ -242,6 +259,21 @@ namespace BearBones
 				graphs.Children.Add (new Label{ Text="I'm sorry. There are no reports for this team.", XAlign = TextAlignment.Center });
 			}
 
+			if (photos.Count > 0)
+				if (photos [photos.Count - 1] != null)
+				{	
+					string fname =DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
+					if(fname!=null)
+					{
+						img.Source = ImageSource.FromFile(fname);
+					}
+					else
+					{
+						Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1]);
+						ImageSource source = await result;
+						img.Source = source;
+					}
+				}
 		}
 
 		public void Refresh(object sender, EventArgs e)

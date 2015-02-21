@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace BearBones
@@ -9,8 +10,7 @@ namespace BearBones
 
 		void SavePictureToDisk (ImageSource imgSrc, Guid Id);
 
-
-		//string GetPictureFromDisk (int id);
+		string GetPictureFromDisk (string name);
 	}
 }
 

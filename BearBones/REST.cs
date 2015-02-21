@@ -144,12 +144,14 @@ namespace BearBones
 								data.teamQuality = (string)token.SelectToken("teamQuality");
 								data.buildQuality = (string)token.SelectToken("buildQuality");
 								data.autoCapability = (string)token.SelectToken("autoCapability");
-								try{
-										data.timestamp=(double)token.SelectToken("timestamp");
-										data.setsContainerOnStack = (bool)token.SelectToken("setsContainerOnStack");
-										data.yellowCoopStack = (bool)token.SelectToken("yellowCoopStack");
-										data.stacksTotes = (bool)token.SelectToken("stacksTotes");
-										data.rebuildsStack = (bool)token.SelectToken("rebuildsStack");
+								try
+								{
+									data.timestamp=(double)token.SelectToken("timestamp");
+									data.setsContainerOnStack = (bool)token.SelectToken("setsContainerOnStack");
+									data.yellowCoopStack = (bool)token.SelectToken("yellowCoopStack");
+									data.stacksTotes = (bool)token.SelectToken("stacksTotes");
+									data.rebuildsStack = (bool)token.SelectToken("rebuildsStack");
+									data.photo=(string)token.SelectToken("photo");
 								}
 								catch(Exception ex)
 								{
@@ -195,14 +197,14 @@ namespace BearBones
 				" ,brokeDown:" + vm.brokeDown + " ,lastYearFinish:\"" + vm.lastYearFinish+"\""+
 				" ,toteScore:\"" + vm.toteScore + "\" ,canScore:\"" + vm.canScore+"\""+
 				" ,noodleBonus:" + vm.noodleBonus + " ,noodleCleanup:" + vm.noodleCleanup +" ,noodleInContainer:" + vm.noodleInContainer +
-				" ,notes:\"" + vm.notes +"\" ,teamQuality:\"" + vm.teamQuality +"\" ,buildQuality:\""+vm.buildQuality+"\" ,autoCapability:\"" + vm.autoCapability +"\""+
+				" ,photo:\""+vm.photo+"\", notes:\"" + vm.notes +"\" ,teamQuality:\"" + vm.teamQuality +"\" ,buildQuality:\""+vm.buildQuality+"\" ,autoCapability:\"" + vm.autoCapability +"\""+
 				"}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber +
 				" WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)"+
 				" WITH a SET  a.auto=\""+vm.autoCapability+"\", a.reliability=\""+vm.brokeDown+"\", a.score=\""+vm.allianceScore+"\" ,a.toteScore="+vm.toteScore+" ,a.canScore="+vm.canScore+" ";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 			return responseStr;
 		}
-
+			
 
 		public async Task<string> SendAndReceiveJsonRequest(string uri, string query)
 		{
