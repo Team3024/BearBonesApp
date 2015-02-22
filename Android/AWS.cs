@@ -14,10 +14,9 @@ namespace BearBones.Android
 {
 	public class AWS : IAws
 	{
-		//static string key = "AWS KEY";
-		//static string secret = "AWS Secret Key";
-		string key = "AKIAIFT26MYLVAFP7QXQ";
-		string secret = "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";
+		static string key = "AWS KEY";
+		static string secret = "AWS Secret Key";
+
 
 
 
