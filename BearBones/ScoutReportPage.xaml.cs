@@ -164,7 +164,7 @@ namespace BearBones
 			try
 			{
 				CameraMediaStorageOptions opt = new CameraMediaStorageOptions {
-					DefaultCamera = CameraDevice.Front,
+					DefaultCamera = CameraDevice.Rear,
 					MaxPixelDimension = 400
 				};
 

@@ -14,13 +14,10 @@ namespace BearBones.Android
 {
 	public class AWS : IAws
 	{
-		static string key = "AWS KEY";
-		static string secret = "AWS Secret Key";
+		//static string key = "AWS KEY";
+		//static string secret = "AWS Secret Key";
 
 
-
-
-	
 		public async void awsSaveFile(MediaFile img,string name,Label lbl)
 		{
 			byte[] imageData;// = new byte[10000000];

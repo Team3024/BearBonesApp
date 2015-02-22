@@ -12,10 +12,8 @@ namespace BearBones.iOS
 {
 	public class AWS : IAws
 	{
-		static string key = "AWS KEY";
-		static string secret = "AWS Secret Key";
-
-
+		//static string key = "AWS KEY";
+		//static string secret = "AWS Secret Key";
 
 
 
