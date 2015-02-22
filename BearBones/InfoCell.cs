@@ -17,14 +17,16 @@ namespace BearBones
 
 		}
 
-		async Task<ImageSource> getPhoto(string name)
+		async void getPhoto(string name,Image iv)
 		{
-			if (name == null)
-				return null;
-			Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (name,null);
+			//if (name == null)
+			//	return null;
+			//Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (name,null);
 			//return await result;
-			ImageSource source = await result;
-			return source;
+			//ImageSource source = await result;
+			ImageSource isrc=null;
+			DependencyService.Get<IAws> ().awsGetFile (name,null,iv);//source;
+			//return isrc;
 		}
 
 		public ContentPage CreatePage(string teamScore,

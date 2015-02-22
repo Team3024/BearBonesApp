@@ -71,15 +71,18 @@ namespace BearBones
 
 		}
 
-		async Task<ImageSource> getPhoto(string name)
+		async void getPhoto(string name,Image iv)
 		{
-			if (name == null)
-				return null;
+			//if (name == null)
+			//	return null;
 			// FIRST check locally
 
 			// THEN DOWNLOAD and save locally
-			Task<ImageSource> result =  DependencyService.Get<IAws>().awsGetFile(name,lbl);
-			return  await result;
+			//Task<ImageSource> result =  DependencyService.Get<IAws>().awsGetFile(name,lbl);
+			//return  await result;
+			ImageSource imgSrc=null;
+			DependencyService.Get<IAws>().awsGetFile(name,lbl,iv);
+			//return imgSrc;
 		}
 
 		void OnDoneClicked (object sender, EventArgs e)
@@ -264,7 +267,7 @@ namespace BearBones
 				{	
 					try
 					{
-						string fname = DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
+					string fname = null;//DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
 						if(fname!=null)
 						{
 							lbl.Text="You took this...";
@@ -272,9 +275,11 @@ namespace BearBones
 						}
 						else
 						{
-							Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1],lbl);
-							ImageSource source = await result;
-							img.Source = source;
+							//Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1],lbl);
+							//ImageSource source = await result;
+							ImageSource isrc=null;
+							DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1],lbl,img);//source;
+							//img.Source=isrc;
 						}
 					}
 					catch(Exception ex)

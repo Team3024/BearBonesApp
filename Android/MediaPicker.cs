@@ -8,10 +8,9 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Provider;
+using XLabs.Platform.Services.Media;
 
-using Xamarin.Forms.Platform.Android;
-
-namespace BearBones.Media
+namespace BearBones.Platform.Services.Media
 {
 	/// <summary>
 	///     Class MediaPicker.
@@ -255,4 +254,3 @@ namespace BearBones.Media
 		}
 	}
 }
-

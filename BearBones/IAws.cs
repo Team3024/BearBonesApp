@@ -9,8 +9,7 @@ namespace BearBones
 	{
 		void awsSaveFile (MediaFile img,string name,Label lbl);
 		void awsDeleteFile (string name,Label lbl);
-		Task<ImageSource> awsGetFile (string name,Label lbl);
-
+		void awsGetFile (string name,Label lbl,Image iv);
 	}
 }
 

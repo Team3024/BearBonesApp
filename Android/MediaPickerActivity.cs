@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,13 +12,19 @@ using Android.Provider;
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 
-namespace BearBones.Media
+using XLabs.Platform.Services.Media;
+using XLabs.Forms;
+using XLabs.Ioc;
+using XLabs;
+
+namespace BearBones.Platform.Services.Media
 {
-	/// <summary>
+		/// <summary>
 	/// Class MediaPickerActivity.
 	/// </summary>
 	[Activity]
-	internal class MediaPickerActivity: Activity
+	internal class MediaPickerActivity
+		: Activity
 	{
 		#region Constants
 		/// <summary>
@@ -319,7 +324,7 @@ namespace BearBones.Media
 			if (_tasked)
 			{
 				var future = resultCode == Result.Canceled
-					? XLabs.TaskUtils.TaskFromResult(new MediaPickedEventArgs(requestCode, true))
+					? TaskUtils.TaskFromResult(new MediaPickedEventArgs(requestCode, true))
 					: GetMediaFileAsync(this, requestCode, _action, _isPhoto, ref _path, (data != null) ? data.Data : null);
 
 				Finish();
@@ -381,7 +386,7 @@ namespace BearBones.Media
 						new Tuple<string, bool>(t.Result ? currentPath : null, false));
 				}
 				else
-					pathFuture = XLabs.TaskUtils.TaskFromResult(new Tuple<string, bool>(path.Path, false));
+					pathFuture = TaskUtils.TaskFromResult(new Tuple<string, bool>(path.Path, false));
 			}
 			else if (data != null)
 			{
@@ -391,7 +396,7 @@ namespace BearBones.Media
 			}
 			else
 			{
-				pathFuture = XLabs.TaskUtils.TaskFromResult<Tuple<string, bool>>(null);
+				pathFuture = TaskUtils.TaskFromResult<Tuple<string, bool>>(null);
 			}
 
 			return pathFuture.ContinueWith(t =>

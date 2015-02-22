@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Threading.Tasks;
+using XLabs.Platform.Services.Media;
 
 namespace BearBones.Media
 {

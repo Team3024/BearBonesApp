@@ -20,8 +20,11 @@ using XLabs.Platform.Device;
 using XLabs.Serialization;
 using XLabs.Platform.Services.Media;
 
+[assembly: Xamarin.Forms.Dependency (typeof (IDevice))]
 [assembly: Dependency(typeof(BearBones.Android.Picture))]
 [assembly: Dependency(typeof(BearBones.Android.AWS))]
+[assembly: Dependency(typeof(BearBones.Platform.Services.Media.MediaPicker))]
+[assembly: Dependency(typeof(BearBones.Platform.Services.Media.MediaPickerActivity))]
 //[assembly: Dependency(typeof(BearBones.Media.IMediaPicker))]
 
 namespace BearBones.Android
@@ -44,9 +47,10 @@ namespace BearBones.Android
 		{
 			//var resolverContainer = new SimpleContainer();
 			var resolverContainer = new XLabs.Ioc.SimpleContainer ();
-			resolverContainer.Register< XLabs.Platform.Device.IDevice> (t => AndroidDevice.CurrentDevice)
+			resolverContainer
+				.Register< XLabs.Platform.Device.IDevice> (t => AndroidDevice.CurrentDevice)
 				.Register<XLabs.Platform.Device.IDisplay> (t => t.Resolve<XLabs.Platform.Device.IDevice> ().Display)
-				.Register<BearBones.Media.IMediaPicker>(t => new BearBones.Media.MediaPicker())
+				.Register<IMediaPicker>(t => new BearBones.Platform.Services.Media.MediaPicker())
 				.Register<XLabs.Ioc.IDependencyContainer> (t => resolverContainer);
 			XLabs.Ioc.Resolver.SetResolver (resolverContainer.GetResolver ());
 		}

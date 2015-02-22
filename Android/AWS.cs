@@ -14,14 +14,16 @@ namespace BearBones.Android
 {
 	public class AWS : IAws
 	{
-		static string key = "AWS KEY";
-		static string secret = "AWS Secret Key";
+		//static string key = "AWS KEY";
+		//static string secret = "AWS Secret Key";
+		string key = "AKIAIFT26MYLVAFP7QXQ";
+		string secret = "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";
 
 
-		byte[] imageData;// = new byte[10000000];
 
 		public async void awsSaveFile(MediaFile img,string name,Label lbl)
 		{
+			byte[] imageData;// = new byte[10000000];
 			var s3 = new S3(key,secret);
 
 			var bucket = "ahsscoutphotos";
@@ -35,11 +37,12 @@ namespace BearBones.Android
 				try
 				{
 
-					await s3.CreateBucketAsync(bucket);
+					//await s3.CreateBucketAsync(bucket);
 					//System.Diagnostics.Debug.WriteLine (String.Format("Bucket {0} created", bucket));
 				}
 				catch(Exception x)
 				{
+					lbl.Text=x.Message;
 					System.Diagnostics.Debug.WriteLine (x.Message);
 				}
 
@@ -53,7 +56,7 @@ namespace BearBones.Android
 				//System.Diagnostics.Debug.WriteLine (String.Format("Object myobject deleted"));
 
 
-				await s3.PutObjectAsync(bucket, name, imageData, progress: l => lbl.Text=string.Format("Uploaded {0}%", (100 * l) / imageData.Length));
+				await s3.PutObjectAsync(bucket, name, imageData,progress: l => lbl.Text = string.Format("Upload {0}%", (100 * l) / imageData.Length));
 
 				//await s3.DeleteObjectAsync(bucket, name);
 
@@ -62,8 +65,9 @@ namespace BearBones.Android
 				lbl.Text="Upload Successful";
 				System.Diagnostics.Debug.WriteLine ("Success");
 			}
-			catch (Exception ex)
+			catch (S3Exception ex)
 			{
+				lbl.Text=ex.Message;
 				System.Diagnostics.Debug.WriteLine (ex.Message);
 				//return false;
 			}
@@ -71,7 +75,7 @@ namespace BearBones.Android
 		}
 
 
-		public async Task<ImageSource> awsGetFile(string name,Label lbl)
+		public async void awsGetFile(string name,Label lbl,Image iv)
 		{
 			var s3 = new S3(key,secret);
 
@@ -82,18 +86,21 @@ namespace BearBones.Android
 			{
 				lbl.Text="File downloading...";
 				Stream stream = await s3.GetObjectAsStreamAsync(bucket, name);
-				imgSource = ImageSource.FromStream(() => stream);
+				ImageSource imgSrc = ImageSource.FromStream(() => stream);
+				iv.Source=imgSource;
 				lbl.Text="Download Successful!";
+
 				//img = new Image();
 				//img.Source = imgSource;
 				System.Diagnostics.Debug.WriteLine ("Success");
 			}
-			catch (Exception ex)
+			catch (S3Exception ex)
 			{
+				lbl.Text=ex.Message;
 				System.Diagnostics.Debug.WriteLine (ex.Message);
 				//return false;
 			}
-			return imgSource;
+			//return imgSource;
 		}
 
 		public async void awsDeleteFile(string name,Label lbl)
@@ -108,8 +115,9 @@ namespace BearBones.Android
 				lbl.Text="File deleted";
 				System.Diagnostics.Debug.WriteLine ("Success");
 			}
-			catch (Exception ex)
+			catch (S3Exception ex)
 			{
+				lbl.Text = ex.Message;
 				System.Diagnostics.Debug.WriteLine (ex.Message);
 				//return false;
 			}

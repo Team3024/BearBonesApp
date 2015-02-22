@@ -100,38 +100,11 @@
     <Reference Include="ExifLib">
       <HintPath>..\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
-    <Reference Include="XLabs.Forms.Charting.iOS">
-      <HintPath>..\packages\XLabs.Forms.Charting.2.0.5520\lib\Xamarin.iOS10\XLabs.Forms.Charting.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Forms.Charting">
-      <HintPath>..\packages\XLabs.Forms.Charting.2.0.5520\lib\Xamarin.iOS10\XLabs.Forms.Charting.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Ioc">
-      <HintPath>..\packages\XLabs.IoC.2.0.5520\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Core">
-      <HintPath>..\packages\XLabs.Core.2.0.5520\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Platform.iOS">
-      <HintPath>..\packages\XLabs.Platform.2.0.5520\lib\Xamarin.iOS10\XLabs.Platform.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Platform">
-      <HintPath>..\packages\XLabs.Platform.2.0.5520\lib\Xamarin.iOS10\XLabs.Platform.dll</HintPath>
-    </Reference>
     <Reference Include="Connectivity.Plugin">
       <HintPath>..\packages\Xam.Plugin.Connectivity.1.0.1\lib\Xamarin.iOS10\Connectivity.Plugin.dll</HintPath>
     </Reference>
     <Reference Include="Connectivity.Plugin.Abstractions">
       <HintPath>..\packages\Xam.Plugin.Connectivity.1.0.1\lib\Xamarin.iOS10\Connectivity.Plugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Forms.iOS">
-      <HintPath>..\packages\XLabs.Forms.2.0.5522\lib\Xamarin.iOS10\XLabs.Forms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Forms">
-      <HintPath>..\packages\XLabs.Forms.2.0.5522\lib\Xamarin.iOS10\XLabs.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Serialization">
-      <HintPath>..\packages\XLabs.Serialization.2.0.5522\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS">
       <HintPath>..\packages\Xamarin.Forms.1.3.4.6332\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
@@ -145,11 +118,38 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="XLabs.Serialization.JsonNET">
-      <HintPath>..\packages\XLabs.Serialization.JSON.2.0.5520\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.JsonNET.dll</HintPath>
-    </Reference>
     <Reference Include="DataNuage.Aws.S3.iOS-unified">
       <HintPath>..\Components\DataNuage.Aws.S3-1.5.203.0\lib\ios-unified\DataNuage.Aws.S3.iOS-unified.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Serialization">
+      <HintPath>..\packages\XLabs.Serialization.2.0.5530\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Serialization.JsonNET">
+      <HintPath>..\packages\XLabs.Serialization.JSON.2.0.5530\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.JsonNET.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms.Charting.iOS">
+      <HintPath>..\packages\XLabs.Forms.Charting.2.0.5530\lib\Xamarin.iOS10\XLabs.Forms.Charting.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms.Charting">
+      <HintPath>..\packages\XLabs.Forms.Charting.2.0.5530\lib\Xamarin.iOS10\XLabs.Forms.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Ioc">
+      <HintPath>..\packages\XLabs.IoC.2.0.5530\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Core">
+      <HintPath>..\packages\XLabs.Core.2.0.5530\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform.iOS">
+      <HintPath>..\packages\XLabs.Platform.2.0.5530\lib\Xamarin.iOS10\XLabs.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform">
+      <HintPath>..\packages\XLabs.Platform.2.0.5530\lib\Xamarin.iOS10\XLabs.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms.iOS">
+      <HintPath>..\packages\XLabs.Forms.2.0.5530\lib\Xamarin.iOS10\XLabs.Forms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms">
+      <HintPath>..\packages\XLabs.Forms.2.0.5530\lib\Xamarin.iOS10\XLabs.Forms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

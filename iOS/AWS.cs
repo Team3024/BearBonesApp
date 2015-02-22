@@ -12,8 +12,10 @@ namespace BearBones.iOS
 {
 	public class AWS : IAws
 	{
-		static string key = "AWS KEY";
-		static string secret = "AWS Secret Key";
+		//static string key = "AWS KEY";
+		//static string secret = "AWS Secret Key";
+		static string key = "AKIAIFT26MYLVAFP7QXQ";
+		static string secret = "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";
 
 		byte[] imageData;// = new byte[10000000];
 		public async void awsSaveFile(MediaFile img,string name,Label lbl)
@@ -67,7 +69,7 @@ namespace BearBones.iOS
 		}
 
 
-		public async Task<ImageSource> awsGetFile(string name,Label lbl)
+		public async void awsGetFile(string name,Label lbl,Image iv)
 		{
 			var s3 = new S3(key,secret);
 
@@ -79,6 +81,7 @@ namespace BearBones.iOS
 				lbl.Text="Downloading file...";
 				Stream stream = await s3.GetObjectAsStreamAsync(bucket, name);
 				imgSource = ImageSource.FromStream(() => stream);
+				iv.Source=imgSource;
 				lbl.Text="Download successful.";
 				//img = new Image();
 				//img.Source = imgSource;
@@ -89,7 +92,7 @@ namespace BearBones.iOS
 				System.Diagnostics.Debug.WriteLine (ex.Message);
 				//return false;
 			}
-			return imgSource;
+			//return imgSource;
 		}
 
 		public async void awsDeleteFile(string name,Label lbl)

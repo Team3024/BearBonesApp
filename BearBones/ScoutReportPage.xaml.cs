@@ -8,6 +8,7 @@ using XLabs.Data;
 using XLabs.Platform.Device;
 using XLabs.Platform.Services.Media;
 
+
 //using DataNuage.Aws;
 
 
@@ -45,6 +46,7 @@ Save Report
 
 
 */
+
 namespace BearBones
 {	
 	public partial class ScoutReportPage : ContentPage
@@ -161,15 +163,17 @@ namespace BearBones
 			//Setup ();
 			try
 			{
-				var mediaFile = await mp.TakePhotoAsync (new CameraMediaStorageOptions {
-					DefaultCamera = CameraDevice.Rear,
+				CameraMediaStorageOptions opt = new CameraMediaStorageOptions {
+					DefaultCamera = CameraDevice.Front,
 					MaxPixelDimension = 400
-				});
+				};
+
+				var mediaFile = await mp.TakePhotoAsync (opt);
 				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
 				this.img.Source = imgSource;
 				var guid = System.Guid.NewGuid();
 				model.photo=guid.ToString();
-				DependencyService.Get<IPicture> ().SavePictureToDisk (imgSource,guid);
+				//DependencyService.Get<IPicture>().SavePictureToDisk (imgSource,guid);
 				DependencyService.Get<IAws>().awsSaveFile(mediaFile,guid.ToString(),lbl);
 
 
@@ -242,21 +246,21 @@ namespace BearBones
 		void AddPhoto (object sender, EventArgs e)
 		{
 			var device = XLabs.Ioc.Resolver.Resolve<XLabs.Platform.Device.IDevice>();
-			var mediaPicker = DependencyService.Get<XLabs.Platform.Services.Media.IMediaPicker> ()?? device.MediaPicker;
+			var mediaPicker = DependencyService.Get<IMediaPicker> ()?? device.MediaPicker;
 			PhotoAlbum (mediaPicker);
 		}
 
 		void TakePhoto (object sender, EventArgs e)
 		{
 			var device = XLabs.Ioc.Resolver.Resolve<XLabs.Platform.Device.IDevice>();
-			var mediaPicker = DependencyService.Get<XLabs.Platform.Services.Media.IMediaPicker> ()?? device.MediaPicker;
+			var mediaPicker = DependencyService.Get<IMediaPicker> ()?? device.MediaPicker;
 			CameraPhoto (mediaPicker);
 		}
 
 		void TakeVideo (object sender, EventArgs e)
 		{
 			var device = XLabs.Ioc.Resolver.Resolve<XLabs.Platform.Device.IDevice>();
-			var mediaPicker = DependencyService.Get<XLabs.Platform.Services.Media.IMediaPicker> ()?? device.MediaPicker;
+			var mediaPicker = DependencyService.Get<IMediaPicker> ()?? device.MediaPicker;
 			CameraVideo (mediaPicker);
 		}
 

@@ -1,6 +1,6 @@
-﻿
-	using System;
-	using System.IO;
+﻿using System;
+using System.IO;
+using XLabs.Platform.Services.Media;
 
 namespace BearBones.Media
 {

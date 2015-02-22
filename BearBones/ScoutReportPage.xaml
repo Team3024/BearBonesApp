@@ -8,9 +8,9 @@
 			<StackLayout Orientation="Horizontal" HeightRequest="40">
 				<Button Text="Cancel" Clicked="OnCancelClicked" HorizontalOptions="FillAndExpand" />
 				<Button Text="Submit" Clicked="OnDoneClicked" HorizontalOptions="FillAndExpand"  />
-				<Button Text="+Photo" Clicked="AddPhoto" HorizontalOptions="FillAndExpand"  />
-				<Button x:Name="cam" Text="+Camera" Clicked="TakePhoto" HorizontalOptions="FillAndExpand"  />
-				<!---<Button Text="+Video" Clicked="TakeVideo" HorizontalOptions="FillAndExpand"  />-->
+				<Button Text="Photo" Clicked="AddPhoto" HorizontalOptions="FillAndExpand"  />
+				<Button x:Name="cam" Text="Camera" Clicked="TakePhoto" HorizontalOptions="FillAndExpand"  />
+				<!---<Button Text="Video" Clicked="TakeVideo" HorizontalOptions="FillAndExpand"  />-->
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="20">
 				<Label x:Name="lbl" HorizontalOptions="FillAndExpand" HeightRequest="20" BackgroundColor="Blue" TextColor="White"></Label>
