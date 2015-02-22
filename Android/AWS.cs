@@ -20,6 +20,7 @@ namespace BearBones.Android
 
 
 
+	
 		public async void awsSaveFile(MediaFile img,string name,Label lbl)
 		{
 			byte[] imageData;// = new byte[10000000];

@@ -16,6 +16,9 @@ namespace BearBones.iOS
 		static string secret = "AWS Secret Key";
 
 
+
+
+
 		byte[] imageData;// = new byte[10000000];
 		public async void awsSaveFile(MediaFile img,string name,Label lbl)
 		{
