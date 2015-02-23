@@ -55,8 +55,6 @@ namespace BearBones
 						{
 							if(k.Key == "data")// these are the events
 							{
-
-
 								string values = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
 
 								string ds = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
@@ -76,6 +74,7 @@ namespace BearBones
 									data.canScore = (int)token.SelectToken("canScore");
 									data.auto = (string)token.SelectToken("auto");
 									data.reliability = (string)token.SelectToken("reliability");
+									data.reports=(int)token.SelectToken("reports");
 								}
 
 								catch(Exception ex)
@@ -200,7 +199,7 @@ namespace BearBones
 				" ,photo:\""+vm.photo+"\", notes:\"" + vm.notes +"\" ,teamQuality:\"" + vm.teamQuality +"\" ,buildQuality:\""+vm.buildQuality+"\" ,autoCapability:\"" + vm.autoCapability +"\""+
 				"}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber +
 				" WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)"+
-				" WITH a SET  a.auto=\""+vm.autoCapability+"\", a.reliability=\""+vm.brokeDown+"\", a.score=\""+vm.allianceScore+"\" ,a.toteScore="+vm.toteScore+" ,a.canScore="+vm.canScore+" ";
+				" WITH a SET  a.auto=\""+vm.autoCapability+"\", a.reliability=\""+vm.brokeDown+"\", a.score=\""+vm.allianceScore+"\" ,a.toteScore="+vm.toteScore+" ,a.canScore="+vm.canScore+", a.reports=1 ";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 			return responseStr;
 		}

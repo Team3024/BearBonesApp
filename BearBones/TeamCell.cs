@@ -39,10 +39,15 @@ namespace BearBones
 				title.BackgroundColor = Color.Yellow;
 				title.TextColor = Color.Black;
 			}
-			else
+			else if(temp.reports==1)
 			{
 				title.BackgroundColor = Color.Red;
 				title.TextColor = Color.White;
+			}
+			else
+			{
+				title.BackgroundColor = Color.White;
+				title.TextColor = Color.Black;
 			}
 
 			var s = new StackLayout

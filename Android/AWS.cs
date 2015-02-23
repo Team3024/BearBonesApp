@@ -16,7 +16,8 @@ namespace BearBones.Android
 	{
 		//static string key = "AWS KEY";
 		//static string secret = "AWS Secret Key";
-
+		string key = "AKIAJL3CI6IKYDMU2SQA";
+		string secret = "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";
 
 		public async void awsSaveFile(MediaFile img,string name,Label lbl)
 		{
