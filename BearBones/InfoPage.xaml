@@ -41,12 +41,12 @@
 				<Image x:Name="img" HeightRequest="200" Aspect="AspectFit"></Image>
 				<Label x:Name="lbl" HeightRequest="20" BackgroundColor="Blue" TextColor="White"/>
 			</StackLayout>
-			<!--<ScrollView IsEnabled="false" IsClippedToBounds="false" HeightRequest="350" Orientation="Vertical">-->
+			<ScrollView IsEnabled="false" IsClippedToBounds="false" HeightRequest="350" Orientation="Vertical">
 			<StackLayout x:Name="graphs" VerticalOptions="Start" Opacity=".9">
 				<BoxView HeightRequest="1" BackgroundColor="Black" />
 				<ActivityIndicator IsRunning="true" IsVisible="true" x:Name="graphLoading"></ActivityIndicator>
 			</StackLayout>
-			<!--</ScrollView>-->
+			</ScrollView>
 
 
 			<StackLayout>
