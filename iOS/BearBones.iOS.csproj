@@ -11,6 +11,7 @@
     <AssemblyName>BearBonesiOS</AssemblyName>
     <TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +56,8 @@
     <MtouchArch>ARMv7</MtouchArch>
     <IpaPackageName>
     </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -75,10 +78,12 @@
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>87e79e38-2a8a-4d9a-b874-31ff80252e31</CodesignProvision>
+    <CodesignProvision>40a838d1-d226-4e34-9fef-b0092d8941e9</CodesignProvision>
     <CodesignKey>iPhone Distribution: Paul Mace (MEXZT8552D)</CodesignKey>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <IpaPackageName>BearBones</IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>full</DebugType>
@@ -151,6 +156,9 @@
     <Reference Include="XLabs.Forms">
       <HintPath>..\packages\XLabs.Forms.2.0.5530\lib\Xamarin.iOS10\XLabs.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="HockeyApp.iOS">
+      <HintPath>..\Components\hockeyappios-3.6.2.0\lib\ios-unified\HockeyApp.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BearBones\BearBones.csproj">
@@ -186,6 +194,10 @@
   <ItemGroup>
     <XamarinComponentReference Include="DataNuage.Aws.S3">
       <Version>1.5.203.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="hockeyappios">
+      <Version>3.6.2.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
