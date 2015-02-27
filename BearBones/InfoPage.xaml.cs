@@ -267,7 +267,7 @@ namespace BearBones
 				{	
 					try
 					{
-					string fname = null;//DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
+						string fname = DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
 						if(fname!=null)
 						{
 							lbl.Text="You took this...";
@@ -452,7 +452,7 @@ namespace BearBones
 				Chart chart = new Chart () {
 					Color = Color.Black,
 					WidthRequest = HomePage.ScreenWidth - 10,
-					HeightRequest = 200,
+					HeightRequest = 700,
 					Spacing = 0,
 					VerticalOptions=LayoutOptions.FillAndExpand,
 				};

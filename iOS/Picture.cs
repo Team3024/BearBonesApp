@@ -17,13 +17,9 @@ namespace BearBones.IOS
 
 			var photo = await renderer.LoadImageAsync (imgSrc);
 
-			var documentsDirectory = Environment.GetFolderPath
+			var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
-				(Environment.SpecialFolder.Personal);
-
-			string jpgFilename = System.IO.Path.Combine (
-
-				documentsDirectory, Id.ToString () + ".jpg");
+			string jpgFilename = System.IO.Path.Combine (documentsDirectory, Id.ToString ());
 
 			NSData imgData = photo.AsJPEG ();
 
@@ -48,7 +44,7 @@ namespace BearBones.IOS
 		{
 
 			var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-			string jpgFilename = System.IO.Path.Combine (documentsDirectory, name+".jpg");
+			string jpgFilename = System.IO.Path.Combine (documentsDirectory, name);
 			if (File.Exists (jpgFilename))
 				return jpgFilename;
 			else

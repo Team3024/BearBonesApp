@@ -16,7 +16,7 @@ using Android.Webkit;
 
 namespace BearBones.Android
 {
-	public class Picture
+	public class Picture : IPicture
 	{
 		public async void SavePictureToDisk (ImageSource imgSrc, Guid Id) //public void Save(Stream stream, string _name)
 		{
@@ -56,7 +56,7 @@ namespace BearBones.Android
 
 			//stream.Position = 0;
 
-			var path = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
+			var path = Environment.GetFolderPath (Environment.SpecialFolder.MyPictures);
 			var filename = System.IO.Path.Combine (path, _filename);
 		
 			using (var fileStream = File.Create (filename))
@@ -75,8 +75,8 @@ namespace BearBones.Android
 		public string GetPictureFromDisk(string name)
 		{
 
-			var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-			string jpgFilename = System.IO.Path.Combine (documentsDirectory, name+".jpg");
+			var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);//Environment.GetFolderPath(name);
+			string jpgFilename = System.IO.Path.Combine (documentsDirectory, name);
 			if (File.Exists (jpgFilename))
 				return jpgFilename;
 			else

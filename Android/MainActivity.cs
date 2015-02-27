@@ -45,6 +45,7 @@ namespace BearBones.Android
 
 			SetIoc ();
 			base.OnCreate (bundle);
+			/*
 			// Register the crash manager before Initializing the trace writer
 			HockeyApp.CrashManager.Register (this, HOCKEYAPP_APPID); 
 
@@ -69,6 +70,7 @@ namespace BearBones.Android
 			// Wire up the unobserved task exception handler
 			TaskScheduler.UnobservedTaskException += 
 				(sender, args) => HockeyApp.TraceWriter.WriteTrace(args.Exception);
+			*/
 			Xamarin.Forms.Forms.Init (this, bundle);
 			HomePage.ScreenWidth = (int)Resources.DisplayMetrics.WidthPixels; // real pixels
 			HomePage.ScreenHeight = (int)Resources.DisplayMetrics.HeightPixels; // real pixels
