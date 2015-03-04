@@ -21,7 +21,7 @@ using XLabs.Platform.Device;
 using XLabs.Serialization;
 using XLabs.Platform.Services.Media;
 
-using HockeyApp;
+//using HockeyApp;
 
 [assembly: Xamarin.Forms.Dependency (typeof (IDevice))]
 [assembly: Dependency(typeof(BearBones.Android.Picture))]

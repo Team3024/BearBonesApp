@@ -87,6 +87,7 @@ namespace BearBones
 
 		void OnDoneClicked (object sender, EventArgs e)
 		{
+			webview.Source = "";
 			home.Refresh (sender,e);
 			// leave this page
 			Navigation.PopModalAsync ();
