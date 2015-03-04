@@ -42,7 +42,7 @@ namespace BearBones
 		public List<bool> yellowCoopStacks = new List<bool> ();
 		public List<int> toteScores = new List<int> ();
 		public List<int> canScores = new List<int> ();
-		public List<string> photos = new List<string> ();
+
 
 		public int teamNumber;
 		public string teamName;
@@ -81,7 +81,7 @@ namespace BearBones
 			//Task<ImageSource> result =  DependencyService.Get<IAws>().awsGetFile(name,lbl);
 			//return  await result;
 			ImageSource imgSrc=null;
-			DependencyService.Get<IAws>().awsGetFile(name,lbl,iv);
+			//DependencyService.Get<IAws>().awsGetFile(name,lbl,iv);
 			//return imgSrc;
 		}
 
@@ -157,7 +157,6 @@ namespace BearBones
 				yellowCoopStacks.Clear ();
 				toteScores.Clear ();
 				canScores.Clear ();
-				photos.Clear ();
 
 
 				foreach (ReportViewModel ip in reports) {
@@ -190,7 +189,7 @@ namespace BearBones
 					yellowCoopStacks.Add (ip.yellowCoopStack);
 					toteScores.Add (ip.toteScore);
 					canScores.Add (ip.canScore);
-					photos.Add (ip.photo);
+
 
 					if (hp != null) {
 						if (ip.allianceScore != null)
@@ -238,7 +237,6 @@ namespace BearBones
 						teamNumber,
 						ip.teamQuality,
 						ip.yellowCoopStack,
-						ip.photo,
 						count,
 						pages));
 
@@ -261,34 +259,6 @@ namespace BearBones
 			} else {
 				graphs.Children.Add (new Label{ Text="I'm sorry. There are no reports for this team.", XAlign = TextAlignment.Center });
 			}
-
-			if (photos.Count > 0)
-				if (photos [photos.Count - 1] != null)
-				{	
-					try
-					{
-						string fname = DependencyService.Get<IPicture> ().GetPictureFromDisk (photos [photos.Count - 1]);
-						if(fname!=null)
-						{
-							lbl.Text="You took this...";
-							ImageSource isrc=ImageSource.FromFile(fname);
-							img.Source = isrc;
-						}
-						else
-						{
-							//Task<ImageSource> result = DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1],lbl);
-							//ImageSource source = await result;
-							ImageSource isrc=null;
-							DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1],lbl,img);//source;
-							await Task.Delay(10000);
-							//img.Source=isrc;
-						}
-					}
-					catch(Exception ex)
-					{
-						System.Diagnostics.Debug.WriteLine (ex.Message);
-					}
-				}
 		}
 
 		public async void Refresh(object sender, EventArgs e)

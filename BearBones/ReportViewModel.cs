@@ -60,7 +60,6 @@ namespace BearBones
 		public int canScore {  set; get; }	//0,5,10,20,30,40,50-200
 		public int toteScore {  set; get; }	//0,5,10,20,30,40,50-200
 
-		public string photo {  set; get; }
 	}
 }
 

@@ -39,8 +39,8 @@
 		    		<Button Text="New Report" x:Name="newScout" Clicked="NewScoutReport" Style="{StaticResource ButtonStyle}"/>
 			</StackLayout>
 			<StackLayout Orientation="Vertical" HeightRequest="220">
-				<Image x:Name="img" HeightRequest="200" Aspect="AspectFit"></Image>
-				<Label x:Name="lbl" HeightRequest="20" BackgroundColor="Blue" TextColor="White"/>
+				<WebView x:Name="web" HeightRequest="200" Source="https://www.youtube.com/watch?v=-2NhcAbinDg"></WebView>
+				<Entry x:Name="url"  HorizontalOptions="FillAndExpand" Keyboard="Text" Placeholder="HTTPS://www.youtube.com/..."></Entry>
 			</StackLayout>
 			<ScrollView IsEnabled="false" IsClippedToBounds="false" HeightRequest="350" Orientation="Vertical">
 				<StackLayout x:Name="graphs" VerticalOptions="Start" Opacity=".9">
