@@ -1,0 +1,7 @@
+Bear Bones is a Xamarin Forms cross-platform strategy app for FRC season 2015 Recycle Rush.
+
+It requires the community edition of the Neo4j graph database server--currently aimed our server running in Ashland.
+
+You can use it freely and share your scouting info with all of us. Or you can clone it, set up your own Neo4j instance and customize the application to your team only.
+
+If you'd like to work with Team 3024 to advance the app capabilities, leave us a message.
