@@ -64,7 +64,7 @@ namespace BearBones
 
 			teamNumber = hpvm.teamNumber;
 			teamName = hpvm.teamName;
-
+			webview.Source = hpvm.video;
 			//title1.Text = hpvm.teamName + " " + hpvm.teamNumber + ": Rprt 1";
 
 
@@ -277,6 +277,13 @@ namespace BearBones
 		{
 			ScoutReportPage page = new ScoutReportPage (this,teamNumber.ToString());
 			await Navigation.PushModalAsync (page);
+		}
+
+		async void NewVideo(object sender, EventArgs e)
+		{
+			Rest rest = new Rest();
+			await rest.saveVideo (hp.teamNumber, url.Text);
+			webview.Source=url.Text;
 		}
 
 		void buildAttributes()

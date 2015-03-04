@@ -75,13 +75,15 @@ namespace BearBones
 									data.auto = (string)token.SelectToken("auto");
 									data.reliability = (string)token.SelectToken("reliability");
 									data.reports=(int)token.SelectToken("reports");
+									data.video=(string)token.SelectToken("video");
 								}
 
 								catch(Exception ex)
 								{
 
 								}
-
+								if(data.video==null)
+									data.video="https://www.youtube.com/watch?v=W6UYFKNGHJ8";//https://www.youtube.com/watch?v=-2NhcAbinDg
 								results.Add(data);
 							}
 						}
@@ -182,6 +184,13 @@ namespace BearBones
 			return responseStr;
 		}
 
+		public async Task<string> saveVideo(int teamNum,string url)
+		{
+			string uri="http://71.92.131.203/db/data/cypher/";
+			string query="MERGE (a:Team { number:"+teamNum.ToString()+" }) ON MATCH SET a.video=\""+url+"\" RETURN a";
+			string responseStr = await SendAndReceiveJsonRequest(uri,query);
+			return responseStr;
+		}
 
 		public async Task<string> createNewReport(ReportViewModel vm)
 		{

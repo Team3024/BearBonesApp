@@ -31,6 +31,7 @@ namespace BearBones
 		public string reliability {  set; get; }
 
 		public string auto {  set; get; }
+		public string video {  set; get; }
 
 		public int index {  set; get; }
 
