@@ -8,7 +8,7 @@ namespace BearBones
 	public interface IPicture
 	{
 
-		void SavePictureToDisk (ImageSource imgSrc, Guid Id);
+		void SavePictureToDisk (ImageSource imgSrc, string name);
 
 		string GetPictureFromDisk (string name);
 	}

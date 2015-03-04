@@ -271,7 +271,8 @@ namespace BearBones
 						if(fname!=null)
 						{
 							lbl.Text="You took this...";
-							img.Source = ImageSource.FromFile(fname);
+							ImageSource isrc=ImageSource.FromFile(fname);
+							img.Source = isrc;
 						}
 						else
 						{
@@ -279,6 +280,7 @@ namespace BearBones
 							//ImageSource source = await result;
 							ImageSource isrc=null;
 							DependencyService.Get<IAws> ().awsGetFile (photos [photos.Count - 1],lbl,img);//source;
+							await Task.Delay(10000);
 							//img.Source=isrc;
 						}
 					}

@@ -17,7 +17,8 @@ namespace BearBones.Android
 		//static string key = "AWS KEY";
 		//static string secret = "AWS Secret Key";
 
-
+		string key = "AKIAJHW2ETTX6PBYCIPQ";
+		string secret = "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";
 		public async void awsSaveFile(MediaFile img,string name,Label lbl)
 		{
 			byte[] imageData;// = new byte[10000000];
@@ -89,7 +90,12 @@ namespace BearBones.Android
 
 				//img = new Image();
 				//img.Source = imgSource;
+				DependencyService.Get<IPicture>().SavePictureToDisk (imgSrc,name);
+
 				System.Diagnostics.Debug.WriteLine ("Success");
+
+
+
 			}
 			catch (S3Exception ex)
 			{

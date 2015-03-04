@@ -18,15 +18,14 @@ namespace BearBones.Android
 {
 	public class Picture : IPicture
 	{
-		public async void SavePictureToDisk (ImageSource imgSrc, Guid Id) //public void Save(Stream stream, string _name)
+		public async void SavePictureToDisk (ImageSource imgSrc, string name) //public void Save(Stream stream, string _name)
 		{
-			var _filename = Id.ToString ();//_name;
 
 			var renderer = new StreamImagesourceHandler ();
 
 			var bitmap = await renderer.LoadImageAsync (imgSrc,null,new System.Threading.CancellationToken());
 
-			//if (_filename.ToLower ().Contains (".jpg") || _filename.ToLower ().Contains (".png")) {
+			//if (name.ToLower ().Contains (".jpg") || name.ToLower ().Contains (".png")) {
 				//stream.Position = 0;
 			//var bitmap = BitmapFactory.DecodeStream ((System.IO.Stream)stream);
 
@@ -38,7 +37,7 @@ namespace BearBones.Android
 				finalStream.Position = 0;
 
 				var path2 = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
-				var filename2 = System.IO.Path.Combine (path2, _filename);
+				var filename2 = System.IO.Path.Combine (path2, name+".jpg");
 
 				using (var fileStream = File.Create (filename2))
 				{
@@ -57,7 +56,7 @@ namespace BearBones.Android
 			//stream.Position = 0;
 
 			var path = Environment.GetFolderPath (Environment.SpecialFolder.MyPictures);
-			var filename = System.IO.Path.Combine (path, _filename);
+			var filename = System.IO.Path.Combine (path, name+".jpg");
 		
 			using (var fileStream = File.Create (filename))
 			{
@@ -76,7 +75,7 @@ namespace BearBones.Android
 		{
 
 			var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);//Environment.GetFolderPath(name);
-			string jpgFilename = System.IO.Path.Combine (documentsDirectory, name);
+			string jpgFilename = System.IO.Path.Combine (documentsDirectory, name+".jpg");
 			if (File.Exists (jpgFilename))
 				return jpgFilename;
 			else

@@ -9,7 +9,7 @@ namespace BearBones.IOS
 {
 	public class Picture : IPicture
 	{
-		public async void SavePictureToDisk (ImageSource imgSrc, Guid Id)
+		public async void SavePictureToDisk (ImageSource imgSrc, string name)
 
 		{
 
@@ -19,7 +19,7 @@ namespace BearBones.IOS
 
 			var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
-			string jpgFilename = System.IO.Path.Combine (documentsDirectory, Id.ToString ());
+			string jpgFilename = System.IO.Path.Combine (documentsDirectory, name+".jpg");
 
 			NSData imgData = photo.AsJPEG ();
 
@@ -44,7 +44,7 @@ namespace BearBones.IOS
 		{
 
 			var documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-			string jpgFilename = System.IO.Path.Combine (documentsDirectory, name);
+			string jpgFilename = System.IO.Path.Combine (documentsDirectory, name+".jpg");
 			if (File.Exists (jpgFilename))
 				return jpgFilename;
 			else

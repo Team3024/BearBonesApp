@@ -122,7 +122,7 @@ namespace BearBones
 				if (imgSource != null) {
 
 					model.photo=guid.ToString();
-					DependencyService.Get<IPicture> ().SavePictureToDisk (imgSource,guid);
+					DependencyService.Get<IPicture> ().SavePictureToDisk (imgSource,guid.ToString());
 					DependencyService.Get<IAws>().awsSaveFile(mediaFile,guid.ToString(),lbl);
 					/*
 					Task<ImageSource> result  = DependencyService.Get<IAws>().awsGetFile(guid.ToString());
@@ -173,7 +173,7 @@ namespace BearBones
 				this.img.Source = imgSource;
 				var guid = System.Guid.NewGuid();
 				model.photo=guid.ToString();
-				DependencyService.Get<IPicture>().SavePictureToDisk (imgSource,guid);
+				DependencyService.Get<IPicture>().SavePictureToDisk (imgSource,guid.ToString());
 				DependencyService.Get<IAws>().awsSaveFile(mediaFile,guid.ToString(),lbl);
 
 
