@@ -56,7 +56,6 @@ namespace BearBones
 			int teamNumber,
 			string teamQuality,
 			bool yellowCoopStack,
-			string photo,
 			int currentPage,
 			int pageNumber)
 		{

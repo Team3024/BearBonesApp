@@ -105,39 +105,7 @@ namespace BearBones
 
 
 		}
-
-		private async Task PhotoAlbum (IMediaPicker mp)
-		{
-			//Setup ();
-			try
-			{
-				var mediaFile = await mp.SelectPhotoAsync (new CameraMediaStorageOptions {
-					DefaultCamera = CameraDevice.Rear,
-					MaxPixelDimension = 400
-				});
-				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
-				this.img.Source = imgSource;
-
-				var guid = System.Guid.NewGuid();
-				if (imgSource != null) {
-
-					model.photo=guid.ToString();
-					DependencyService.Get<IPicture> ().SavePictureToDisk (imgSource,guid.ToString());
-					DependencyService.Get<IAws>().awsSaveFile(mediaFile,guid.ToString(),lbl);
-					/*
-					Task<ImageSource> result  = DependencyService.Get<IAws>().awsGetFile(guid.ToString());
-					ImageSource source = await result;
-					this.img.Source=source;
-					*/
-				}
-
-			} catch (System.Exception ex)
-			{
-				Debug.WriteLine (ex.Message);
-			}
-
-
-		}
+			
 
 		private async Task CameraVideo (IMediaPicker mp)
 		{
@@ -158,32 +126,6 @@ namespace BearBones
 			}
 		}
 
-		private async Task CameraPhoto (IMediaPicker mp)
-		{
-			//Setup ();
-			try
-			{
-				CameraMediaStorageOptions opt = new CameraMediaStorageOptions {
-					DefaultCamera = CameraDevice.Rear,
-					MaxPixelDimension = 400
-				};
-
-				var mediaFile = await mp.TakePhotoAsync (opt);
-				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
-				this.img.Source = imgSource;
-				var guid = System.Guid.NewGuid();
-				model.photo=guid.ToString();
-				DependencyService.Get<IPicture>().SavePictureToDisk (imgSource,guid.ToString());
-				DependencyService.Get<IAws>().awsSaveFile(mediaFile,guid.ToString(),lbl);
-
-
-			} catch (System.Exception ex)
-			{
-				Debug.WriteLine (ex.Message);
-			}
-
-
-		}
 
 		private void harvestUIControls()
 		{
@@ -241,20 +183,6 @@ namespace BearBones
 			model.scoutName = scout.Text;
 			model.matchNumber = match.Text;
 
-		}
-
-		void AddPhoto (object sender, EventArgs e)
-		{
-			var device = XLabs.Ioc.Resolver.Resolve<XLabs.Platform.Device.IDevice>();
-			var mediaPicker = DependencyService.Get<IMediaPicker> ()?? device.MediaPicker;
-			PhotoAlbum (mediaPicker);
-		}
-
-		void TakePhoto (object sender, EventArgs e)
-		{
-			var device = XLabs.Ioc.Resolver.Resolve<XLabs.Platform.Device.IDevice>();
-			var mediaPicker = DependencyService.Get<IMediaPicker> ()?? device.MediaPicker;
-			CameraPhoto (mediaPicker);
 		}
 
 		void TakeVideo (object sender, EventArgs e)

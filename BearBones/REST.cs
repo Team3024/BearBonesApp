@@ -150,7 +150,6 @@ namespace BearBones
 									data.yellowCoopStack = (bool)token.SelectToken("yellowCoopStack");
 									data.stacksTotes = (bool)token.SelectToken("stacksTotes");
 									data.rebuildsStack = (bool)token.SelectToken("rebuildsStack");
-									data.photo=(string)token.SelectToken("photo");
 								}
 								catch(Exception ex)
 								{
@@ -188,24 +187,8 @@ namespace BearBones
 		{
 			string uri="http://71.92.131.203/db/data/cypher/";
 			string query;
-			if (vm.photo != null) {
-				query = "CREATE (x:Report {timestamp:timestamp() , type:\"" + vm.reportType + "\",matchNumber:\"" + vm.matchNumber + "\"" +
-				" ,scout:\"" + vm.scoutName + "\",driveType:\"" + vm.driveType + "\" ,score:\"" + vm.allianceScore + "\"" +
-				" ,maxStack:\"" + vm.maxStack + "\",grabsContainer:" + vm.grabsContainer + " ,grabsTote:" + vm.grabsTote +
-				" ,grabsContainerOffStep:" + vm.grabsContainerOffStep + ",grabsToteOffStep:" + vm.grabsToteOffStep +
-				" ,rebuildsStack:" + vm.rebuildsStack + ",stacksTotes:" + vm.stacksTotes +
-				" ,yellowCoopStack:" + vm.yellowCoopStack + ",setsContainerOnStack:" + vm.setsContainerOnStack +
-				" ,brokeDown:" + vm.brokeDown + " ,lastYearFinish:\"" + vm.lastYearFinish + "\"" +
-				" ,toteScore:\"" + vm.toteScore + "\" ,canScore:\"" + vm.canScore + "\"" +
-				" ,noodleBonus:" + vm.noodleBonus + " ,noodleCleanup:" + vm.noodleCleanup + " ,noodleInContainer:" + vm.noodleInContainer +
-				" ,photo:\"" + vm.photo + "\", notes:\"" + vm.notes + "\" ,teamQuality:\"" + vm.teamQuality + "\" ,buildQuality:\"" + vm.buildQuality + "\" ,autoCapability:\"" + vm.autoCapability + "\"" +
-				"}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber +
-				" WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)" +
-				" WITH a SET  a.auto=\"" + vm.autoCapability + "\", a.reliability=\"" + vm.brokeDown + "\", a.score=\"" + vm.allianceScore + "\" ,a.toteScore=" + vm.toteScore + " ,a.canScore=" + vm.canScore + ", a.reports=1 ";
-			}
-			else 
-			{
-				query = "CREATE (x:Report {timestamp:timestamp() , type:\"" + vm.reportType + "\",matchNumber:\"" + vm.matchNumber + "\"" +
+
+			query = "CREATE (x:Report {timestamp:timestamp() , type:\"" + vm.reportType + "\",matchNumber:\"" + vm.matchNumber + "\"" +
 					" ,scout:\"" + vm.scoutName + "\",driveType:\"" + vm.driveType + "\" ,score:\"" + vm.allianceScore + "\"" +
 					" ,maxStack:\"" + vm.maxStack + "\",grabsContainer:" + vm.grabsContainer + " ,grabsTote:" + vm.grabsTote +
 					" ,grabsContainerOffStep:" + vm.grabsContainerOffStep + ",grabsToteOffStep:" + vm.grabsToteOffStep +
@@ -218,7 +201,6 @@ namespace BearBones
 					"}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber +
 					" WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)" +
 					" WITH a SET  a.auto=\"" + vm.autoCapability + "\", a.reliability=\"" + vm.brokeDown + "\", a.score=\"" + vm.allianceScore + "\" ,a.toteScore=" + vm.toteScore + " ,a.canScore=" + vm.canScore + ", a.reports=1 ";
-			}
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 			return responseStr;
 		}
