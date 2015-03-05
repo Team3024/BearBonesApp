@@ -432,7 +432,7 @@ namespace BearBones
 				Chart chart = new Chart () {
 					Color = Color.Black,
 					WidthRequest = HomePage.ScreenWidth - 10,
-					HeightRequest = 700,
+					HeightRequest = 350,
 					Spacing = 0,
 					VerticalOptions=LayoutOptions.FillAndExpand,
 				};
