@@ -25,24 +25,20 @@ using XLabs.Platform.Services.Media;
 
 [assembly: Xamarin.Forms.Dependency (typeof (IDevice))]
 [assembly: Dependency(typeof(BearBones.Android.Picture))]
-[assembly: Dependency(typeof(BearBones.Android.AWS))]
+//[assembly: Dependency(typeof(BearBones.Android.AWS))]
 [assembly: Dependency(typeof(BearBones.Platform.Services.Media.MediaPicker))]
 [assembly: Dependency(typeof(BearBones.Platform.Services.Media.MediaPickerActivity))]
 //[assembly: Dependency(typeof(BearBones.Media.IMediaPicker))]
 
 namespace BearBones.Android
 {
-	using DataNuage.Aws;
+	//using DataNuage.Aws;
 	[Activity (Label = "BearBones.Android.Android", MainLauncher = true, ScreenOrientation=ScreenOrientation.Portrait , ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : AndroidActivity
 	{
 		public const string HOCKEYAPP_APPID = "com.symbolicflight.bearbones";
 		protected override void OnCreate (Bundle bundle)
 		{
-
-
-
-
 			SetIoc ();
 			base.OnCreate (bundle);
 			/*

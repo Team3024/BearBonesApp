@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.2" package="BearBones.Android">
-	<uses-sdk />
+	<uses-sdk android:targetSdkVersion="21" />
 	<application android:label="BearBones.Android" android:icon="@drawable/icon">
 		<activity android:name="net.hockeyapp.android.UpdateActivity" />
 	</application>

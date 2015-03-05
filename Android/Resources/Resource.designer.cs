@@ -26,8 +26,6 @@ namespace BearBones.Android
 		
 		public static void UpdateIdValues()
 		{
-			global::DataNuage.Aws.Resource.String.ApplicationName = global::BearBones.Android.Resource.String.ApplicationName;
-			global::DataNuage.Aws.Resource.String.Hello = global::BearBones.Android.Resource.String.Hello;
 			global::XLabs.Platform.Resource.String.ApplicationName = global::BearBones.Android.Resource.String.ApplicationName;
 			global::XLabs.Platform.Resource.String.Hello = global::BearBones.Android.Resource.String.Hello;
 			global::XLabs.Forms.Resource.Color.calendar_active_month_bg = global::BearBones.Android.Resource.Color.calendar_active_month_bg;

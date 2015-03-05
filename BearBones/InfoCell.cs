@@ -25,7 +25,7 @@ namespace BearBones
 			//return await result;
 			//ImageSource source = await result;
 			ImageSource isrc=null;
-			DependencyService.Get<IAws> ().awsGetFile (name,null,iv);//source;
+			//DependencyService.Get<IAws> ().awsGetFile (name,null,iv);//source;
 			//return isrc;
 		}
 
