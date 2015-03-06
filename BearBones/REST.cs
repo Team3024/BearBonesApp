@@ -14,7 +14,8 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
-
+using Google.YouTube;
+using Google.GData;
 
 /// <summary>
 ///  Calling the REST interface...
@@ -25,7 +26,7 @@ using Newtonsoft.Json;
 ///  ...in this case lv is a list view you want populated with 'Event' info
 /// 
 /// </summary>
-
+// youtube key: AIzaSyDKynQvYpNj7gJncEFUIQhSlyB9xFfsU_g
 
 namespace BearBones
 {
@@ -190,6 +191,47 @@ namespace BearBones
 			string query="MERGE (a:Team { number:"+teamNum.ToString()+" }) ON MATCH SET a.video=\""+url+"\" RETURN a";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 			return responseStr;
+		}
+
+		public async Task<string> queryYoutubeVideo(int teamNum)
+		{
+
+			//var settings = new YouTubeRequestSettings("BearBones", "AIzaSyDKynQvYpNj7gJncEFUIQhSlyB9xFfsU_g");
+			//var request = new YouTubeRequest(settings);
+			string query = "";
+			string feedUrl = "";
+
+			try
+			{
+				query=String.Format("search?part=snippet&q=\"FRC 2015 PNW {0}\"&maxResults=10&order=viewCount&key={1}",teamNum,"{AIzaSyDKynQvYpNj7gJncEFUIQhSlyB9xFfsU_g}");
+				feedUrl = String.Format("https://www.googleapis.com/youtube/v3/{0}", query);
+			}
+			catch(Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine (ex.Message);
+			}
+			string responseStr="";
+			using (var httpClient = new HttpClient ())
+			{        
+				//create the http request content
+
+				//HttpContent content = new StringContent(json);
+
+				try {
+					// Send the json to the server using POST
+
+					Task<HttpResponseMessage> getResponse = httpClient.GetAsync (feedUrl);
+					// Wait for the response and read it to a string var
+
+					HttpResponseMessage response = await getResponse;
+					responseStr = await response.Content.ReadAsStringAsync ();
+				} catch (Exception exx) {
+					System.Diagnostics.Debug.WriteLine (exx.Message);
+				}
+			}
+			return responseStr;
+			//var results = request.Get<Google.GData.YouTube.YouTubeService>(new Uri(feedUrl));
+			//return "OK";
 		}
 
 		public async Task<string> createNewReport(ReportViewModel vm)

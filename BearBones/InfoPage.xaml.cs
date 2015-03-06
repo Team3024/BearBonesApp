@@ -64,7 +64,11 @@ namespace BearBones
 
 			teamNumber = hpvm.teamNumber;
 			teamName = hpvm.teamName;
-			webview.Source = hpvm.video;
+
+			Rest rest = new Rest ();
+			var vid = String.Format ("https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=youtube+frc+2015+PNW+{0}", teamNumber);
+			//var vid = rest.queryYoutubeVideo (hpvm.teamNumber);
+			webview.Source = vid;//hpvm.video;
 			//title1.Text = hpvm.teamName + " " + hpvm.teamNumber + ": Rprt 1";
 
 
@@ -282,9 +286,9 @@ namespace BearBones
 
 		async void NewVideo(object sender, EventArgs e)
 		{
-			Rest rest = new Rest();
-			await rest.saveVideo (hp.teamNumber, url.Text);
-			webview.Source=url.Text;
+			//Rest rest = new Rest();
+			//await rest.saveVideo (hp.teamNumber, url.Text);
+			//webview.Source=url.Text;
 		}
 
 		void buildAttributes()
