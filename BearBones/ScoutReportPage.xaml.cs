@@ -105,7 +105,7 @@ namespace BearBones
 			{
 				canScore0.Unfocus();
 				model0.canScore+=canScore0.SelectedIndex*4;
-				canScoreTitle0.Text="Can Score:"+model0.canScore.ToString();
+				canScoreTitle0.Text="Cans:"+model0.canScore.ToString();
 				canScore0.SelectedIndex=0;
 			};
 
@@ -114,21 +114,21 @@ namespace BearBones
 				toteScore0.Unfocus();
 				model0.toteScore+=toteScore0.SelectedIndex*2;
 				toteScore0.SelectedIndex = 0;//On the screen picker stay at the old value
-				toteScoreTitle0.Text="Tote Score:"+model0.toteScore.ToString();
+				toteScoreTitle0.Text="Totes:"+model0.toteScore.ToString();
 				toteScore0.SelectedIndex=0;
 			};
 
 			noodleScore0.SelectedIndexChanged += (object sender, EventArgs e) => {
 				noodleScore0.Unfocus ();
 				model0.noodleScore += noodleScore0.SelectedIndex * 4;
-				noodleScoreTitle0.Text = "Noodle Score:" + model0.noodleScore.ToString ();
+				noodleScoreTitle0.Text = "Noodles:" + model0.noodleScore.ToString ();
 				noodleScore0.SelectedIndex = 0;
 			};
 
 			coopScore0.SelectedIndexChanged += (object sender, EventArgs e) => {
 				coopScore0.Unfocus ();
 				model0.coopScore += coopScore0.SelectedIndex * 4;
-				coopScoreTitle0.Text = "Coop Score:" + model0.coopScore.ToString ();
+				coopScoreTitle0.Text = "Coop:" + model0.coopScore.ToString ();
 				coopScore0.SelectedIndex = 0;
 			};
 
@@ -136,7 +136,7 @@ namespace BearBones
 			{
 				canScore1.Unfocus();
 				model1.canScore+=canScore1.SelectedIndex*4;
-				canScoreTitle1.Text="Can Score:"+model1.canScore.ToString();
+				canScoreTitle1.Text="Cans:"+model1.canScore.ToString();
 				canScore1.SelectedIndex=0;
 			};
 
@@ -145,22 +145,53 @@ namespace BearBones
 				toteScore1.Unfocus();
 				model1.toteScore+=toteScore1.SelectedIndex*2;
 				toteScore1.SelectedIndex = 0;//On the screen picker stay at the old value
-				toteScoreTitle1.Text="Tote Score:"+model1.toteScore.ToString();
+				toteScoreTitle1.Text="Totes:"+model1.toteScore.ToString();
 				toteScore1.SelectedIndex=0;
 			};
 
 			noodleScore1.SelectedIndexChanged += (object sender, EventArgs e) => {
 				noodleScore1.Unfocus ();
 				model1.noodleScore += noodleScore1.SelectedIndex * 4;
-				noodleScoreTitle1.Text = "Noodle Score:" + model1.noodleScore.ToString ();
+				noodleScoreTitle1.Text = "Noodles:" + model1.noodleScore.ToString ();
 				noodleScore1.SelectedIndex = 0;
 			};
 
 			coopScore1.SelectedIndexChanged += (object sender, EventArgs e) => {
 				coopScore1.Unfocus ();
 				model1.coopScore += coopScore1.SelectedIndex * 4;
-				coopScoreTitle1.Text = "Coop Score:" + model1.coopScore.ToString ();
+				coopScoreTitle1.Text = "Coop:" + model1.coopScore.ToString ();
 				coopScore1.SelectedIndex = 0;
+			};
+
+			canScore2.SelectedIndexChanged += (object sender, EventArgs e) => 
+			{
+				canScore2.Unfocus();
+				model2.canScore+=canScore2.SelectedIndex*4;
+				canScoreTitle2.Text="Cans:"+model2.canScore.ToString();
+				canScore2.SelectedIndex=0;
+			};
+
+			toteScore2.SelectedIndexChanged += (object sender, EventArgs e) => 
+			{
+				toteScore2.Unfocus();
+				model2.toteScore+=toteScore2.SelectedIndex*2;
+				toteScore2.SelectedIndex = 0;//On the screen picker stay at the old value
+				toteScoreTitle2.Text="Totes:"+model2.toteScore.ToString();
+				toteScore2.SelectedIndex=0;
+			};
+
+			noodleScore2.SelectedIndexChanged += (object sender, EventArgs e) => {
+				noodleScore2.Unfocus ();
+				model2.noodleScore += noodleScore2.SelectedIndex * 4;
+				noodleScoreTitle2.Text = "Noodles:" + model2.noodleScore.ToString ();
+				noodleScore2.SelectedIndex = 0;
+			};
+
+			coopScore2.SelectedIndexChanged += (object sender, EventArgs e) => {
+				coopScore2.Unfocus ();
+				model2.coopScore += coopScore2.SelectedIndex * 4;
+				coopScoreTitle2.Text = "Coop:" + model2.coopScore.ToString ();
+				coopScore2.SelectedIndex = 0;
 			};
 			//model.scoutName = "JOHNNY FIVE";
 

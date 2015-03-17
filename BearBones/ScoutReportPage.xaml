@@ -51,7 +51,7 @@
 			    </Grid.ColumnDefinitions>
 
 				<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Alliance Score"></Label>
-			    <Picker x:Name="allianceScore" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Red" SelectedIndex="0"  Title="All Score"  HorizontalOptions="FillAndExpand">
+			    <Picker x:Name="allianceScore" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Red" SelectedIndex="0"  Title="Alliance Score"  HorizontalOptions="FillAndExpand">
 			    </Picker>
 
 
@@ -146,7 +146,7 @@
 			    </Picker>
 
 			    <Label x:Name="canScoreTitle1" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="1"  HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Can Score"></Label>
-			    <Picker x:Name="canScore1" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="1"  BackgroundColor="Red" SelectedIndex="0" Title="Can Score"  HorizontalOptions="FillAndExpand">
+			    <Picker x:Name="canScore1" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="1"  BackgroundColor="Red" SelectedIndex="0" Title="Can Score"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			        	<x:String>0</x:String> 
 			            <x:String>4</x:String> 
@@ -161,7 +161,7 @@
 			    </Picker>
 
 			    <Label x:Name="toteScoreTitle1" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="1"  HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Tote Score"></Label>
-			    <Picker x:Name="toteScore1" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="1" BackgroundColor="Red" SelectedIndex="0"  Title="Tote Score"  HorizontalOptions="FillAndExpand">
+			    <Picker x:Name="toteScore1" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="1" BackgroundColor="Red" SelectedIndex="0"  Title="Tote Score"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			        	<x:String>0</x:String> 
 			            <x:String>2</x:String> 
@@ -174,7 +174,7 @@
 			    </Picker>
 
 			    <Label x:Name="coopScoreTitle1" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="1"  HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Coop Score"></Label>
-			    <Picker x:Name="coopScore1" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="1"  BackgroundColor="Red" SelectedIndex="0" Title="Can Score"  HorizontalOptions="FillAndExpand">
+			    <Picker x:Name="coopScore1" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="1"  BackgroundColor="Red" SelectedIndex="0" Title="Can Score"  HorizontalOptions="FillAndExpand">
 			        <Picker.Items>
 			        	<x:String>0</x:String> 
 			            <x:String>4</x:String> 
@@ -202,7 +202,77 @@
 				
 				<Label Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="1"  BackgroundColor="White" TextColor="Black" Text="Broke" ></Label>
 				<Switch x:Name="brokeDown1" Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="1" BackgroundColor="Red" HorizontalOptions="FillAndExpand" ></Switch>
-			
+			<!--COLUMN 3-->
+				<Label Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Auto Capability"></Label>
+			    <Picker x:Name="autoCapability2" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1" BackgroundColor="Red" SelectedIndex="0" Title="Auto"  HorizontalOptions="FillAndExpand">
+			        <Picker.Items>
+			            <x:String>Never Moved</x:String> 
+			            <x:String>In Zone</x:String>
+			            <x:String>1 Container</x:String>
+			           	<x:String>1 Tote</x:String> 
+			            <x:String>Tote Stack</x:String>
+			           	<x:String>none</x:String> 
+			        </Picker.Items>
+			    </Picker>
+
+			    <Label x:Name="canScoreTitle2" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1"  HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Can Score"></Label>
+			    <Picker x:Name="canScore2" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="1"  BackgroundColor="Red" SelectedIndex="0" Title="Can Score"  HorizontalOptions="FillAndExpand">
+			        <Picker.Items>
+			        	<x:String>0</x:String> 
+			            <x:String>4</x:String> 
+			            <x:String>8</x:String>
+			            <x:String>12</x:String>
+			           	<x:String>16</x:String> 
+			            <x:String>20</x:String>
+			          	<x:String>24</x:String>
+			           	<x:String>28</x:String> 
+			            <x:String>32</x:String>
+			        </Picker.Items>
+			    </Picker>
+
+			    <Label x:Name="toteScoreTitle2" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="1"  HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Tote Score"></Label>
+			    <Picker x:Name="toteScore2" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="1" BackgroundColor="Red" SelectedIndex="0"  Title="Tote Score"  HorizontalOptions="FillAndExpand">
+			        <Picker.Items>
+			        	<x:String>0</x:String> 
+			            <x:String>2</x:String> 
+			            <x:String>4</x:String>
+			            <x:String>6</x:String>
+			            <x:String>8</x:String>
+			            <x:String>10</x:String>
+			          	<x:String>12</x:String>
+			        </Picker.Items>
+			    </Picker>
+
+			    <Label x:Name="coopScoreTitle2" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="1"  HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Coop Score"></Label>
+			    <Picker x:Name="coopScore2" Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="1"  BackgroundColor="Red" SelectedIndex="0" Title="Can Score"  HorizontalOptions="FillAndExpand">
+			        <Picker.Items>
+			        	<x:String>0</x:String> 
+			            <x:String>4</x:String> 
+			            <x:String>8</x:String>
+			            <x:String>12</x:String>
+			           	<x:String>16</x:String> 
+			            <x:String>20</x:String>
+			          	<x:String>24</x:String>
+			           	<x:String>28</x:String> 
+			            <x:String>32</x:String>
+			        </Picker.Items>
+			    </Picker>
+			    <Label x:Name="noodleScoreTitle2" Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Noodl Score"></Label>
+			    <Picker x:Name="noodleScore2" Grid.Row="13" Grid.Column="2" Grid.ColumnSpan="1"  BackgroundColor="Red" SelectedIndex="0"  Title="Noodl Score"  HorizontalOptions="FillAndExpand">
+			        <Picker.Items>
+			        	<x:String>0</x:String> 
+			            <x:String>2</x:String> 
+			            <x:String>4</x:String>
+			            <x:String>6</x:String>
+			            <x:String>8</x:String>
+			            <x:String>10</x:String>
+			          	<x:String>12</x:String>
+			        </Picker.Items>
+			    </Picker>
+				
+				<Label Grid.Row="14" Grid.Column="2" Grid.ColumnSpan="1"  BackgroundColor="White" TextColor="Black" Text="Broke" ></Label>
+				<Switch x:Name="brokeDown2" Grid.Row="15" Grid.Column="2" Grid.ColumnSpan="1" BackgroundColor="Red" HorizontalOptions="FillAndExpand" ></Switch>
+
 			</Grid>
 		</StackLayout>
 	</ScrollView>
