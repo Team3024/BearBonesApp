@@ -83,6 +83,9 @@ namespace BearBones
 			{
 				int.TryParse (number, out n);
 				model0.teamNumber = n;
+				team1.Text = number;
+				team2.Text = "####";
+				team3.Text = "####";
 			}
 			else
 				model0.teamNumber = 0;
@@ -100,6 +103,24 @@ namespace BearBones
 			{
 				allianceScore.Items.Add (i.ToString());
 			}
+
+			team1.TextChanged += (object sender, TextChangedEventArgs e) => 
+			{
+				int.TryParse (e.NewTextValue, out n);
+				model0.teamNumber = n;
+			};
+
+			team2.TextChanged += (object sender, TextChangedEventArgs e) => 
+			{
+				int.TryParse (e.NewTextValue, out n);
+				model1.teamNumber = n;
+			};
+
+			team3.TextChanged += (object sender, TextChangedEventArgs e) => 
+			{
+				int.TryParse (e.NewTextValue, out n);
+				model2.teamNumber = n;
+			};
 		
 			canScore0.SelectedIndexChanged += (object sender, EventArgs e) => 
 			{
