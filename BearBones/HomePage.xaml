@@ -13,8 +13,10 @@
 			<!--<Label Text="Sort By:" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" ></Label>-->
   	  		<Button FontSize="12" Text="Name"  Clicked="SortByName" HorizontalOptions="FillAndExpand"></Button>
 	  		<Button FontSize="12" Text="Num" Clicked="SortByNum" HorizontalOptions="FillAndExpand"></Button>
-	  		<Button FontSize="12" Text="ToteScore" Clicked="SortByToteScore" HorizontalOptions="FillAndExpand"></Button>
-	  		<Button FontSize="12" Text="CanScore" Clicked="SortByCanScore" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button FontSize="12" Text="Tote" Clicked="SortByToteScore" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button FontSize="12" Text="Can" Clicked="SortByCanScore" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button FontSize="12" Text="Coop" Clicked="SortByCoopScore" HorizontalOptions="FillAndExpand"></Button>
+	  		<Button FontSize="12" Text="Noodle" Clicked="SortByNoodleScore" HorizontalOptions="FillAndExpand"></Button>
 	  		<!---<Button FontSize="12" Text="Auto" Clicked="SortByAuto" HorizontalOptions="FillAndExpand"></Button>-->
   </StackLayout>
 

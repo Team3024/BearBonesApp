@@ -316,7 +316,7 @@ namespace BearBones
 
 			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.coopScore)))
 			{
-				item.PageName=item.canScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
+				item.PageName=item.coopScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
 				home.Add (item);
 			}
 			listView.ItemsSource = models;
@@ -340,7 +340,7 @@ namespace BearBones
 
 			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.noodleScore)))
 			{
-				item.PageName=item.canScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
+				item.PageName=item.noodleScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
 				home.Add (item);
 			}
 			listView.ItemsSource = models;
