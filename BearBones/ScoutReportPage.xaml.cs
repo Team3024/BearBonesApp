@@ -205,15 +205,21 @@ namespace BearBones
 			if (allianceScore.SelectedIndex >= 0) {
 				model0.allianceScore = allianceScor [allianceScore.SelectedIndex];
 				model1.allianceScore = allianceScor [allianceScore.SelectedIndex];
+				model2.allianceScore = allianceScor [allianceScore.SelectedIndex];
 			} else {
 				model0.allianceScore = allianceScor [allianceScor.Length - 1];				
 				model1.allianceScore = allianceScor [allianceScor.Length - 1];
+				model2.allianceScore = allianceScor [allianceScor.Length - 1];
 			}
 
 			if (autoCapability0.SelectedIndex >= 0) {
 				model0.autoCapability = autoCap [autoCapability0.SelectedIndex];
+				model1.autoCapability = autoCap [autoCapability1.SelectedIndex];
+				model2.autoCapability = autoCap [autoCapability2.SelectedIndex];
 			} else {
 				model0.autoCapability = autoCap [autoCap.Length - 1];
+				model1.autoCapability = autoCap [autoCap.Length - 1];
+				model2.autoCapability = autoCap [autoCap.Length - 1];
 			}
 
 			model0.brokeDown = brokeDown0.IsToggled;
@@ -223,6 +229,10 @@ namespace BearBones
 			model1.brokeDown = brokeDown1.IsToggled;
 			model1.notes = notes.Text;
 			model1.matchNumber = match.Text;
+
+			model2.brokeDown = brokeDown2.IsToggled;
+			model2.notes = notes.Text;
+			model2.matchNumber = match.Text;
 		}
 			
 
@@ -230,6 +240,18 @@ namespace BearBones
 		{
 			model0.canScore = 0;
 			model0.toteScore = 0;
+			model0.coopScore = 0;
+			model0.noodleScore = 0;
+
+			model1.canScore = 0;
+			model1.toteScore = 0;
+			model1.coopScore = 0;
+			model1.noodleScore = 0;
+
+			model2.canScore = 0;
+			model2.toteScore = 0;
+			model2.coopScore = 0;
+			model2.noodleScore = 0;
 
 			// leave this page
 			Navigation.PopModalAsync ();

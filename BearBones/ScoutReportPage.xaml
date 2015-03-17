@@ -272,7 +272,6 @@
 				
 				<Label Grid.Row="14" Grid.Column="2" Grid.ColumnSpan="1"  BackgroundColor="White" TextColor="Black" Text="Broke" ></Label>
 				<Switch x:Name="brokeDown2" Grid.Row="15" Grid.Column="2" Grid.ColumnSpan="1" BackgroundColor="Red" HorizontalOptions="FillAndExpand" ></Switch>
-
 			</Grid>
 		</StackLayout>
 	</ScrollView>
