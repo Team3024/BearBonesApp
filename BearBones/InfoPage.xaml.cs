@@ -16,21 +16,9 @@ namespace BearBones
 
 		public ActivityIndicator spinningWheel;
 		public List<string> allianceScore = new List<string> ();
-		public List<string> driveTypes = new List<string> ();
-		public List<string> scoutNames = new List<string> ();
 		public List<string> autoCapabilities = new List<string> ();
 		public List<bool> brokeDowns = new List<bool> ();
-		public List<string> buildQualities = new List<string> ();
-		public List<bool> grabsContainers = new List<bool> ();
-		public List<bool> grabsContainerOffSteps = new List<bool> ();
-		public List<bool> grabsTotes = new List<bool> ();
-		public List<bool> grabsToteOffSteps = new List<bool> ();
-		public List<string> lastYearFinishes = new List<string> ();
 		public List<string> matchNumbers = new List<string> ();
-		public List<string> maxStacks = new List<string> ();
-		public List<bool> noodleBonuses = new List<bool> ();
-		public List<bool> noodleCleanups = new List<bool> ();
-		public List<bool> noodleInContainers = new List<bool> ();
 		public List<string> noteses = new List<string> ();
 		public List<bool> rebuildsStacks = new List<bool> ();
 		public List<string> reportTypes = new List<string> ();
@@ -42,7 +30,8 @@ namespace BearBones
 		public List<bool> yellowCoopStacks = new List<bool> ();
 		public List<int> toteScores = new List<int> ();
 		public List<int> canScores = new List<int> ();
-
+		public List<int> coopScores = new List<int> ();
+		public List<int> noodleScores = new List<int> ();
 
 		public int teamNumber;
 		public string teamName;
@@ -75,19 +64,6 @@ namespace BearBones
 
 		}
 
-		async void getPhoto(string name,Image iv)
-		{
-			//if (name == null)
-			//	return null;
-			// FIRST check locally
-
-			// THEN DOWNLOAD and save locally
-			//Task<ImageSource> result =  DependencyService.Get<IAws>().awsGetFile(name,lbl);
-			//return  await result;
-			ImageSource imgSrc=null;
-			//DependencyService.Get<IAws>().awsGetFile(name,lbl,iv);
-			//return imgSrc;
-		}
 
 		void OnDoneClicked (object sender, EventArgs e)
 		{
@@ -132,68 +108,37 @@ namespace BearBones
 
 			var pages = reports.Count;
 
-			if (reports != null && reports.Count > 0) {
-
-
-				allianceScore.Clear ();
-				driveTypes.Clear ();
-				scoutNames.Clear ();
-				autoCapabilities.Clear ();
-				brokeDowns.Clear ();
-				buildQualities.Clear ();
-				grabsContainers.Clear ();
-				grabsContainerOffSteps.Clear ();
-				grabsTotes.Clear ();
-				grabsToteOffSteps.Clear ();
-				lastYearFinishes.Clear ();
-				matchNumbers.Clear ();
-				maxStacks.Clear ();
-				noodleBonuses.Clear ();
-				noodleCleanups.Clear ();
-				noodleInContainers.Clear ();
-				noteses.Clear ();
-				rebuildsStacks.Clear ();
-				reportTypes.Clear ();
-				setsContainerOnStacks.Clear ();
-				stacksToteses.Clear ();
+			if (reports != null && reports.Count > 0)
+			{
 				teamNames.Clear ();
 				teamNumbers.Clear ();
-				teamQualities.Clear ();
-				yellowCoopStacks.Clear ();
+				matchNumbers.Clear ();
+				noteses.Clear ();
+
+				allianceScore.Clear ();
 				toteScores.Clear ();
 				canScores.Clear ();
+				noodleScores.Clear ();
+				coopScores.Clear ();
 
+				autoCapabilities.Clear ();
+				brokeDowns.Clear ();
 
-				foreach (ReportViewModel ip in reports) {
+				foreach (ReportViewModel ip in reports)
+				{
 					var p = ip;
 
 					allianceScore.Add (ip.allianceScore);
-					driveTypes.Add (ip.driveType);
-					scoutNames.Add (ip.scoutName);
 					autoCapabilities.Add (ip.autoCapability);
 					brokeDowns.Add (ip.brokeDown);
-					buildQualities.Add (ip.buildQuality);
-					grabsContainers.Add (ip.grabsContainer);
-					grabsContainerOffSteps.Add (ip.grabsContainerOffStep);
-					grabsTotes.Add (ip.grabsTote);
-					grabsToteOffSteps.Add (ip.grabsToteOffStep);
-					lastYearFinishes.Add (ip.lastYearFinish);
 					matchNumbers.Add (ip.matchNumber);
-					maxStacks.Add (ip.maxStack);
-					noodleBonuses.Add (ip.noodleBonus);
-					noodleCleanups.Add (ip.noodleCleanup);
-					noodleInContainers.Add (ip.noodleInContainer);
 					noteses.Add (ip.notes);
-					rebuildsStacks.Add (ip.rebuildsStack);
-					reportTypes.Add (ip.reportType);
-					setsContainerOnStacks.Add (ip.setsContainerOnStack);
-					stacksToteses.Add (ip.stacksTotes);
 					teamNames.Add (ip.teamName);
 					teamNumbers.Add (ip.teamNumber);
-					teamQualities.Add (ip.teamQuality);
-					yellowCoopStacks.Add (ip.yellowCoopStack);
 					toteScores.Add (ip.toteScore);
 					canScores.Add (ip.canScore);
+					coopScores.Add (ip.coopScore);
+					noodleScores.Add (ip.noodleScore);
 
 
 					if (hp != null) {
@@ -217,31 +162,19 @@ namespace BearBones
 
 					InfoCell report = new InfoCell ();
 
-					this.Children.Add (report.CreatePage (ip.allianceScore, ip.toteScore, ip.canScore,
-						ip.driveType,
-						ip.scoutName,
-						ip.autoCapability,
-						ip.brokeDown,
-						ip.buildQuality,
-						ip.grabsContainer,
-						ip.grabsContainerOffStep,
-						ip.grabsTote,
-						ip.grabsToteOffStep,
-						ip.lastYearFinish,
-						ip.matchNumber,
-						ip.maxStack,
-						ip.noodleBonus,
-						ip.noodleCleanup,
-						ip.noodleInContainer,
-						ip.notes,
-						ip.rebuildsStack,
-						ip.reportType,
-						ip.setsContainerOnStack,
-						ip.stacksTotes,
-						teamName,
+					this.Children.Add (report.CreatePage (
+
 						teamNumber,
-						ip.teamQuality,
-						ip.yellowCoopStack,
+						teamName,
+						ip.allianceScore,
+						ip.matchNumber,
+						ip.toteScore,
+						ip.canScore,
+						ip.noodleScore,
+						ip.coopScore,
+						ip.notes,
+						ip.brokeDown,
+						ip.autoCapability,
 						count,
 						pages));
 
@@ -257,7 +190,6 @@ namespace BearBones
 					count++;
 
 				}
-				buildAttributes ();
 				//Chart chart = await BuildGraphs ();
 				//graphs.Children.Add (chart);
 				await BuildGraphs ();
@@ -272,51 +204,10 @@ namespace BearBones
 
 		}
 
-		async void NewMatchReport(object sender, EventArgs e)
-		{
-			MatchReportPage page = new MatchReportPage (teamNumber.ToString());
-			await Navigation.PushModalAsync (page);
-		}
-
 		async void NewScoutReport(object sender, EventArgs e)
 		{
 			ScoutReportPage page = new ScoutReportPage (this,teamNumber.ToString());
 			await Navigation.PushModalAsync (page);
-		}
-
-		async void NewVideo(object sender, EventArgs e)
-		{
-			//Rest rest = new Rest();
-			//await rest.saveVideo (hp.teamNumber, url.Text);
-			//webview.Source=url.Text;
-		}
-
-		void buildAttributes()
-		{
-
-			attributes.Children.Clear ();
-
-			attributes.Children.Add(BuildSummary ("Grabs Can", grabsContainers[grabsContainers.Count - 1]));
-			//attributes.Children.Add (CreateDivider());
-			attributes.Children.Add(BuildSummary ("Grabs Can off Step", grabsContainerOffSteps[grabsContainerOffSteps.Count - 1]));
-			//attributes.Children.Add (CreateDivider());
-			attributes.Children.Add(BuildSummary ("Grabs Totes", grabsTotes[grabsTotes.Count - 1]));
-			//attributes.Children.Add (CreateDivider());
-			attributes.Children.Add(BuildSummary ("Grabs Totes off Step", grabsToteOffSteps[grabsToteOffSteps.Count - 1]));
-			//attributes.Children.Add (CreateDivider());
-			attributes.Children.Add(BuildSummary ("Noodle Bonus", noodleBonuses[noodleBonuses.Count - 1]));
-			//attributes.Children.Add (CreateDivider());
-			attributes.Children.Add(BuildSummary ("Noodle in Can", noodleInContainers[noodleInContainers.Count - 1]));
-			//attributes.Children.Add (CreateDivider());
-			attributes.Children.Add(BuildSummary ("Noodle Cleanup", noodleCleanups[noodleCleanups.Count - 1]));
-			//attributes.Children.Add (CreateDivider());
-			attributes.Children.Add(BuildSummary ("Rebuild Stacks", rebuildsStacks[rebuildsStacks.Count - 1]));
-			//attributes.Children.Add (CreateDivider());
-			attributes.Children.Add(BuildSummary ("Can on Stack", setsContainerOnStacks[setsContainerOnStacks.Count - 1]));
-			//attributes.Children.Add (CreateDivider());
-			attributes.Children.Add(BuildSummary ("Stack Totes", stacksToteses[stacksToteses.Count - 1]));
-			//attributes.Children.Add (CreateDivider());
-			attributes.Children.Add(BuildSummary ("Co-op Stack", yellowCoopStacks[yellowCoopStacks.Count - 1]));
 		}
 
 		BoxView CreateDivider()

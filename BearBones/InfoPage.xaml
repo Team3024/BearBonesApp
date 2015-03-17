@@ -41,8 +41,6 @@
 
 			<StackLayout Orientation="Vertical" HeightRequest="500">
 				<WebView x:Name="webview" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="500"></WebView>
-				<!--<Entry x:Name="url"  HorizontalOptions="FillAndExpand" HeightRequest="50" Keyboard="Text" Placeholder="HTTPS://www.youtube.com/..."></Entry>-->
-				<!--<Button Text="Save URL" x:Name="newVideo" Clicked="NewVideo" HeightRequest="50"/>-->
 			</StackLayout>
 
 			<ScrollView>

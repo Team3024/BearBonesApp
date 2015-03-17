@@ -51,7 +51,7 @@ namespace BearBones
 {	
 	public partial class ScoutReportPage : ContentPage
 	{	
-		ReportViewModel model;
+		ReportViewModel model0,model1,model2;
 		InfoPage iPage;
 		//IMediaPicker mediaPicker;
 
@@ -69,133 +69,136 @@ namespace BearBones
 		{
 			InitializeComponent ();
 			iPage = ip;
-			model = new ReportViewModel ();
-			model.teamName = "???";
+			model0 = new ReportViewModel ();
+			model1 = new ReportViewModel ();
+			model2 = new ReportViewModel ();
+
+			model0.teamName = "???";
+			model1.teamName = "???";
+			model2.teamName = "???";
+
 			int n;
 
-			if (number != null) {
+			if (number != null)// use the selected team number string
+			{
 				int.TryParse (number, out n);
-				model.teamNumber = n;
+				model0.teamNumber = n;
 			}
 			else
-				model.teamNumber = 0;
+				model0.teamNumber = 0;
+			// default aliance members
+			model1.teamNumber = 0;
+			model2.teamNumber = 0;
+			
 			Random rand = new Random ();
 			//model.pointsScored = rand.Next().ToString();
-			model.matchNumber = rand.Next().ToString();
-			model.reportType = "scout";
+			model0.matchNumber = 0.ToString();//rand.Next().ToString();
+			model1.matchNumber = 0.ToString();
+			model2.matchNumber = 0.ToString();
 
-			canScore.SelectedIndexChanged += (object sender, EventArgs e) => 
+			for (int i = 0; i < 400; ++i)
 			{
-				Picker pik=(Picker)sender;
-				canScore.Unfocus();
-				model.canScore+=canScore.SelectedIndex*4;
-				canScoreTitle.Text="Can Score:"+model.canScore.ToString();
-				canScore.SelectedIndex=0;
+				allianceScore.Items.Add (i.ToString());
+			}
+		
+			canScore0.SelectedIndexChanged += (object sender, EventArgs e) => 
+			{
+				canScore0.Unfocus();
+				model0.canScore+=canScore0.SelectedIndex*4;
+				canScoreTitle0.Text="Can Score:"+model0.canScore.ToString();
+				canScore0.SelectedIndex=0;
 			};
 
-			toteScore.SelectedIndexChanged += (object sender, EventArgs e) => 
+			toteScore0.SelectedIndexChanged += (object sender, EventArgs e) => 
 			{
-				toteScore.Unfocus();
-				model.toteScore+=toteScore.SelectedIndex*2;
-				toteScore.SelectedIndex = 0;//On the screen picker stay at the old value
-				toteScoreTitle.Text="Tote Score:"+model.toteScore.ToString();
-				toteScore.SelectedIndex=0;
+				toteScore0.Unfocus();
+				model0.toteScore+=toteScore0.SelectedIndex*2;
+				toteScore0.SelectedIndex = 0;//On the screen picker stay at the old value
+				toteScoreTitle0.Text="Tote Score:"+model0.toteScore.ToString();
+				toteScore0.SelectedIndex=0;
+			};
+
+			noodleScore0.SelectedIndexChanged += (object sender, EventArgs e) => {
+				noodleScore0.Unfocus ();
+				model0.noodleScore += noodleScore0.SelectedIndex * 4;
+				noodleScoreTitle0.Text = "Noodle Score:" + model0.noodleScore.ToString ();
+				noodleScore0.SelectedIndex = 0;
+			};
+
+			coopScore0.SelectedIndexChanged += (object sender, EventArgs e) => {
+				coopScore0.Unfocus ();
+				model0.coopScore += coopScore0.SelectedIndex * 4;
+				coopScoreTitle0.Text = "Coop Score:" + model0.coopScore.ToString ();
+				coopScore0.SelectedIndex = 0;
+			};
+
+			canScore1.SelectedIndexChanged += (object sender, EventArgs e) => 
+			{
+				canScore1.Unfocus();
+				model1.canScore+=canScore1.SelectedIndex*4;
+				canScoreTitle1.Text="Can Score:"+model1.canScore.ToString();
+				canScore1.SelectedIndex=0;
+			};
+
+			toteScore1.SelectedIndexChanged += (object sender, EventArgs e) => 
+			{
+				toteScore1.Unfocus();
+				model1.toteScore+=toteScore1.SelectedIndex*2;
+				toteScore1.SelectedIndex = 0;//On the screen picker stay at the old value
+				toteScoreTitle1.Text="Tote Score:"+model1.toteScore.ToString();
+				toteScore1.SelectedIndex=0;
+			};
+
+			noodleScore1.SelectedIndexChanged += (object sender, EventArgs e) => {
+				noodleScore1.Unfocus ();
+				model1.noodleScore += noodleScore1.SelectedIndex * 4;
+				noodleScoreTitle1.Text = "Noodle Score:" + model1.noodleScore.ToString ();
+				noodleScore1.SelectedIndex = 0;
+			};
+
+			coopScore1.SelectedIndexChanged += (object sender, EventArgs e) => {
+				coopScore1.Unfocus ();
+				model1.coopScore += coopScore1.SelectedIndex * 4;
+				coopScoreTitle1.Text = "Coop Score:" + model1.coopScore.ToString ();
+				coopScore1.SelectedIndex = 0;
 			};
 			//model.scoutName = "JOHNNY FIVE";
 
 
 		}
-			
-
-		private async Task CameraVideo (IMediaPicker mp)
-		{
-			//Setup ();
-			try
-			{
-				var mediaFile = await mp.TakeVideoAsync (new VideoMediaStorageOptions {
-					DefaultCamera = CameraDevice.Rear,
-					MaxPixelDimension = 400
-				});
-				var imgSource = ImageSource.FromStream(() => mediaFile.Source);
-				this.img.Source = imgSource;
-				var guid = System.Guid.NewGuid();
-
-			} catch (System.Exception ex)
-			{
-				Debug.WriteLine (ex.Message);
-			}
-		}
 
 
 		private void harvestUIControls()
 		{
-			if(driveType.SelectedIndex>=0)
-				model.driveType = drvType[driveType.SelectedIndex];
-			else
-				model.driveType = drvType[drvType.Length-1];
 
-			if(allianceScore.SelectedIndex>=0)
-				model.allianceScore = allianceScor [allianceScore.SelectedIndex];
-			else
-				model.allianceScore = allianceScor [allianceScor.Length-1];
+			if (allianceScore.SelectedIndex >= 0) {
+				model0.allianceScore = allianceScor [allianceScore.SelectedIndex];
+				model1.allianceScore = allianceScor [allianceScore.SelectedIndex];
+			} else {
+				model0.allianceScore = allianceScor [allianceScor.Length - 1];				
+				model1.allianceScore = allianceScor [allianceScor.Length - 1];
+			}
 
-			if(buildQuality.SelectedIndex>=0)
-				model.buildQuality = bldQuality[buildQuality.SelectedIndex];
-			else
-				model.buildQuality = bldQuality[bldQuality.Length-1];
+			if (autoCapability0.SelectedIndex >= 0) {
+				model0.autoCapability = autoCap [autoCapability0.SelectedIndex];
+			} else {
+				model0.autoCapability = autoCap [autoCap.Length - 1];
+			}
 
-			if(autoCapability.SelectedIndex>=0)
-				model.autoCapability = autoCap[autoCapability.SelectedIndex];
-			else
-				model.autoCapability = autoCap[autoCap.Length-1];
+			model0.brokeDown = brokeDown0.IsToggled;
+			model0.notes = notes.Text;
+			model0.matchNumber = match.Text;
 
-			if(maxStack.SelectedIndex>=0)
-				model.maxStack = maxStak[maxStack.SelectedIndex];
-			else
-				model.maxStack = maxStak[maxStak.Length-1];
-
-			if(teamQuality.SelectedIndex>=0)
-				model.teamQuality = tmQuality[teamQuality.SelectedIndex];
-			else
-				model.teamQuality = tmQuality[tmQuality.Length-1];
-
-			if(lastYear.SelectedIndex>=0)
-				model.lastYearFinish = lstYear[lastYear.SelectedIndex];
-			else
-				model.lastYearFinish = lstYear[lstYear.Length-1];
-
-			model.noodleInContainer = noodleInContainer.IsToggled;
-			model.noodleCleanup = noodleCleanup.IsToggled;
-			model.noodleBonus = noodleBonus.IsToggled;
-
-			model.brokeDown = brokeDown.IsToggled;
-			model.rebuildsStack = rebuildsStack.IsToggled;
-			model.yellowCoopStack = yellowCoopStack.IsToggled;
-
-			model.setsContainerOnStack = containerOnStack.IsToggled;
-			model.grabsContainer = grabsContainer.IsToggled;
-			model.grabsContainerOffStep = grabsContainerOffStep.IsToggled;
-
-			model.stacksTotes = stacksTotes.IsToggled;
-			model.grabsTote = grabsTote.IsToggled;
-			model.grabsToteOffStep = grabsToteOffStep.IsToggled;
-			model.notes = notes.Text;
-			model.scoutName = scout.Text;
-			model.matchNumber = match.Text;
-
+			model1.brokeDown = brokeDown1.IsToggled;
+			model1.notes = notes.Text;
+			model1.matchNumber = match.Text;
 		}
-
-		void TakeVideo (object sender, EventArgs e)
-		{
-			var device = XLabs.Ioc.Resolver.Resolve<XLabs.Platform.Device.IDevice>();
-			var mediaPicker = DependencyService.Get<IMediaPicker> ()?? device.MediaPicker;
-			CameraVideo (mediaPicker);
-		}
+			
 
 		void OnCancelClicked (object sender, EventArgs e)
 		{
-			model.canScore = 0;
-			model.toteScore = 0;
+			model0.canScore = 0;
+			model0.toteScore = 0;
 
 			// leave this page
 			Navigation.PopModalAsync ();
@@ -205,7 +208,9 @@ namespace BearBones
 		{
 			harvestUIControls();
 			Rest rest = new Rest ();
-			rest.createNewReport (model);
+			rest.createNewReport (model0);
+			rest.createNewReport (model1);
+			rest.createNewReport (model2);
 			//iPage.Refresh ();
 			// leave this page
 			Navigation.PopModalAsync ();

@@ -61,11 +61,7 @@ namespace BearBones
 
 			Random rand = new Random ();
 			model.allianceScore = rand.Next().ToString();
-			model.driveType = "mecanum";
 			model.matchNumber = rand.Next().ToString();
-			model.reportType = "match";
-			model.scoutName = "Yoda";
-
 			Rest rest = new Rest ();
 			rest.createNewReport (model);
 

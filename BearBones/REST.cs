@@ -119,40 +119,25 @@ namespace BearBones
 						{
 							if(k.Key == "data")// these are the events
 							{
+
 								string values = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
 								string ds = Newtonsoft.Json.JsonConvert.SerializeObject(k.Value);
 								JToken token = JObject.Parse(ds);
 								ReportViewModel data = new ReportViewModel();
-								data.reportType = (string)token.SelectToken("type");
-								data.scoutName = (string)token.SelectToken("scout");
-								data.allianceScore = (string)token.SelectToken("score");
-								data.canScore = (int)token.SelectToken("canScore");
-								data.toteScore = (int)token.SelectToken("toteScore");
-								data.driveType = (string)token.SelectToken("driveType");
-								data.matchNumber = (string)token.SelectToken("matchNumber");
-								data.grabsContainer = (bool)token.SelectToken("grabsContainer");
 
-								data.maxStack = (string)token.SelectToken("maxStack");
-								data.grabsTote = (bool)token.SelectToken("grabsTote");
-								data.lastYearFinish = (string)token.SelectToken("lastYearFinish");
-								data.grabsToteOffStep = (bool)token.SelectToken("grabsToteOffStep");
-								data.noodleBonus = (bool)token.SelectToken("noodleBonus");
-								data.notes = (string)token.SelectToken("notes");
-
-								data.noodleCleanup = (bool)token.SelectToken("noodleCleanup");
-								data.brokeDown = (bool)token.SelectToken("brokeDown");
-								data.grabsContainerOffStep = (bool)token.SelectToken("grabsContainerOffStep");
-								data.noodleInContainer = (bool)token.SelectToken("noodleInContainer");
-								data.teamQuality = (string)token.SelectToken("teamQuality");
-								data.buildQuality = (string)token.SelectToken("buildQuality");
-								data.autoCapability = (string)token.SelectToken("autoCapability");
 								try
 								{
 									data.timestamp=(double)token.SelectToken("timestamp");
-									data.setsContainerOnStack = (bool)token.SelectToken("setsContainerOnStack");
-									data.yellowCoopStack = (bool)token.SelectToken("yellowCoopStack");
-									data.stacksTotes = (bool)token.SelectToken("stacksTotes");
-									data.rebuildsStack = (bool)token.SelectToken("rebuildsStack");
+									data.matchNumber = (string)token.SelectToken("matchNumber");
+									data.notes = (string)token.SelectToken("notes");
+
+									data.allianceScore = (string)token.SelectToken("score");
+									data.canScore = (int)token.SelectToken("canScore");
+									data.toteScore = (int)token.SelectToken("toteScore");
+									data.brokeDown = (bool)token.SelectToken("brokeDown");
+									data.autoCapability = (string)token.SelectToken("autoCapability");
+									data.coopScore = (int)token.SelectToken("coopScore");
+									data.noodleScore = (int)token.SelectToken("noodleScore");
 								}
 								catch(Exception ex)
 								{
@@ -239,19 +224,15 @@ namespace BearBones
 			string uri="http://71.92.131.203/db/data/cypher/";
 			string query;
 
-			query = "CREATE (x:Report {timestamp:timestamp() , type:\"" + vm.reportType + "\",matchNumber:\"" + vm.matchNumber + "\"" +
-					" ,scout:\"" + vm.scoutName + "\",driveType:\"" + vm.driveType + "\" ,score:\"" + vm.allianceScore + "\"" +
-					" ,maxStack:\"" + vm.maxStack + "\",grabsContainer:" + vm.grabsContainer + " ,grabsTote:" + vm.grabsTote +
-					" ,grabsContainerOffStep:" + vm.grabsContainerOffStep + ",grabsToteOffStep:" + vm.grabsToteOffStep +
-					" ,rebuildsStack:" + vm.rebuildsStack + ",stacksTotes:" + vm.stacksTotes +
-					" ,yellowCoopStack:" + vm.yellowCoopStack + ",setsContainerOnStack:" + vm.setsContainerOnStack +
-					" ,brokeDown:" + vm.brokeDown + " ,lastYearFinish:\"" + vm.lastYearFinish + "\"" +
+			query = "CREATE (x:Report {timestamp:timestamp() , matchNumber:\"" + vm.matchNumber + "\"" +
+					" ,score:\"" + vm.allianceScore + "\"" +
+					" ,brokeDown:" + vm.brokeDown +
 					" ,toteScore:\"" + vm.toteScore + "\" ,canScore:\"" + vm.canScore + "\"" +
-					" ,noodleBonus:" + vm.noodleBonus + " ,noodleCleanup:" + vm.noodleCleanup + " ,noodleInContainer:" + vm.noodleInContainer +
-					" ,photo:\"none\", notes:\"" + vm.notes + "\" ,teamQuality:\"" + vm.teamQuality + "\" ,buildQuality:\"" + vm.buildQuality + "\" ,autoCapability:\"" + vm.autoCapability + "\"" +
+					" ,coopScore:\"" + vm.coopScore + "\" ,noodleScore:\"" + vm.noodleScore + "\"" +
+					" ,notes:\"" + vm.notes + "\" , autoCapability:\"" + vm.autoCapability + "\"" +
 					"}) WITH x MATCH (a:Team) WHERE a.number = " + vm.teamNumber +
 					" WITH x,a CREATE (a)-[r:HAS_REPORT]->(x)" +
-					" WITH a SET  a.auto=\"" + vm.autoCapability + "\", a.reliability=\"" + vm.brokeDown + "\", a.score=\"" + vm.allianceScore + "\" ,a.toteScore=" + vm.toteScore + " ,a.canScore=" + vm.canScore + ", a.reports=1 ";
+				" WITH a SET  a.auto=\"" + vm.autoCapability + "\", a.reliability=\"" + vm.brokeDown + "\", a.score=\"" + vm.allianceScore + "\" ,a.toteScore=" + vm.toteScore + " ,a.canScore=" + vm.canScore + " ,a.coopScore=" + vm.coopScore + " ,a.noodleScore=" + vm.noodleScore+ ", a.reports=1 ";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 			return responseStr;
 		}
