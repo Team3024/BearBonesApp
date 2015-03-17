@@ -298,8 +298,54 @@ namespace BearBones
 			listView.ItemsSource = models;
 
 		}
-			
 
+		async public void SortByCoopScore(object sender, EventArgs e)
+		{
+
+			//ToolbarItem tbi = (ToolbarItem) sender;
+			//this.DisplayAlert("Selected!", tbi.Name,"OK");
+
+
+			ObservableCollection<HomePageViewModel> tList = new ObservableCollection<HomePageViewModel> ();
+			foreach (HomePageViewModel vm in models)
+				tList.Add (vm);
+
+			models.Clear ();
+
+			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
+
+			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.coopScore)))
+			{
+				item.PageName=item.canScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
+				home.Add (item);
+			}
+			listView.ItemsSource = models;
+
+		}
+
+		async public void SortByNoodleScore(object sender, EventArgs e)
+		{
+
+			//ToolbarItem tbi = (ToolbarItem) sender;
+			//this.DisplayAlert("Selected!", tbi.Name,"OK");
+
+
+			ObservableCollection<HomePageViewModel> tList = new ObservableCollection<HomePageViewModel> ();
+			foreach (HomePageViewModel vm in models)
+				tList.Add (vm);
+
+			models.Clear ();
+
+			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
+
+			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.noodleScore)))
+			{
+				item.PageName=item.canScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
+				home.Add (item);
+			}
+			listView.ItemsSource = models;
+
+		}
 		/*
 		public void FilterTeams(string text)
 		{

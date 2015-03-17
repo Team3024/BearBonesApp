@@ -26,6 +26,9 @@ namespace BearBones
 		public string score {  set; get; }
 		public int toteScore {  set; get; }
 		public int canScore {  set; get; }
+		public int coopScore {  set; get; }
+		public int noodleScore {  set; get; }
+
 		public int reports {  set; get; }
 
 		public string reliability {  set; get; }

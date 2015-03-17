@@ -76,7 +76,8 @@ namespace BearBones
 									data.auto = (string)token.SelectToken("auto");
 									data.reliability = (string)token.SelectToken("reliability");
 									data.reports=(int)token.SelectToken("reports");
-									data.video=(string)token.SelectToken("video");
+									data.coopScore = (int)token.SelectToken("coopScore");
+									data.noodleScore = (int)token.SelectToken("noodleScore");
 								}
 
 								catch(Exception ex)
