@@ -89,9 +89,6 @@ namespace BearBones
 			}
 			else
 				model0.teamNumber = 0;
-			// default aliance members
-			model1.teamNumber = 0;
-			model2.teamNumber = 0;
 			
 			Random rand = new Random ();
 			//model.pointsScored = rand.Next().ToString();
@@ -283,8 +280,10 @@ namespace BearBones
 			harvestUIControls();
 			Rest rest = new Rest ();
 			rest.createNewReport (model0);
-			rest.createNewReport (model1);
-			rest.createNewReport (model2);
+			if(team2.Text  != "####")
+				rest.createNewReport (model1);
+			if(team3.Text  != "####")
+				rest.createNewReport (model2);
 			//iPage.Refresh ();
 			// leave this page
 			Navigation.PopModalAsync ();
