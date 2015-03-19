@@ -9,6 +9,7 @@
              Padding="0,0,0,0"
              >
 <StackLayout >
+
   <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
 			<!--<Label Text="Sort By:" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" ></Label>-->
   	  		<Button FontSize="12" Text="Name"  Clicked="SortByName" HorizontalOptions="FillAndExpand"></Button>
