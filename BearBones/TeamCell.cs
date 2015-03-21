@@ -23,6 +23,8 @@ namespace BearBones
 			this.Height = 60;
 			base.OnBindingContextChanged ();
 			var temp = BindingContext as HomePageViewModel;
+			Switch swich = new Switch();
+
 			Label title = new Label {
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand,
@@ -55,6 +57,7 @@ namespace BearBones
 				Orientation=StackOrientation.Horizontal,
 				Padding = new Thickness(5,0,5,0)
 			};
+			s.Children.Add (swich);
 			s.Children.Add (title);
 			this.View = s;
 		}
