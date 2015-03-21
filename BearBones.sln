@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BearBones.iOS", "iOS\BearBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BearBones.Android", "Android\BearBones.Android.csproj", "{113727E2-2F6C-4EE5-8E98-54AAF54AEA85}"
 EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Packages", "Packages.mdproj", "{2AFA5170-601B-4F90-B88A-90FDB537B653}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,14 @@ Global
 		{113727E2-2F6C-4EE5-8E98-54AAF54AEA85}.Release|iPhone.Build.0 = Release|Any CPU
 		{113727E2-2F6C-4EE5-8E98-54AAF54AEA85}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{113727E2-2F6C-4EE5-8E98-54AAF54AEA85}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{2AFA5170-601B-4F90-B88A-90FDB537B653}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|Any CPU
+		{2AFA5170-601B-4F90-B88A-90FDB537B653}.AppStore|iPhone.ActiveCfg = AppStore|Any CPU
+		{2AFA5170-601B-4F90-B88A-90FDB537B653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AFA5170-601B-4F90-B88A-90FDB537B653}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{2AFA5170-601B-4F90-B88A-90FDB537B653}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{2AFA5170-601B-4F90-B88A-90FDB537B653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AFA5170-601B-4F90-B88A-90FDB537B653}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{2AFA5170-601B-4F90-B88A-90FDB537B653}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{3C905423-13E4-48EF-8667-AFAB3850987F}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
 		{3C905423-13E4-48EF-8667-AFAB3850987F}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
 		{3C905423-13E4-48EF-8667-AFAB3850987F}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
