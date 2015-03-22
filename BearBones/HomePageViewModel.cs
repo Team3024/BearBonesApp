@@ -13,6 +13,10 @@ namespace BearBones
 			this.PageName = teamNumber + " : " + teamName;
 		}
 
+
+		public bool isChosen { set; get; }
+
+
 		public Type PageType { private set; get; }
 
 		public string PageName { set; get; }
@@ -37,6 +41,7 @@ namespace BearBones
 		public string video {  set; get; }
 
 		public int index {  set; get; }
+
 
 	}
 }

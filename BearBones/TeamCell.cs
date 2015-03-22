@@ -5,6 +5,8 @@ namespace BearBones
 {
 	public class TeamCell: ViewCell
 	{
+
+		public bool isChosen = false;
 		public int index { set; get; }
 
 		public TeamCell ()
@@ -24,6 +26,14 @@ namespace BearBones
 			base.OnBindingContextChanged ();
 			var temp = BindingContext as HomePageViewModel;
 			Switch swich = new Switch();
+
+			if (temp.isChosen) {
+				swich.IsToggled = true;
+			}
+
+			swich.Toggled  += (object sender, ToggledEventArgs e) => {
+				if(swich.IsToggled){temp.isChosen = true;}else{temp.isChosen = false;}
+			};
 
 			Label title = new Label {
 				HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -57,7 +67,10 @@ namespace BearBones
 				Orientation=StackOrientation.Horizontal,
 				Padding = new Thickness(5,0,5,0)
 			};
+
+
 			s.Children.Add (swich);
+
 			s.Children.Add (title);
 			this.View = s;
 		}
@@ -65,4 +78,3 @@ namespace BearBones
 	}
 
 }
-

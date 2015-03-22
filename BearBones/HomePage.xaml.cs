@@ -69,7 +69,7 @@ namespace BearBones
 				HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
 				InfoPage page = new InfoPage (this,hpvm);// sent it the hpvm object
 				goInfo(page);
- 				page=page;
+				page=page;
 
 			};
 			// set the ListView data source to empty list
@@ -217,7 +217,17 @@ namespace BearBones
 
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
 
-			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.teamName))
+
+
+			//ObservableCollection<HomePageViewModel> removed = RemovedSelected (tList);
+
+			Tuple<ObservableCollection<HomePageViewModel>, ObservableCollection<HomePageViewModel>> removed = RemovedSelected (tList);
+
+			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy ((HomePageViewModel source) => source.teamName));
+
+			ObservableCollection<HomePageViewModel> final = new ObservableCollection<HomePageViewModel>(sorted.Concat(removed.Item2));
+
+			foreach (HomePageViewModel item in final)
 			{
 				item.PageName=item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
 				home.Add (item);
@@ -226,6 +236,31 @@ namespace BearBones
 			listView.ItemsSource = models;
 
 		}
+
+
+		public Tuple<ObservableCollection<HomePageViewModel>, ObservableCollection<HomePageViewModel>> RemovedSelected(ObservableCollection<HomePageViewModel> list)
+		{
+			ObservableCollection<HomePageViewModel> sort = new ObservableCollection<HomePageViewModel>();
+			ObservableCollection<HomePageViewModel> unsort = new ObservableCollection<HomePageViewModel>();
+			foreach(HomePageViewModel item in list){
+				if (item.isChosen) {
+					unsort.Add (item);
+				} else {
+					sort.Add (item);
+				}
+			}
+
+
+			//sort = (ObservableCollection<HomePageViewModel>) sort.OrderBy ((HomePageViewModel source) => source.teamName);
+
+			//sort = new ObservableCollection<HomePageViewModel>(sort.OrderBy((HomePageViewModel source) => source.teamName));
+
+			//sort = new ObservableCollection<HomePageViewModel> (sort.Concat (unsort));
+
+			//ObservableCollection<HomePageViewModel> end = (ObservableCollection<HomePageViewModel>) sort.Concat(unsort);
+			return Tuple.Create (sort, unsort);
+		}
+
 
 		async public void SortByNum(object sender, EventArgs e)
 		{
@@ -242,7 +277,16 @@ namespace BearBones
 
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
 
-			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.teamNumber))
+
+
+			Tuple<ObservableCollection<HomePageViewModel>, ObservableCollection<HomePageViewModel>> removed = RemovedSelected (tList);
+
+			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>source.teamNumber));
+
+			ObservableCollection<HomePageViewModel> final = new ObservableCollection<HomePageViewModel>(sorted.Concat(removed.Item2));
+
+
+			foreach (HomePageViewModel item in final)
 			{
 				item.PageName=item.teamNumber+"--"+item.teamName+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
 				home.Add (item);
@@ -266,7 +310,13 @@ namespace BearBones
 
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
 
-			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.toteScore)))
+			Tuple<ObservableCollection<HomePageViewModel>, ObservableCollection<HomePageViewModel>> removed = RemovedSelected (tList);
+
+			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>(1000-source.toteScore)));
+
+			ObservableCollection<HomePageViewModel> final = new ObservableCollection<HomePageViewModel>(sorted.Concat(removed.Item2));
+
+			foreach (HomePageViewModel item in final)
 			{
 				item.PageName=item.toteScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
 				home.Add (item);
@@ -290,7 +340,13 @@ namespace BearBones
 
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
 
-			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.canScore)))
+			Tuple<ObservableCollection<HomePageViewModel>, ObservableCollection<HomePageViewModel>> removed = RemovedSelected (tList);
+
+			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>(1000-source.canScore)));
+
+			ObservableCollection<HomePageViewModel> final = new ObservableCollection<HomePageViewModel>(sorted.Concat(removed.Item2));
+
+			foreach (HomePageViewModel item in final)
 			{
 				item.PageName=item.canScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
 				home.Add (item);
@@ -314,7 +370,13 @@ namespace BearBones
 
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
 
-			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.coopScore)))
+			Tuple<ObservableCollection<HomePageViewModel>, ObservableCollection<HomePageViewModel>> removed = RemovedSelected (tList);
+
+			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>(1000-source.canScore)));
+
+			ObservableCollection<HomePageViewModel> final = new ObservableCollection<HomePageViewModel>(sorted.Concat(removed.Item2));
+
+			foreach (HomePageViewModel item in final)
 			{
 				item.PageName=item.coopScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
 				home.Add (item);
@@ -338,7 +400,13 @@ namespace BearBones
 
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
 
-			foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>(1000-source.noodleScore)))
+			Tuple<ObservableCollection<HomePageViewModel>, ObservableCollection<HomePageViewModel>> removed = RemovedSelected (tList);
+
+			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>(1000-source.canScore)));
+
+			ObservableCollection<HomePageViewModel> final = new ObservableCollection<HomePageViewModel>(sorted.Concat(removed.Item2));
+
+			foreach (HomePageViewModel item in final)
 			{
 				item.PageName=item.noodleScore+"--"+item.teamName+"--"+item.teamNumber+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
 				home.Add (item);
@@ -396,7 +464,7 @@ namespace BearBones
 				}
 			}
 		}
-			
+
 		async void Info(string pageName)
 		{
 			HomePageViewModel hpvm = (HomePageViewModel) listView.SelectedItem;
