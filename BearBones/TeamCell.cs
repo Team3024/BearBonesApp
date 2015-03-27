@@ -27,6 +27,8 @@ namespace BearBones
 			var temp = BindingContext as HomePageViewModel;
 			Switch swich = new Switch();
 
+
+
 			if (temp.isChosen) {
 				swich.IsToggled = true;
 			}
