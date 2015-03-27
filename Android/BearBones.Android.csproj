@@ -15,9 +15,14 @@
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <AssemblyName>BearBones.Android</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+<<<<<<< HEAD
     <ReleaseVersion>1.0</ReleaseVersion>
     <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
     <AndroidLinkMode>None</AndroidLinkMode>
+=======
+    <ReleaseVersion>1</ReleaseVersion>
+    <Description>FRC 2015 Strategy Application</Description>
+>>>>>>> Stash
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,11 +43,11 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
+    <AndroidSigningKeyStore>/Users/MacOwner/Xamarin Projects/Team3024/bearbones.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>team3024</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>bearbones</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>team3024</AndroidSigningKeyPass>
     <AndroidKeyStore>True</AndroidKeyStore>
-    <AndroidSigningKeyStore>/Users/MacOwner/adropub.keystore</AndroidSigningKeyStore>
-    <AndroidSigningStorePass>Runway12</AndroidSigningStorePass>
-    <AndroidSigningKeyAlias>Team3024</AndroidSigningKeyAlias>
-    <AndroidSigningKeyPass>BearBones</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

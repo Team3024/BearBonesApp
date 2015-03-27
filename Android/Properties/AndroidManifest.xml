@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.5" package="BearBones.Android" android:versionCode="0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.team3024.BearBones" android:versionCode="1" android:versionName="1">
 	<uses-sdk android:targetSdkVersion="21" android:minSdkVersion="19" />
-	<application android:label="BearBones.Android" android:icon="@drawable/icon">
+	<application android:label="BearBones" android:icon="@drawable/icon">
 		<activity android:name="net.hockeyapp.android.UpdateActivity" />
 	</application>
 	<uses-permission android:name="android.permission.INTERNET" />

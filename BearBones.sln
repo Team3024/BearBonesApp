@@ -86,6 +86,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		version = 1.0
+		description = FRC 2015
+		version = 1
 	EndGlobalSection
 EndGlobal
