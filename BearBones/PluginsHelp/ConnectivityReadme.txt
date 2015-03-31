@@ -15,3 +15,8 @@ RT apps can not perform loopback, so you can not use IsReachable to query the st
 Permissions to think about:
 The Private Networks (Client & Server) capability is represented by the Capability name = "privateNetworkClientServer" tag in the app manifest. 
 The Internet (Client & Server) capability is represented by the Capability name = "internetClientServer" tag in the app manifest.
+
+
+1427561002995
+1427485493506
+1427563749528

@@ -221,13 +221,13 @@ namespace BearBones
 		{
 
 			if (allianceScore.SelectedIndex >= 0) {
-				model0.allianceScore = allianceScor [allianceScore.SelectedIndex];
-				model1.allianceScore = allianceScor [allianceScore.SelectedIndex];
-				model2.allianceScore = allianceScor [allianceScore.SelectedIndex];
+				model0.allianceScore = allianceScore.SelectedIndex.ToString();
+				model1.allianceScore = allianceScore.SelectedIndex.ToString();
+				model2.allianceScore = allianceScore.SelectedIndex.ToString();
 			} else {
-				model0.allianceScore = allianceScor [allianceScor.Length - 1];				
-				model1.allianceScore = allianceScor [allianceScor.Length - 1];
-				model2.allianceScore = allianceScor [allianceScor.Length - 1];
+				model0.allianceScore = "None";				
+				model1.allianceScore = "None";
+				model2.allianceScore = "None";
 			}
 
 			if (autoCapability0.SelectedIndex >= 0) {

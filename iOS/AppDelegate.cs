@@ -21,7 +21,7 @@ using XLabs.Serialization.JsonNET;
 using HockeyApp;
 
 [assembly: Xamarin.Forms.Dependency (typeof (IDevice))]
-[assembly: Dependency(typeof(BearBones.IOS.Picture))]
+//[assembly: Dependency(typeof(BearBones.IOS.Picture))]
 //[assembly: Dependency(typeof(BearBones.iOS.AWS))]
 
 namespace BearBones.IOS

@@ -103,7 +103,7 @@ namespace BearBones
 		public async Task<ObservableCollection<ReportViewModel>>getReports(int teamNum)
 		{
 			string uri="http://71.92.131.203/db/data/cypher/";
-			string query="MATCH (a:Team)-[HAS_REPORT]->(b:Report) where a.number="+teamNum.ToString()+" RETURN b";
+			string query="MATCH (a:Team)-[HAS_REPORT]->(b:Report) where b.timestamp>1427563749528 AND a.number="+teamNum.ToString()+" RETURN b";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 		
 			var results = new ObservableCollection<ReportViewModel>();
