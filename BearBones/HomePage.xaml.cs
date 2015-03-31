@@ -372,7 +372,7 @@ namespace BearBones
 
 			Tuple<ObservableCollection<HomePageViewModel>, ObservableCollection<HomePageViewModel>> removed = RemovedSelected (tList);
 
-			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>(1000-source.canScore)));
+			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>(1000-source.coopScore)));
 
 			ObservableCollection<HomePageViewModel> final = new ObservableCollection<HomePageViewModel>(sorted.Concat(removed.Item2));
 
@@ -402,7 +402,7 @@ namespace BearBones
 
 			Tuple<ObservableCollection<HomePageViewModel>, ObservableCollection<HomePageViewModel>> removed = RemovedSelected (tList);
 
-			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>(1000-source.canScore)));
+			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>(1000-source.noodleScore)));
 
 			ObservableCollection<HomePageViewModel> final = new ObservableCollection<HomePageViewModel>(sorted.Concat(removed.Item2));
 
