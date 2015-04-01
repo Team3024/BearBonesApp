@@ -39,7 +39,7 @@ namespace BearBones
 
 		public string auto {  set; get; }
 		public string video {  set; get; }
-
+		public bool swich {  set; get; }
 		public int index {  set; get; }
 
 

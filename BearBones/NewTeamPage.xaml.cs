@@ -43,7 +43,7 @@ namespace BearBones
 			teamName = viewModel.teamName;
 
 			// callback to main thread to add a team and update UI
-			parent.newFRCTeam (teamNumber, teamName);
+			parent.newFRCTeam (teamNumber, teamName,false);
 
 			parent.PostTeam(teamNumber, teamName,viewModel.scoutName);
 			// leave this page

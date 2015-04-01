@@ -34,7 +34,9 @@ namespace BearBones
 			}
 
 			swich.Toggled  += (object sender, ToggledEventArgs e) => {
-				if(swich.IsToggled){temp.isChosen = true;}else{temp.isChosen = false;}
+				if(swich.IsToggled){temp.swich = true;}else{temp.swich = false;}
+				Rest rest = new Rest();
+				rest.updateTeam(temp.teamNumber,temp.swich);
 			};
 
 			Label title = new Label {
@@ -71,6 +73,7 @@ namespace BearBones
 			};
 
 
+			swich.IsToggled = temp.swich;
 			s.Children.Add (swich);
 
 			s.Children.Add (title);

@@ -100,7 +100,7 @@ namespace BearBones
 
 						foreach (HomePageViewModel vm in tList) 
 						{
-							newFRCTeam (vm.teamNumber,vm.teamName);
+							newFRCTeam (vm.teamNumber,vm.teamName,vm.swich);
 						}
 						/*
 						var sortedOC = from item in models
@@ -111,12 +111,14 @@ namespace BearBones
 
 						ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
 
+
 						foreach (HomePageViewModel item in tList.OrderBy((HomePageViewModel source)=>source.teamNumber))
 						{
 							item.PageName=item.teamNumber+"--"+item.teamName+"\nAuto:"+item.auto+"\nBroke:"+item.reliability;
 							home.Add (item);
 						}
 						listView.ItemsSource = models;
+
 						//foreach (var t in sortedOC.ase)
 						//	models.Add (t);
 
@@ -154,7 +156,7 @@ namespace BearBones
 		}
 
 
-		public void newFRCTeam(int number, string name)
+		public void newFRCTeam(int number, string name,bool sw)
 		{
 			// get the current data source
 			ObservableCollection<HomePageViewModel> home = listView.ItemsSource as ObservableCollection<HomePageViewModel>;
@@ -167,7 +169,7 @@ namespace BearBones
 			m.teamNumber=number;
 			m.PageName = name + " : " + number.ToString();
 			m.index = models.Count + 1;
-
+			m.swich = sw;
 			// add this to our Home Page ListView
 			home.Add (m);
 
@@ -197,8 +199,8 @@ namespace BearBones
 				GetTeams ();
 			}
 			// reset the data source--this will trigger an update
-
-			listView.ItemsSource = models;
+			SortByNum(null,null);
+			//listView.ItemsSource = models;
 
 		}
 
@@ -243,14 +245,12 @@ namespace BearBones
 			ObservableCollection<HomePageViewModel> sort = new ObservableCollection<HomePageViewModel>();
 			ObservableCollection<HomePageViewModel> unsort = new ObservableCollection<HomePageViewModel>();
 			foreach(HomePageViewModel item in list){
-				if (item.isChosen) {
+				if (item.swich) {
 					unsort.Add (item);
 				} else {
 					sort.Add (item);
 				}
 			}
-
-
 			//sort = (ObservableCollection<HomePageViewModel>) sort.OrderBy ((HomePageViewModel source) => source.teamName);
 
 			//sort = new ObservableCollection<HomePageViewModel>(sort.OrderBy((HomePageViewModel source) => source.teamName));
@@ -402,7 +402,7 @@ namespace BearBones
 
 			Tuple<ObservableCollection<HomePageViewModel>, ObservableCollection<HomePageViewModel>> removed = RemovedSelected (tList);
 
-			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>(1000-source.noodleScore)));
+			ObservableCollection<HomePageViewModel> sorted = new ObservableCollection<HomePageViewModel>(removed.Item1.OrderBy((HomePageViewModel source)=>(1000-source.noodleScore )));
 
 			ObservableCollection<HomePageViewModel> final = new ObservableCollection<HomePageViewModel>(sorted.Concat(removed.Item2));
 

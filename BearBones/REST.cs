@@ -78,6 +78,7 @@ namespace BearBones
 									data.reports=(int)token.SelectToken("reports");
 									data.coopScore = (int)token.SelectToken("coopScore");
 									data.noodleScore = (int)token.SelectToken("noodleScore");
+									data.swich = (bool)token.SelectToken("switch");
 								}
 
 								catch(Exception ex)
@@ -139,6 +140,7 @@ namespace BearBones
 									data.autoCapability = (string)token.SelectToken("autoCapability");
 									data.coopScore = (int)token.SelectToken("coopScore");
 									data.noodleScore = (int)token.SelectToken("noodleScore");
+
 								}
 								catch(Exception ex)
 								{
@@ -167,6 +169,13 @@ namespace BearBones
 		{
 			string uri="http://71.92.131.203/db/data/cypher/";
 			string query="MERGE (a:Team { number:"+teamNum.ToString()+" }) ON CREATE SET a.name=\""+teamName+"\" , a.scout=\""+scout+"\" RETURN a";
+			string responseStr = await SendAndReceiveJsonRequest(uri,query);
+			return responseStr;
+		}
+		public async Task<string> updateTeam(int teamNum, bool bSwitch)
+		{
+			string uri="http://71.92.131.203/db/data/cypher/";
+			string query="MERGE (a:Team { number:"+teamNum.ToString()+" }) ON MATCH SET a.switch="+bSwitch+" RETURN a";
 			string responseStr = await SendAndReceiveJsonRequest(uri,query);
 			return responseStr;
 		}

@@ -32,6 +32,7 @@ namespace BearBones
 		public List<int> canScores = new List<int> ();
 		public List<int> coopScores = new List<int> ();
 		public List<int> noodleScores = new List<int> ();
+		public List<bool> swichs = new List<bool> ();
 
 		public int teamNumber;
 		public string teamName;
@@ -123,6 +124,7 @@ namespace BearBones
 
 				autoCapabilities.Clear ();
 				brokeDowns.Clear ();
+				swichs.Clear ();
 
 				foreach (ReportViewModel ip in reports)
 				{
@@ -139,6 +141,7 @@ namespace BearBones
 					canScores.Add (ip.canScore);
 					coopScores.Add (ip.coopScore);
 					noodleScores.Add (ip.noodleScore);
+					swichs.Add (ip.swich);
 
 
 					if (hp != null) {

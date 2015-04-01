@@ -31,7 +31,7 @@ namespace BearBones
 
 		public string autoCapability {  set; get; }	//never moved,in-zone, 1 container, 1 tote, tote stack
 		public bool brokeDown {  set; get; }
-
+		public bool swich {  set; get; }
 	}
 }
 
