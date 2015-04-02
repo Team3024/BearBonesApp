@@ -51,7 +51,7 @@
 			    </Grid.ColumnDefinitions>
 
 				<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="CenterAndExpand" BackgroundColor="White" TextColor="Black"  Text="Alliance Score"></Label>
-			    <Picker x:Name="allianceScore" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Red" SelectedIndex="0"  Title="Alliance Score"  HorizontalOptions="FillAndExpand">
+			    <Picker x:Name="allianceScor e" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Red" SelectedIndex="0"  Title="Alliance Score"  HorizontalOptions="FillAndExpand">
 			    </Picker>
 
 
