@@ -79,7 +79,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>c361769a-1e98-4f57-96f9-201276e1b3f8</CodesignProvision>
+    <CodesignProvision>787f5023-5059-4695-be92-8a717cb55c46</CodesignProvision>
     <CodesignKey>iPhone Distribution: Paul Mace (MEXZT8552D)</CodesignKey>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <IpaPackageName>BearBones</IpaPackageName>

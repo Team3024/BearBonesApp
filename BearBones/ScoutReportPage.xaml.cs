@@ -230,15 +230,20 @@ namespace BearBones
 				model2.allianceScore = "None";
 			}
 
-			if (autoCapability0.SelectedIndex >= 0) {
+			if (autoCapability0.SelectedIndex >= 0)
 				model0.autoCapability = autoCap [autoCapability0.SelectedIndex];
-				model1.autoCapability = autoCap [autoCapability1.SelectedIndex];
-				model2.autoCapability = autoCap [autoCapability2.SelectedIndex];
-			} else {
+			else
 				model0.autoCapability = autoCap [autoCap.Length - 1];
+
+			if (autoCapability1.SelectedIndex >= 0)
+				model1.autoCapability = autoCap [autoCapability1.SelectedIndex];
+			else
 				model1.autoCapability = autoCap [autoCap.Length - 1];
+			
+			if (autoCapability2.SelectedIndex >= 0)
+				model2.autoCapability = autoCap [autoCapability2.SelectedIndex];
+			else
 				model2.autoCapability = autoCap [autoCap.Length - 1];
-			}
 
 			model0.brokeDown = brokeDown0.IsToggled;
 			model0.notes = notes.Text;
